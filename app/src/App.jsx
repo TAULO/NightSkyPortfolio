@@ -1,4 +1,4 @@
-import NightSky from "./components/NightSky.jsx";
+import NightSky from "./components/NightSky/NightSky.jsx";
 
 function App() {
     return (

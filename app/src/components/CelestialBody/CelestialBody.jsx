@@ -1,4 +1,4 @@
-import {Mars, Moon, Sun} from "../services/Body.js";
+import {Mars, Moon, Sun} from "../../services/Body.ts";
 const sun = new Sun();
 const moon = new Moon();
 const mars = new Mars();
