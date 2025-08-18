@@ -20,10 +20,15 @@ function randomAnimationDuration() {
     return Math.random() * 4 + 2;
 }
 
+function randomSize() {
+    return Math.random() + 1;
+}
+
 const ShootingStar = ({starContainerRef}) => {
     const [position, setPosition] = useState(() => randomPosTopHalf(starContainerRef));
     const [delay, setDelay] = useState(() => randomAnimationDelay());
     const [duration, setDuration] = useState(() => randomAnimationDuration());
+    const size = randomSize();
 
     const [key, setKey] = useState(0); // Add key to force re-render
 
@@ -50,7 +55,8 @@ const ShootingStar = ({starContainerRef}) => {
                 onAnimationEnd={handleAnimationEnd}
             >
                 <div className={"absolute bg-white rounded-full shadow-[0_0_4px_1px_hsla(0,0%,100%,.5)] z-10"}
-                     style={{width: '1.78px', height: '1.78px'}}>
+                     style={{width: `${size}px`, height: `${size}px`}}
+                >
                 </div>
             </div>
         </>

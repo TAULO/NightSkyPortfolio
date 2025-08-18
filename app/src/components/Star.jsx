@@ -1,6 +1,5 @@
 function randomSize() {
-    const size = Math.random() * 2 + 1;
-    return {height: size, width: size}
+    return Math.random() * 2 + 1;
 }
 
 function randomPos(containerElement) {
@@ -24,7 +23,7 @@ function randomOpacity() {
 }
 
 const Star = ({starContainerRef, name}) => {
-    const {height, width} = randomSize();
+    const size = randomSize();
     const {x, y} = randomPos(starContainerRef);
     const delay = randomAnimationStartDelay();
     const opacity = randomOpacity();
@@ -32,8 +31,8 @@ const Star = ({starContainerRef, name}) => {
     return (
         <>
             <div style={{
-                width: `${height}px`,
-                height: `${width}px`,
+                width: `${size}px`,
+                height: `${size}px`,
                 left: `${x}px`,
                 top: `${y}px`,
                 animationDelay: `${delay}s`,
