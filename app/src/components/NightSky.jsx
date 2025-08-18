@@ -23,7 +23,7 @@ const NightSky = () => {
     }, []);
 
     return (
-        <div className={'star-container'} ref={starContainerRef}>
+        <div className={'absolute inset-0 size-full'} ref={starContainerRef}>
             {stars}
             {shootingStars}
         </div>

@@ -39,7 +39,7 @@ const ShootingStar = ({starContainerRef}) => {
         <>
             <div
                 key={key}
-                className="shooting-star-container"
+                className={"absolute size-2 animate-shooting-star"}
                 style={{
                     left: `${position.x}px`,
                     top: `${position.y}px`,
@@ -49,13 +49,9 @@ const ShootingStar = ({starContainerRef}) => {
                 }}
                 onAnimationEnd={handleAnimationEnd}
             >
-                <div className="shooting-star-dot" style={{width: '1.78701px', height: '1.78701px'}}></div>
-                <div className="shooting-star-trail"
-                     style={{
-                         width: '51.4803px',
-                         transform: 'rotate(50.5597deg)',
-                         transformOrigin: 'right center'
-                     }}></div>
+                <div className={"absolute bg-white rounded-full shadow-[0_0_4px_1px_hsla(0,0%,100%,.5)] z-10"}
+                     style={{width: '1.78px', height: '1.78px'}}>
+                </div>
             </div>
         </>
     )

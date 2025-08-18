@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+.animate-twinkle {
+    animation: twinkle 8s ease-in-out infinite;
+}
+
+.animate-shooting-star {
+    animation: shootingStar ease-out;
+}
+
+@keyframes twinkle {
+    0%, to {
+        opacity: .2;
+        transform: scale(.8)
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translate(-200px, -200px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(200px, 200px);
+        opacity: 0;
+    }
+}

@@ -23,7 +23,7 @@ function randomOpacity() {
     return Math.random() * 0.75 + 0.25;
 }
 
-const Star = ({ starContainerRef, name }) => {
+const Star = ({starContainerRef, name}) => {
     const {height, width} = randomSize();
     const {x, y} = randomPos(starContainerRef);
     const delay = randomAnimationStartDelay();
@@ -37,8 +37,8 @@ const Star = ({ starContainerRef, name }) => {
                 left: `${x}px`,
                 top: `${y}px`,
                 animationDelay: `${delay}s`,
-                opacity,
-            }} className={'star'}></div>
+            }} className={"absolute bg-white rounded-full animate-twinkle opacity-0"}>
+            </div>
         </>
     )
 }
