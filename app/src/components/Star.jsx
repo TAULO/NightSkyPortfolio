@@ -22,11 +22,10 @@ function randomOpacity() {
     return Math.random() * 0.75 + 0.25;
 }
 
-const Star = ({starContainerRef, name}) => {
+const Star = ({starContainerRef}) => {
     const size = randomSize();
     const {x, y} = randomPos(starContainerRef);
     const delay = randomAnimationStartDelay();
-    const opacity = randomOpacity();
 
     return (
         <>
