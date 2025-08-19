@@ -1,10 +1,10 @@
 const NavBar = () => {
   return (
     <>
-      <div className={"fixed my-10 left-1/2 -translate-x-1/2"}>
+      <div className={'fixed left-1/2 my-10 -translate-x-1/2'}>
         <div
           className={
-            "flex bg-menu rounded-xl gap-10 items-center text-white font-light text-xs px-5 py-2 border border-[rgba(62,71,137,0.3)] backdrop-grayscale-25 truncate"
+            'bg-menu backdrop-grayscale-25 flex items-center gap-10 truncate rounded-xl border border-[rgba(62,71,137,0.3)] px-5 py-2 text-xs font-light text-white'
           }
         >
           <div>SKILL SET</div>

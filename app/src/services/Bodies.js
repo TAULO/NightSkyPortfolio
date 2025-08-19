@@ -7,56 +7,58 @@ const response = await fetch('http://ip-api.com/json/');
 const location = await response.json();
 
 function getToday() {
-    const now = new Date();
-    return now.toISOString().split('T')[0]
+  const now = new Date();
+  return now.toISOString().split('T')[0];
 }
 
 function getTime() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    return `${hours}:${minutes}:${seconds}`;
+  return `${hours}:${minutes}:${seconds}`;
 }
 
 async function getBodiesPositions() {
-    const lat = location.lat;
-    const lon = location.lon;
-    const elevation = "900";
-    const fromDate = getToday();
-    const toDate = getToday();
-    const time = getTime();
+  const lat = location.lat;
+  const lon = location.lon;
+  const elevation = '900';
+  const fromDate = getToday();
+  const toDate = getToday();
+  const time = getTime();
 
-    const apiUrl = new URL('https://api.astronomyapi.com/api/v2/bodies/positions');
-    apiUrl.searchParams.append('latitude', lat);
-    apiUrl.searchParams.append('longitude', lon);
-    apiUrl.searchParams.append('elevation', elevation);
-    apiUrl.searchParams.append('from_date', fromDate);
-    apiUrl.searchParams.append('to_date', toDate);
-    apiUrl.searchParams.append('time', time);
+  const apiUrl = new URL(
+    'https://api.astronomyapi.com/api/v2/bodies/positions'
+  );
+  apiUrl.searchParams.append('latitude', lat);
+  apiUrl.searchParams.append('longitude', lon);
+  apiUrl.searchParams.append('elevation', elevation);
+  apiUrl.searchParams.append('from_date', fromDate);
+  apiUrl.searchParams.append('to_date', toDate);
+  apiUrl.searchParams.append('time', time);
 
-    const res = await getRes(apiUrl);
+  const res = await getRes(apiUrl);
 
-    return res.json();
+  return res.json();
 }
 
 async function getBodies() {
-    const res = await getRes('https://api.astronomyapi.com/api/v2/bodies');
+  const res = await getRes('https://api.astronomyapi.com/api/v2/bodies');
 
-    return res.json();
+  return res.json();
 }
 
 async function getRes(url) {
-    return await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Basic ${authString}`
-        }
-    })
+  return await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Basic ${authString}`,
+    },
+  });
 }
 
 // const bodies = await getBodies();
 const bodiesPositions = await getBodiesPositions();
 
-export default bodiesPositions['data']['table']['rows']
+export default bodiesPositions['data']['table']['rows'];
