@@ -1,11 +1,13 @@
 import NightSky from "./components/NightSky/NightSky.jsx";
+import Hero from "./components/Hero";
+import NavBar from "./components/NavBar/NavBar.jsx";
 
 function App() {
     return (
         <>
-            <div className={"relative bg-[#040615] overflow-hidden w-[100vw] h-[100vh]"}>
-                <NightSky></NightSky>
-            </div>
+            <NavBar></NavBar>
+            <Hero></Hero>
+            <NightSky></NightSky>
         </>
     )
 }

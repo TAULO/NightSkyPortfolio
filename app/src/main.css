@@ -1,4 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
+@import "tailwindcss-animated";
+
+@theme {
+    --font-montserrat: "Montserrat", "Montserrat Fallback", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-montserrat);
+
+    --color-primary: #15162c;
+    --color-menu: rgba(41,46,86,.2);
+}
 
 .animate-twinkle {
     animation: twinkle 8s ease-in-out infinite;
