@@ -1,5 +1,4 @@
 import HeroTitle from './HeroTitle.jsx';
-import NavBar from '../NavBar/NavBar.jsx';
 import Button from './Button.jsx';
 
 const Hero = () => {
