@@ -3,33 +3,33 @@ import { useState } from 'react';
 const NavBar = () => {
   const [navItems, setNavItems] = useState([
     {
-      name: 'Skill Set',
+      name: 'SKILL SET',
       isActive: false,
     },
     {
-      name: 'Experience',
+      name: 'EXPERIENCE',
       isActive: false,
     },
     {
-      name: 'Projects',
+      name: 'PROJECTS',
       isActive: false,
     },
     {
-      name: 'About Me',
+      name: 'ABOUT ME',
       isActive: false,
     },
     {
-      name: 'Contact',
+      name: 'CONTACT',
       isActive: false,
     },
   ]);
 
   return (
     <>
-      <div className={'sm:my-15 fixed left-1/2 my-10 -translate-x-1/2'}>
+      <div className={'sm:my-15 fixed left-1/2 z-10 my-10 -translate-x-1/2'}>
         <div
           className={
-            'bg-menu backdrop-grayscale-25 flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-xl border border-[rgba(62,71,137,0.3)] px-5 py-2 text-[.55rem] font-semibold text-white sm:gap-10 sm:text-sm 2xl:text-sm'
+            'bg-menu backdrop-grayscale-25 flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-xl border border-[rgba(62,71,137,0.3)] px-5 py-2 text-[.55rem] font-semibold text-white shadow sm:gap-10 sm:text-sm 2xl:text-sm'
           }
         >
           {navItems.map((item, index) => (
@@ -52,7 +52,7 @@ const NavBar = () => {
               {item.isActive && (
                 <div
                   className={
-                    'absolute -bottom-[4px] h-0.5 w-1/2 self-center bg-red-500'
+                    'animate-nav-item-active absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500'
                   }
                 ></div>
               )}

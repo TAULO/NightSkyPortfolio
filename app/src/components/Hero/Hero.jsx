@@ -1,5 +1,6 @@
 import HeroTitle from './HeroTitle.jsx';
 import NavBar from '../NavBar/NavBar.jsx';
+import Button from './Button.jsx';
 
 const Hero = () => {
   return (
@@ -8,6 +9,9 @@ const Hero = () => {
         {/*<div className={'mt-50'}>*/}
         {/*  <HeroTitle></HeroTitle>*/}
         {/*</div>*/}
+        <div className={'self-center'}>
+          <Button></Button>
+        </div>
       </div>
     </>
   );

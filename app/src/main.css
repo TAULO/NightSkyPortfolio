@@ -16,7 +16,11 @@
 }
 
 .animate-shooting-star {
-  animation: shootingStar ease-out;
+  animation: meteorite ease-out;
+}
+
+.animate-nav-item-active {
+  animation: nav-item-active 0.3s ease-in-out;
 }
 
 @keyframes twinkle {
@@ -32,7 +36,7 @@
   }
 }
 
-@keyframes shootingStar {
+@keyframes meteorite {
   0% {
     transform: translate(-200px, -200px);
     opacity: 1;
@@ -40,5 +44,14 @@
   100% {
     transform: translate(200px, 200px);
     opacity: 0;
+  }
+}
+
+@keyframes nav-item-active {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
   }
 }
