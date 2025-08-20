@@ -9,6 +9,8 @@
 
   --color-primary: #15162c;
   --color-menu: rgba(41, 46, 86, 0.2);
+
+  --color-border: rgba(62, 71, 137, 0.3);
 }
 
 .animate-twinkle {
