@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-const Toggler = () => {
+const Switch = () => {
   const [items, setItems] = useState([
     {
       name: 'Work',
@@ -82,4 +82,4 @@ const Toggler = () => {
   );
 };
 
-export default Toggler;
+export default Switch;

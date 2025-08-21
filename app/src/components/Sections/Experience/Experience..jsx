@@ -1,4 +1,4 @@
-import Toggler from './Toggler.jsx';
+import Switch from './Switch.jsx';
 import Title from '../../UI/Title/Title.jsx';
 
 const Experience = () => {
@@ -7,7 +7,7 @@ const Experience = () => {
       <section className={'flex flex-col'}>
         <Title title={'Experience'}></Title>
         <div className={'self-center sm:self-start'}>
-          <Toggler></Toggler>
+          <Switch></Switch>
         </div>
       </section>
     </>
