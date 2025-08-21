@@ -29,7 +29,7 @@ const NightSky = () => {
   return (
     <div
       className={
-        'pointer-none absolute inset-0 -z-10 size-full h-[100vh] w-[100vw] overflow-hidden bg-[#040615]'
+        'pointer-none absolute inset-0 -z-10 size-full h-[100vh] w-full overflow-hidden bg-[#040615]'
       }
       ref={starContainerRef}
     >
