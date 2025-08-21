@@ -3,7 +3,7 @@ import { useState } from 'react';
 const NavBar = () => {
   const [navItems, setNavItems] = useState([
     {
-      name: 'SKILL SET',
+      name: 'TECH STACK',
       isActive: false,
       isSelected: false,
     },

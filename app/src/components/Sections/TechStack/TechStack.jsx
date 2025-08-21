@@ -1,4 +1,4 @@
-import Skill from './Skill.jsx';
+import Stack from './Stack.jsx';
 import {
   arduinoSVG,
   bitbucketSVG,
@@ -39,7 +39,7 @@ import {
   vsCodeSVG,
   vueSVG,
   webStromSVG,
-} from './SkillSVG.jsx';
+} from './TechSVG.jsx';
 
 const frontendSkill = {
   name: 'Frontend',
@@ -225,7 +225,7 @@ const languagesSkill = {
   ],
 };
 
-const SkillSet = () => {
+const TechStack = () => {
   return (
     <>
       <div className={'bg-primary p-5 sm:p-20'}>
@@ -234,18 +234,17 @@ const SkillSet = () => {
             'my-5 text-center text-4xl font-bold text-white sm:text-start'
           }
         >
-          {' '}
-          Skill Set{' '}
+          Tech Stack
         </h1>
         <div className={'grid gap-5 md:grid-cols-2'}>
-          <Skill {...frontendSkill}></Skill>
-          <Skill {...backendSkill}></Skill>
-          <Skill {...environmentSkill}></Skill>
-          <Skill {...languagesSkill}></Skill>
+          <Stack {...frontendSkill}></Stack>
+          <Stack {...backendSkill}></Stack>
+          <Stack {...environmentSkill}></Stack>
+          <Stack {...languagesSkill}></Stack>
         </div>
       </div>
     </>
   );
 };
 
-export default SkillSet;
+export default TechStack;

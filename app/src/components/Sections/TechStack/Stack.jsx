@@ -1,4 +1,4 @@
-const Skill = (props) => {
+const Stack = (props) => {
   return (
     <>
       <div
@@ -25,4 +25,4 @@ const Skill = (props) => {
   );
 };
 
-export default Skill;
+export default Stack;
