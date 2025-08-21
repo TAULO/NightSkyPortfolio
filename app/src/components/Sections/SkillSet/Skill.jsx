@@ -3,19 +3,19 @@ const Skill = (props) => {
     <>
       <div
         className={
-          'border-border flex flex-col gap-5 rounded-2xl border-2 p-5 text-white'
+          'border-border bg-secondary flex flex-col gap-5 rounded-2xl border-2 p-5 text-white'
         }
       >
-        <div className={'flex gap-x-2'}>
+        <div className={'flex flex-wrap gap-2'}>
           {props.skills?.map((skill, index) => (
-            <div key={index} className={'size-10'}>
+            <div key={index} className={'size-5 sm:size-8'}>
               {skill.svg}
             </div>
           ))}
         </div>
-        <h1 className={'text-2xl font-bold'}> {props.name} </h1>
+        <h1 className={'text-3xl font-bold'}> {props.name} </h1>
         <p className={'font-light'}> {props.description} </p>
-        <div className={'flex gap-1'}>
+        <div className={'flex flex-wrap gap-2'}>
           <p className={'font-light'}>
             {props.skills?.map((skill) => skill.name).join(', ')}
           </p>

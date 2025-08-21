@@ -1,18 +1,49 @@
 import Skill from './Skill.jsx';
 import {
-  bootstrapSVG, cssSVG,
-  flutterSVG, htmlSVG,
+  arduinoSVG,
+  bitbucketSVG,
+  bootstrapSVG,
+  csharpSVG,
+  cssSVG,
+  dartSVG,
+  dockerSVG,
+  dotnetcoreSVG,
+  electronSVG,
+  expressSVG,
+  firebaseSVG,
+  flutterSVG,
+  githubSVG,
+  gitlabSVG,
+  gitSVG,
+  htmlSVG,
+  intellijSVG,
   javascriptSVG,
+  javaSVG,
+  mysqlSVG,
+  nginxSVG,
+  nodejsSVG,
   nuxtSVG,
+  postgressqlSVG,
+  postmanSVG,
+  pythonSVG,
   reactSVG,
+  riderSVG,
+  sassSVG,
   svelteSVG,
-  tailwindSVG, typescriptSVG,
+  swaggerSVG,
+  tailwindSVG,
+  typescriptSVG,
+  unitySVG,
+  visualStudioSVG,
+  vitestSVG,
+  vsCodeSVG,
   vueSVG,
+  webStromSVG,
 } from './SkillSVG.jsx';
 
 const frontendSkill = {
   name: 'Frontend',
-  description: 'HTML, CSS, JavaScript',
+  description: '',
   skills: [
     {
       name: 'Vue',
@@ -31,8 +62,16 @@ const frontendSkill = {
       svg: nuxtSVG,
     },
     {
+      name: 'Vitest',
+      svg: vitestSVG,
+    },
+    {
       name: 'Flutter',
       svg: flutterSVG,
+    },
+    {
+      name: 'Electron',
+      svg: electronSVG,
     },
     {
       name: 'Tailwind CSS',
@@ -43,14 +82,6 @@ const frontendSkill = {
       svg: bootstrapSVG,
     },
     {
-      name: 'TypeScript',
-      svg: typescriptSVG,
-    },
-    {
-      name: 'JavaScript',
-      svg: javascriptSVG,
-    },
-    {
       name: 'HTML5',
       svg: htmlSVG,
     },
@@ -58,35 +89,138 @@ const frontendSkill = {
       name: 'CSS',
       svg: cssSVG,
     },
+    {
+      name: 'sass',
+      svg: sassSVG,
+    },
   ],
 };
 
 const backendSkill = {
   name: 'Backend',
-  description: 'Node.js, Express.js, MongoDB',
+  description: '',
   skills: [
     {
       name: 'Node.js',
-      svg: 'Node.js',
+      svg: nodejsSVG,
     },
     {
       name: 'Express.js',
-      svg: 'Express.js',
+      svg: expressSVG,
+    },
+    {
+      name: '.NET',
+      svg: dotnetcoreSVG,
+    },
+    {
+      name: 'nginx',
+      svg: nginxSVG,
+    },
+    {
+      name: 'mySQL',
+      svg: mysqlSVG,
+    },
+    {
+      name: 'PostgreSQL',
+      svg: postgressqlSVG,
+    },
+    {
+      name: 'Firebase',
+      svg: firebaseSVG,
     },
   ],
 };
 
 const environmentSkill = {
   name: 'Environment',
-  description: 'Git, GitHub, Docker',
+  description: '',
   skills: [
     {
+      name: 'Docker',
+      svg: dockerSVG,
+    },
+    {
       name: 'Git',
-      svg: 'Git',
+      svg: gitSVG,
     },
     {
       name: 'GitHub',
-      svg: 'GitHub',
+      svg: githubSVG,
+    },
+    {
+      name: 'GitLab',
+      svg: gitlabSVG,
+    },
+    {
+      name: 'Bitbucket',
+      svg: bitbucketSVG,
+    },
+    {
+      name: 'Swagger',
+      svg: swaggerSVG,
+    },
+    {
+      name: 'Postman',
+      svg: postmanSVG,
+    },
+    {
+      name: 'Rider',
+      svg: riderSVG,
+    },
+    {
+      name: 'WebStorm',
+      svg: webStromSVG,
+    },
+    {
+      name: 'IntelliJ',
+      svg: intellijSVG,
+    },
+    {
+      name: 'VSCode',
+      svg: vsCodeSVG,
+    },
+    {
+      name: 'Visual Studio',
+      svg: visualStudioSVG,
+    },
+    {
+      name: 'Arduino',
+      svg: arduinoSVG,
+    },
+    {
+      name: 'Unity',
+      svg: unitySVG,
+    },
+  ],
+};
+
+const languagesSkill = {
+  name: 'Languages',
+  description: '',
+  skills: [
+    {
+      name: 'C#',
+      svg: csharpSVG,
+    },
+    {
+      name: 'Java',
+      svg: javaSVG,
+    },
+    {
+      name: 'Dart',
+      svg: dartSVG,
+    },
+    {
+      name: 'Python',
+      svg: pythonSVG,
+    },
+    {
+      name: 'TypeScript',
+      svg: typescriptSVG,
+    },
+    {
+      name: 'JavaScript',
+      svg: javascriptSVG,
     },
   ],
 };
@@ -94,11 +228,21 @@ const environmentSkill = {
 const SkillSet = () => {
   return (
     <>
-      <div className={'bg-primary p-20'}>
-        <h1 className={'text-4xl font-bold text-white'}> Skill Set </h1>
-        <Skill {...frontendSkill}></Skill>
-        <Skill {...backendSkill}></Skill>
-        <Skill {...environmentSkill}></Skill>
+      <div className={'bg-primary p-5 sm:p-20'}>
+        <h1
+          className={
+            'my-5 text-center text-4xl font-bold text-white sm:text-start'
+          }
+        >
+          {' '}
+          Skill Set{' '}
+        </h1>
+        <div className={'grid gap-5 md:grid-cols-2'}>
+          <Skill {...frontendSkill}></Skill>
+          <Skill {...backendSkill}></Skill>
+          <Skill {...environmentSkill}></Skill>
+          <Skill {...languagesSkill}></Skill>
+        </div>
       </div>
     </>
   );

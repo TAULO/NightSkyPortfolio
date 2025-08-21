@@ -8,6 +8,8 @@
   --font-sans: var(--font-montserrat);
 
   --color-primary: #15162c;
+  --color-secondary: rgba(255,253,253,.05);
+
   --color-menu: rgba(41, 46, 86, 0.2);
 
   --color-border: rgba(62, 71, 137, 0.3);
