@@ -40,6 +40,7 @@ import {
   vueSVG,
   webStromSVG,
 } from './TechSVG.jsx';
+import Title from '../../UI/Title/Title.jsx';
 
 const frontendSkill = {
   name: 'Frontend',
@@ -228,14 +229,8 @@ const languagesSkill = {
 const TechStack = () => {
   return (
     <>
-      <div className={'bg-primary p-5 sm:p-20'}>
-        <h1
-          className={
-            'my-5 text-center text-4xl font-bold text-white sm:text-start'
-          }
-        >
-          Tech Stack
-        </h1>
+      <div className={''}>
+        <Title title={'Tech Stack'}></Title>
         <div className={'grid gap-5 md:grid-cols-2'}>
           <Stack {...frontendSkill}></Stack>
           <Stack {...backendSkill}></Stack>
