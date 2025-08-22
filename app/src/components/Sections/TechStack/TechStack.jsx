@@ -19,6 +19,7 @@ import {
   intellijSVG,
   javascriptSVG,
   javaSVG,
+  kibanaSVG,
   mysqlSVG,
   nginxSVG,
   nodejsSVG,
@@ -163,6 +164,10 @@ const environmentSkill = {
     {
       name: 'Postman',
       svg: postmanSVG,
+    },
+    {
+      name: 'Kibana',
+      svg: kibanaSVG,
     },
     {
       name: 'Rider',
