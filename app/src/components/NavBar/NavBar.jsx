@@ -76,13 +76,11 @@ const NavBar = () => {
               <div key={index} className={'cursor-pointer'}>
                 {item.name}
               </div>
-              {(item.isActive || item.isSelected) && (
-                <div
-                  className={
-                    'animate-nav-item-active absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500'
-                  }
-                ></div>
-              )}
+              <div
+                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500 transition-all duration-300 ease-in-out ${
+                  item.isActive || item.isSelected ? 'scale-x-100' : 'scale-x-0'
+                }`}
+              />
             </div>
           ))}
         </div>
