@@ -41,7 +41,7 @@ const Switch = ({ items, setItems }) => {
     <>
       <div
         className={
-          'bg-secondary relative flex w-fit self-center rounded-lg sm:self-start'
+          'bg-secondary relative flex w-fit self-center rounded-lg shadow sm:self-start'
         }
       >
         <div
