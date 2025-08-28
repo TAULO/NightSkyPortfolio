@@ -8,7 +8,9 @@ const experienceItem = ({ experiences }) => {
             src={item.image?.src}
             alt={item.image?.alt}
           />
-          <div className={`${experiences.length > 1 ? 'h-full w-[1px] rounded-full bg-white' : ''}`}></div>
+          <div
+            className={`${experiences.length > 1 ? 'h-full w-[1px] rounded-full bg-white' : ''}`}
+          ></div>
         </div>
         <div className={'flex flex-col gap-5 text-white'}>
           <div>
@@ -24,12 +26,14 @@ const experienceItem = ({ experiences }) => {
           <div className={'flex flex-col font-extralight'}>
             {item.tasks?.map((task, index) => (
               <div className={'flex items-center gap-x-2'} key={index}>
-                <div
-                  className={
-                    'size-1 rounded-full bg-white shadow-[0_0_4px_1px_hsla(0,0%,100%,.3)]'
-                  }
-                ></div>
-                <p>{task}</p>
+                  <div
+                    className={
+                      'size-1 rounded-full bg-white shadow-[0_0_4px_1px_hsla(0,0%,100%,.3)]'
+                    }
+                  ></div>
+                <p>
+                  {task}
+                </p>
               </div>
             ))}
           </div>
