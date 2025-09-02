@@ -1,24 +1,38 @@
-import Switch from './Switch.jsx';
-import Title from '../../UI/Title/Title.jsx';
-import ExperienceItem from './ExperienceItem.jsx';
+import Switch from './Switch.tsx';
+import Title from '../../UI/Title/Title.tsx';
+import ExperienceItem from './ExperienceItem.tsx';
 import {
   csharpSVG,
   dockerSVG,
   dotnetcoreSVG,
   javascriptSVG,
-  kibanaSVG, postgressqlSVG,
+  kibanaSVG,
+  postgressqlSVG,
   typescriptSVG,
   unitySVG,
   vueSVG,
-} from '../TechStack/TechSVG.jsx';
+} from '../TechStack/TechSVG.tsx';
 
 import sireniaIcon from '../../../assets/static/sirenia.svg';
 import codingPiratesIcon from '../../../assets/static/codingPirates.png';
 import alfaIcon from '../../../assets/static/alfa.jpeg';
 import baIcon from '../../../assets/static/ba.svg';
 
-import useJobDuration from '../../../hooks/useJobDuration.jsx';
-import { useEffect, useState } from 'react';
+import useJobDuration from '../../../hooks/useJobDuration.tsx';
+import { ReactElement, useState } from 'react';
+
+export interface IExperienceItem {
+  title: string;
+  role: string;
+  date: string;
+  place: string;
+  tasks: Array<string>;
+  stack: Array<{ name: string; svg: ReactElement }>;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
 
 const codingPiratesJobDuration = useJobDuration('2024-08-01', Date.now());
 const sireniaJobDuration = useJobDuration('2023-01-01', Date.now());
@@ -26,7 +40,7 @@ const internJobDuration = useJobDuration('2022-08-01', '2023-01-01');
 
 const baJobDuration = useJobDuration('2021-01-01', '2023-01-01');
 
-const jobExperiences = [
+const jobExperiences: Array<IExperienceItem> = [
   {
     title: 'Coding Pirates',
     role: 'Volunteer',
@@ -132,12 +146,14 @@ const jobExperiences = [
   },
 ];
 
-const educationExperiences = [
+const educationExperiences: Array<IExperienceItem> = [
   {
     title: 'Business Academy Aarhus',
     role: 'AP in Computer Science',
     date: `Aug. 2021 - Jan. 2023 (${baJobDuration.years} years, ${baJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
+    tasks: [],
+    stack: [],
     image: {
       src: baIcon,
       alt: 'Business Academy Aarhus',
@@ -145,53 +161,32 @@ const educationExperiences = [
   },
 ];
 
-const jobs = <ExperienceItem experiences={jobExperiences}> </ExperienceItem>
-const educations = <ExperienceItem experiences={educationExperiences}></ExperienceItem>
-
+const jobs = ExperienceItem(jobExperiences);
+const educations = ExperienceItem(educationExperiences);
 
 const Experience = () => {
-  const [items, setItems] = useState([
-    {
-      name: 'Work',
-      isSelected: true,
-    },
-    {
-      name: 'Education',
-      isSelected: false,
-    },
-    {
-      name: 'Personal',
-      isSelected: false,
-    },
-  ]);
-
   const [experienceItem, setExperienceItem] = useState(jobs);
 
-  useEffect(() => {
-    const selectedIndex = items.findIndex((item) => item.isSelected);
-
-    switch (selectedIndex) {
+  const handleSwitchChange = (index: number) => {
+    switch (index) {
       case 0:
-        setExperienceItem(jobs);
-        break;
+        return setExperienceItem(jobs);
       case 1:
-        setExperienceItem(educations);
-        break;
-      case 2:
-        setExperienceItem(jobs);
-        break;
+        return setExperienceItem(educations);
       default:
-        setExperienceItem(jobs);
-        break;
+        return setExperienceItem(jobs);
     }
-  }, [items]);
+  };
 
   return (
     <>
       <section className={'flex flex-col'}>
         <Title title={'Experience'}></Title>
         <div className={'gap-15 flex flex-col self-center sm:self-start'}>
-          <Switch items={items} setItems={setItems}></Switch>
+          <Switch
+            items={['Jobs', 'Education']}
+            onSelectionChange={handleSwitchChange}
+          ></Switch>
           <div className={'flex flex-col gap-10'}>{experienceItem}</div>
         </div>
       </section>

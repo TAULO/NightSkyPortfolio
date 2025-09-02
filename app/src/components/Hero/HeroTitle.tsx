@@ -20,4 +20,3 @@ const HeroTitle = () => {
 };
 
 export default HeroTitle;
-

@@ -2,7 +2,7 @@ function randomSize() {
   return Math.random() * 2 + 1;
 }
 
-function randomPos(containerElement) {
+function randomPos(containerElement: Element) {
   if (!containerElement) return { x: 0, y: 0 };
 
   const containerWidth = containerElement.clientWidth;
@@ -18,11 +18,9 @@ function randomAnimationStartDelay() {
   return Math.random() * 8;
 }
 
-function randomOpacity() {
-  return Math.random() * 0.75 + 0.25;
-}
+const Star = ({ starContainerRef }: { starContainerRef: Element | null }) => {
+  if (!starContainerRef) return;
 
-const Star = ({ starContainerRef }) => {
   const size = randomSize();
   const { x, y } = randomPos(starContainerRef);
   const delay = randomAnimationStartDelay();

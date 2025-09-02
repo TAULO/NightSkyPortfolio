@@ -40,10 +40,17 @@ import {
   vsCodeSVG,
   vueSVG,
   webStromSVG,
-} from './TechSVG.jsx';
+} from './TechSVG.tsx';
 import Title from '../../UI/Title/Title.jsx';
+import { ReactElement } from 'react';
 
-const frontendSkill = {
+export interface ITechStack {
+  name: string;
+  description: string;
+  skills: Array<{ name: string; svg: ReactElement }>;
+}
+
+const frontendSkill: ITechStack = {
   name: 'Frontend',
   description: '',
   skills: [

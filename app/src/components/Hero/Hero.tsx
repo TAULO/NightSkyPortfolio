@@ -1,5 +1,4 @@
-import HeroTitle from './HeroTitle.jsx';
-import Button from './Button.jsx';
+import Button from './Button.tsx';
 
 const Hero = () => {
   return (

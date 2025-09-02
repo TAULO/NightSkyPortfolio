@@ -1,4 +1,4 @@
-export default function useJobDuration(from, to) {
+export default function useJobDuration(from: string | number, to: string | number) {
   const fromDate = new Date(from);
   const toDate = new Date(to);
 

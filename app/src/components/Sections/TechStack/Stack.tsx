@@ -1,4 +1,6 @@
-const Stack = (props) => {
+import { ITechStack } from './TechStack.tsx';
+
+const Stack = (teckStack: ITechStack) => {
   return (
     <>
       <div
@@ -7,17 +9,17 @@ const Stack = (props) => {
         }
       >
         <div className={'flex flex-wrap gap-2'}>
-          {props.skills?.map((skill, index) => (
+          {teckStack.skills.map((skill, index) => (
             <div key={index} className={'size-5 sm:size-8'}>
               {skill.svg}
             </div>
           ))}
         </div>
-        <h1 className={'text-3xl font-bold'}> {props.name} </h1>
-        <p className={'font-light'}> {props.description} </p>
+        <h1 className={'text-3xl font-bold'}> {teckStack.name} </h1>
+        <p className={'font-light'}> {teckStack.description} </p>
         <div className={'flex flex-wrap gap-2'}>
           <p className={'font-light'}>
-            {props.skills?.map((skill) => skill.name).join(', ')}
+            {teckStack.skills.map((skill) => skill.name).join(', ')}
           </p>
         </div>
       </div>

@@ -1,7 +1,13 @@
 import { useState } from 'react';
 
+interface INavItem {
+  name: string;
+  isActive: boolean;
+  isSelected: boolean;
+}
+
 const NavBar = () => {
-  const [navItems, setNavItems] = useState([
+  const [navItems, setNavItems] = useState<Array<INavItem>>([
     {
       name: 'TECH STACK',
       isActive: false,
@@ -29,7 +35,7 @@ const NavBar = () => {
     },
   ]);
 
-  function selectNavItem(index) {
+  function selectNavItem(index: number) {
     setNavItems((prev) =>
       prev.map((item, idx) =>
         idx === index
@@ -39,7 +45,7 @@ const NavBar = () => {
     );
   }
 
-  function setNavItemActive(index) {
+  function setNavItemActive(index: number) {
     setNavItems((prev) =>
       prev.map((item, idx) =>
         idx === index
@@ -49,7 +55,7 @@ const NavBar = () => {
     );
   }
 
-  function setNavItemInactive(index) {
+  function setNavItemInactive() {
     setNavItems((prev) => prev.map((item) => ({ ...item, isActive: false })));
   }
 
@@ -71,7 +77,7 @@ const NavBar = () => {
               className={'relative flex flex-col'}
               onClick={() => selectNavItem(index)}
               onMouseEnter={() => setNavItemActive(index)}
-              onMouseLeave={() => setNavItemInactive(index)}
+              onMouseLeave={() => setNavItemInactive()}
             >
               <div key={index} className={'cursor-pointer'}>
                 {item.name}

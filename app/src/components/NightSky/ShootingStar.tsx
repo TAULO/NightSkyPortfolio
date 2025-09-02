@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-function randomPosTopHalf(containerElement) {
+function randomPosTopHalf(containerElement: Element) {
   if (!containerElement) return { x: 0, y: 0 };
 
   const containerWidth = containerElement.clientWidth;
@@ -24,7 +24,13 @@ function randomSize() {
   return Math.random() + 1;
 }
 
-const ShootingStar = ({ starContainerRef }) => {
+const ShootingStar = ({
+  starContainerRef,
+}: {
+  starContainerRef: Element | null;
+}) => {
+  if (!starContainerRef) return;
+
   const [position, setPosition] = useState(() =>
     randomPosTopHalf(starContainerRef)
   );

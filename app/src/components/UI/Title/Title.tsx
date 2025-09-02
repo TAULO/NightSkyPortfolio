@@ -1,4 +1,8 @@
-const Title = (props) => {
+interface ITitleProps {
+  title: string;
+}
+
+const Title = ({ title }: ITitleProps) => {
   return (
     <>
       <h1
@@ -6,7 +10,7 @@ const Title = (props) => {
           'mb-5 text-center text-4xl font-bold text-white sm:text-start'
         }
       >
-        {props.title}
+        {title}
       </h1>
     </>
   );
