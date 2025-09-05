@@ -1,46 +1,130 @@
-import { useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 interface INavItem {
   name: string;
   isActive: boolean;
   isSelected: boolean;
+  ref?: RefObject<HTMLElement | null>;
 }
 
-const NavBar = () => {
+interface INavBarProps {
+  techStackRef: RefObject<HTMLElement | null>;
+  experienceRef: RefObject<HTMLElement | null>;
+  projectsRef: RefObject<HTMLElement | null>;
+  aboutMeRef: RefObject<HTMLElement | null>;
+  contactRef: RefObject<HTMLElement | null>;
+}
+
+function scrollIntoView(element: RefObject<HTMLElement>) {
+  element.current.scrollIntoView({ behavior: 'smooth' });
+}
+
+const NavBar = ({
+  techStackRef,
+  experienceRef,
+  aboutMeRef,
+  projectsRef,
+  contactRef,
+}: INavBarProps) => {
   const [navItems, setNavItems] = useState<Array<INavItem>>([
     {
       name: 'TECH STACK',
       isActive: false,
       isSelected: false,
+      ref: techStackRef,
     },
     {
       name: 'EXPERIENCE',
       isActive: false,
       isSelected: false,
+      ref: experienceRef,
     },
     {
       name: 'PROJECTS',
       isActive: false,
       isSelected: false,
+      ref: projectsRef,
     },
     {
       name: 'ABOUT ME',
       isActive: false,
       isSelected: false,
+      ref: aboutMeRef,
     },
     {
       name: 'CONTACT',
       isActive: false,
       isSelected: false,
+      ref: contactRef,
     },
   ]);
 
-  function selectNavItem(index: number) {
+  useEffect(() => {
+    const callback = (entries: Array<IntersectionObserverEntry>) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        if (entry.isIntersecting) {
+          switch (entry.target.id) {
+            case 'tech-stack':
+              setNavItemActiveAndSelectedItem(0);
+              break;
+            case 'experience':
+              setNavItemActiveAndSelectedItem(1);
+              break;
+            case 'projects':
+              setNavItemActiveAndSelectedItem(2);
+              break;
+            case 'about-me':
+              setNavItemActiveAndSelectedItem(3);
+              break;
+            case 'contact':
+              setNavItemActiveAndSelectedItem(4);
+              break;
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: '-200px 0px',
+      threshold: 0.5,
+    });
+
+    // Observe all sections
+    [techStackRef, experienceRef, projectsRef, aboutMeRef, contactRef].forEach(
+      (ref) => {
+        if (ref.current) {
+          observer.observe(ref.current);
+        }
+      }
+    );
+
+    return () => observer.disconnect();
+  }, []);
+
+  function selectNavItem(
+    index: number,
+    element?: RefObject<HTMLElement> | null
+  ) {
     setNavItems((prev) =>
       prev.map((item, idx) =>
         idx === index
           ? { ...item, isSelected: true }
           : { ...item, isSelected: false }
+      )
+    );
+
+    if (element?.current) {
+      scrollIntoView(element);
+    }
+  }
+
+  function setNavItemActiveAndSelectedItem(index: number) {
+    setNavItems((prev) =>
+      prev.map((item, idx) =>
+        idx === index
+          ? { ...item, isActive: true, isSelected: true }
+          : { ...item, isActive: false, isSelected: false }
       )
     );
   }
@@ -63,7 +147,7 @@ const NavBar = () => {
     <>
       <div
         className={
-          'sm:top-15 fixed bottom-10 left-1/2 z-10 h-fit -translate-x-1/2'
+          'sm:top-15 fixed bottom-10 left-1/2 z-50 h-fit -translate-x-1/2'
         }
       >
         <div
@@ -75,7 +159,7 @@ const NavBar = () => {
             <div
               key={index}
               className={'relative flex flex-col'}
-              onClick={() => selectNavItem(index)}
+              onClick={() => selectNavItem(index, item.ref)}
               onMouseEnter={() => setNavItemActive(index)}
               onMouseLeave={() => setNavItemInactive()}
             >
