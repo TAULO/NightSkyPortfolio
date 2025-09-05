@@ -241,7 +241,7 @@ const languagesSkill = {
 const TechStack = () => {
   return (
     <>
-      <section className={'flex flex-col'}>
+      <div className={'flex flex-col'}>
         <Title title={'Tech Stack'}></Title>
         <div className={'grid gap-5 md:grid-cols-2'}>
           <Stack {...frontendSkill}></Stack>
@@ -249,7 +249,7 @@ const TechStack = () => {
           <Stack {...environmentSkill}></Stack>
           <Stack {...languagesSkill}></Stack>
         </div>
-      </section>
+      </div>
     </>
   );
 };

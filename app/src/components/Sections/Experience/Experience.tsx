@@ -180,7 +180,7 @@ const Experience = () => {
 
   return (
     <>
-      <section className={'flex flex-col'}>
+      <div className={'flex flex-col'}>
         <Title title={'Experience'}></Title>
         <div className={'gap-15 flex flex-col self-center sm:self-start'}>
           <Switch
@@ -189,7 +189,7 @@ const Experience = () => {
           ></Switch>
           <div className={'flex flex-col gap-10'}>{experienceItem}</div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
