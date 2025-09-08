@@ -1,6 +1,6 @@
 import { ITechStack } from './TechStack.tsx';
 
-const Stack = (teckStack: ITechStack) => {
+const Stack = (techStack: ITechStack) => {
   return (
     <>
       <div
@@ -9,17 +9,17 @@ const Stack = (teckStack: ITechStack) => {
         }
       >
         <div className={'flex flex-wrap gap-2'}>
-          {teckStack.skills.map((skill, index) => (
+          {techStack.skills.map((skill, index) => (
             <div key={index} className={'size-5 sm:size-8'}>
               {skill.svg}
             </div>
           ))}
         </div>
-        <h1 className={'text-3xl font-bold'}> {teckStack.name} </h1>
-        <p className={'font-light'}> {teckStack.description} </p>
+        <h1 className={'text-3xl font-bold'}> {techStack.name} </h1>
+        <p> {techStack.description} </p>
         <div className={'flex flex-wrap gap-2'}>
-          <p className={'font-light'}>
-            {teckStack.skills.map((skill) => skill.name).join(', ')}
+          <p className={'font-extralight'}>
+            {techStack.skills.map((skill) => skill.name).join(', ')}
           </p>
         </div>
       </div>
