@@ -4,6 +4,7 @@ interface INavItem {
   name: string;
   isActive: boolean;
   isSelected: boolean;
+  index: number;
   ref?: RefObject<HTMLElement | null>;
 }
 
@@ -16,7 +17,11 @@ interface INavBarProps {
 }
 
 function scrollIntoView(element: RefObject<HTMLElement>) {
-  element.current.scrollIntoView({ behavior: 'smooth' });
+  const offset = 40;
+  window.scrollTo({
+    top: element.current.offsetTop - offset,
+    behavior: 'smooth',
+  })
 }
 
 const NavBar = ({
@@ -31,30 +36,35 @@ const NavBar = ({
       name: 'TECH STACK',
       isActive: false,
       isSelected: false,
+      index: 0,
       ref: techStackRef,
     },
     {
       name: 'EXPERIENCE',
       isActive: false,
       isSelected: false,
+      index: 1,
       ref: experienceRef,
     },
     {
       name: 'PROJECTS',
       isActive: false,
       isSelected: false,
+      index: 2,
       ref: projectsRef,
     },
     {
       name: 'ABOUT ME',
       isActive: false,
       isSelected: false,
+      index: 3,
       ref: aboutMeRef,
     },
     {
       name: 'CONTACT',
       isActive: false,
       isSelected: false,
+      index: 4,
       ref: contactRef,
     },
   ]);
