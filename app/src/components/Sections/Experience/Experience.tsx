@@ -38,7 +38,7 @@ const codingPiratesJobDuration = useJobDuration('2024-08-01', Date.now());
 const sireniaJobDuration = useJobDuration('2023-01-01', Date.now());
 const internJobDuration = useJobDuration('2022-08-01', '2023-01-01');
 
-const baJobDuration = useJobDuration('2021-01-01', '2023-01-01');
+const baJobDuration = useJobDuration('2021-08-01', '2023-02-01');
 
 const jobExperiences: Array<IExperienceItem> = [
   {
@@ -46,7 +46,10 @@ const jobExperiences: Array<IExperienceItem> = [
     role: 'Volunteer',
     date: `Aug. 2024 - Present (${codingPiratesJobDuration.years} year, ${codingPiratesJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
-    tasks: ['TODO'],
+    tasks: [
+      'Mentor children and young adults in developing technological confidence, creativity, and problem-solving skills through coding and game development',
+      'Co-organize and support the annual CP Game Jam, where participants design and code games within a 24-hour challenge',
+    ],
     stack: [
       {
         name: 'Unity',
@@ -68,9 +71,11 @@ const jobExperiences: Array<IExperienceItem> = [
     date: `Jan. 2023 - Present (${sireniaJobDuration.years} years, ${sireniaJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
     tasks: [
-      'Developing on Automation Software',
-      'Develop & Support Automation Robots close with the Customer',
-      'Developing mobile apps',
+      'Maintain and develop automation robots',
+      'Work closely with national and international customers in the healthcare industry to understand their workflows and identify automation opportunities',
+      'Develop business intelligence dashboards to help customers visualize the impact of automation robots and measure efficiency gains',
+      'Deploy Software on Ubuntu servers in a containerized environment using Docker',
+      'Collaborate with senior developers in both frontend (Vue) and backend (.NET) development',
     ],
     stack: [
       {
@@ -108,7 +113,7 @@ const jobExperiences: Array<IExperienceItem> = [
     ],
     image: {
       src: alfaIcon,
-      alt: 'alfa eCare',
+      alt: 'Alfa eCare',
     },
   },
   {
@@ -117,9 +122,8 @@ const jobExperiences: Array<IExperienceItem> = [
     date: `Aug. 2022 - Jan. 2023 (${internJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
     tasks: [
-      'Developing websites',
-      'Developing mobile apps',
-      'Developing mobile apps',
+      'Designed and developed a custom plugin integrating with the OpenAI API to enhance automation workflows',
+      'Built a third-party analytics tool, “Task Mining,” to analyze customer workflows and identify automation opportunities',
     ],
     stack: [
       {
@@ -150,7 +154,7 @@ const educationExperiences: Array<IExperienceItem> = [
   {
     title: 'Business Academy Aarhus',
     role: 'AP in Computer Science',
-    date: `Aug. 2021 - Jan. 2023 (${baJobDuration.years} years, ${baJobDuration.months} months)`,
+    date: `Aug. 2021 - Feb. 2023 (${baJobDuration.years} years, ${baJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
     tasks: [],
     stack: [],
@@ -187,7 +191,9 @@ const Experience = () => {
             items={['Jobs', 'Education']}
             onSelectionChange={handleSwitchChange}
           ></Switch>
-          <div className={'flex flex-col gap-10'}>{experienceItem}</div>
+          <div className={'flex min-h-[900px] flex-col gap-10'}>
+            {experienceItem}
+          </div>
         </div>
       </div>
     </>

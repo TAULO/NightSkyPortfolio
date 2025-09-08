@@ -26,14 +26,14 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
         </div>
         <div className={'flex flex-col font-extralight'}>
           {item.tasks.map((task, index) => (
-            <div className={'flex items-center gap-x-2'} key={index}>
-              <div
-                className={
-                  'size-1 rounded-full bg-white shadow-[0_0_4px_1px_hsla(0,0%,100%,.3)]'
-                }
-              ></div>
-              <p>{task}</p>
-            </div>
+            <p
+              className={
+                'relative pl-4 before:absolute before:left-0 before:top-[0.6em] before:size-1 before:rounded-full before:bg-white before:shadow-[0_0_4px_1px_hsla(0,0%,100%,.3)]'
+              }
+              key={index}
+            >
+              {task}
+            </p>
           ))}
         </div>
         <div className={'mb-1 flex gap-2'}>
