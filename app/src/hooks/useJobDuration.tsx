@@ -6,7 +6,6 @@ export default function useJobDuration(from: string | number, to: string | numbe
   let months = toDate.getMonth() - fromDate.getMonth();
 
   if (months < 0 || (months === 0 && toDate.getDate() < fromDate.getDate())) {
-    years--;
     months += 12;
   }
 
