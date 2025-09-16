@@ -21,7 +21,7 @@ function scrollIntoView(element: RefObject<HTMLElement>) {
   window.scrollTo({
     top: element.current.offsetTop - offset,
     behavior: 'smooth',
-  })
+  });
 }
 
 const NavBar = ({

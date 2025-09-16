@@ -2,9 +2,9 @@ import Switch from './Switch.tsx';
 import Title from '../../UI/Title/Title.tsx';
 import ExperienceItem from './ExperienceItem.tsx';
 import {
-  csharpSVG,
+  csharpSVG, cssSVG,
   dockerSVG,
-  dotnetcoreSVG,
+  dotnetcoreSVG, htmlSVG,
   javascriptSVG,
   kibanaSVG,
   postgressqlSVG,
@@ -71,9 +71,9 @@ const jobExperiences: Array<IExperienceItem> = [
     date: `Jan. 2023 - Present (${sireniaJobDuration.years} years, ${sireniaJobDuration.months} months)`,
     place: 'Aarhus, Denmark',
     tasks: [
-      'Maintain and develop automation robots',
+      'Maintained and developed automation robots, including widely used modules for various EHR systems',
       'Work closely with national and international customers in the healthcare industry to understand their workflows and identify automation opportunities',
-      'Develop business intelligence dashboards to help customers visualize the impact of automation robots and measure efficiency gains',
+      'Develop BI dashboards to help customers visualize the impact of automation robots and measure efficiency gains',
       'Deploy Software on Ubuntu servers in a containerized environment using Docker',
       'Collaborate with senior developers in both frontend (Vue) and backend (.NET) development',
     ],
@@ -97,6 +97,14 @@ const jobExperiences: Array<IExperienceItem> = [
       {
         name: 'JavaScript',
         svg: javascriptSVG,
+      },
+      {
+        name: 'HTML',
+        svg: htmlSVG,
+      },
+      {
+        name: 'CSS',
+        svg: cssSVG,
       },
       {
         name: 'PostgreSql',
@@ -141,6 +149,14 @@ const jobExperiences: Array<IExperienceItem> = [
       {
         name: 'JavaScript',
         svg: javascriptSVG,
+      },
+      {
+        name: 'HTML',
+        svg: htmlSVG,
+      },
+      {
+        name: 'CSS',
+        svg: cssSVG,
       },
     ],
     image: {
