@@ -23,7 +23,7 @@ import {
   mysqlSVG,
   nginxSVG,
   nodejsSVG,
-  nuxtSVG,
+  nuxtSVG, openAPISVG,
   postgressqlSVG,
   postmanSVG,
   pythonSVG,
@@ -209,6 +209,10 @@ const environmentSkill: ITechStack = {
     {
       name: 'Unity',
       svg: unitySVG,
+    },
+    {
+      name: 'OpenAPI',
+      svg: openAPISVG,
     },
   ],
 };
