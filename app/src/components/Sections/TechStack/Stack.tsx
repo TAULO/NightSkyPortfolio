@@ -16,7 +16,7 @@ const Stack = (techStack: ITechStack) => {
           ))}
         </div>
         <h1 className={'text-3xl font-bold'}> {techStack.name} </h1>
-        <p> {techStack.description} </p>
+        <p className={'grow'}> {techStack.description} </p>
         <div className={'flex flex-wrap gap-2'}>
           <p className={'font-extralight'}>
             {techStack.skills.map((skill) => skill.name).join(', ')}

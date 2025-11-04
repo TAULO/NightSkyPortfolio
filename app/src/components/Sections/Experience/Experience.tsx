@@ -2,9 +2,11 @@ import Switch from './Switch.tsx';
 import Title from '../../UI/Title/Title.tsx';
 import ExperienceItem from './ExperienceItem.tsx';
 import {
-  csharpSVG, cssSVG,
+  csharpSVG,
+  cssSVG,
   dockerSVG,
-  dotnetcoreSVG, htmlSVG,
+  dotnetcoreSVG,
+  htmlSVG,
   javascriptSVG,
   kibanaSVG,
   postgressqlSVG,
@@ -207,9 +209,7 @@ const Experience = () => {
             items={['Jobs', 'Education']}
             onSelectionChange={handleSwitchChange}
           ></Switch>
-          <div className={'flex min-h-[900px] flex-col gap-10'}>
-            {experienceItem}
-          </div>
+          <div className={'flex grow flex-col gap-10'}>{experienceItem}</div>
         </div>
       </div>
     </>

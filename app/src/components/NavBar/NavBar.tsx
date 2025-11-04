@@ -70,34 +70,73 @@ const NavBar = ({
   ]);
 
   useEffect(() => {
+    // Track which sections are currently intersecting
+    const intersectingSections = new Map<string, number>();
+
     const callback = (entries: Array<IntersectionObserverEntry>) => {
       entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting) {
-          switch (entry.target.id) {
-            case 'tech-stack':
-              setNavItemActiveAndSelectedItem(0);
-              break;
-            case 'experience':
-              setNavItemActiveAndSelectedItem(1);
-              break;
-            case 'projects':
-              setNavItemActiveAndSelectedItem(2);
-              break;
-            case 'about-me':
-              setNavItemActiveAndSelectedItem(3);
-              break;
-            case 'contact':
-              setNavItemActiveAndSelectedItem(4);
-              break;
+          // Store the intersection ratio for this section
+          intersectingSections.set(entry.target.id, entry.intersectionRatio);
+        } else {
+          // Remove sections that are no longer intersecting
+          intersectingSections.delete(entry.target.id);
+        }
+      });
+
+      // Find the section with the highest intersection ratio
+      // OR the section that's closest to the top of the viewport
+      let mostVisibleSection: string | null = null;
+      let highestRatio = 0;
+      let smallestTop = Infinity;
+
+      intersectingSections.forEach((ratio, id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+
+          // Priority 1: Choose section with highest intersection ratio
+          if (ratio > highestRatio) {
+            highestRatio = ratio;
+            mostVisibleSection = id;
+            smallestTop = rect.top;
+          }
+          // Priority 2: If ratios are similar, choose the one closest to top
+          else if (Math.abs(ratio - highestRatio) < 0.1 && Math.abs(rect.top) < Math.abs(smallestTop)) {
+            mostVisibleSection = id;
+            smallestTop = rect.top;
           }
         }
       });
+
+      // Update navigation based on the most visible section
+      if (mostVisibleSection) {
+        switch (mostVisibleSection) {
+          case 'tech-stack':
+            setNavItemActiveAndSelectedItem(0);
+            break;
+          case 'experience':
+            setNavItemActiveAndSelectedItem(1);
+            break;
+          case 'projects':
+            setNavItemActiveAndSelectedItem(2);
+            break;
+          case 'about-me':
+            setNavItemActiveAndSelectedItem(3);
+            break;
+          case 'contact':
+            setNavItemActiveAndSelectedItem(4);
+            break;
+        }
+      }
     };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: '-200px 0px',
-      threshold: 0.5,
+      // Multiple thresholds to get more granular updates
+      threshold: [0, 0.25, 0.5, 0.75, 1.0],
+      // Adjust root margin if navbar is fixed (e.g., '-80px 0px 0px 0px' for 80px navbar)
+      rootMargin: '0px 0px 0px 0px',
     });
 
     // Observe all sections
