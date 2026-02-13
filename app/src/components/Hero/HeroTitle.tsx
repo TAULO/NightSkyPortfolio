@@ -15,7 +15,7 @@ const HeroTitle = () => {
           ))}
         </div>
         <div className={'grow'}>
-          {'Software Developer'.split('').map((letter, index) => (
+          {'Developer'.split('').map((letter, index) => (
             <span className={'transition-all duration-300 hover:text-transparent'} key={index}>
               {letter}
             </span>

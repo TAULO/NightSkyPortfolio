@@ -216,7 +216,7 @@ const NavBar = ({
                 {item.name}
               </div>
               <div
-                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500 transition-all duration-300 ease-in-out ${
+                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500 transition-all duration-300 ease-in-out delay-200 ${
                   item.isActive || item.isSelected ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
