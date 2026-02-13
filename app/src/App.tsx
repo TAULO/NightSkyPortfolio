@@ -6,6 +6,7 @@ import Experience from './components/Sections/Experience/Experience.tsx';
 import Layout from './Layout/Layout.tsx';
 import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
+import GithubContribution from './components/UI/GithubContribution';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -39,8 +40,8 @@ function App() {
           </div>
         </section>
         <section ref={aboutMeRef} id={'about-me'}>
-          <div className={'h-100'}>
-            <Title title={'About Me'}></Title>
+          <div className={'h-200'}>
+            <GithubContribution></GithubContribution>
           </div>
         </section>
         <section ref={contactRef} id={'contact'}>
