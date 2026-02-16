@@ -6,6 +6,7 @@ import {
   cssSVG,
   dockerSVG,
   dotnetcoreSVG,
+  gitSVG,
   htmlSVG,
   javascriptSVG,
   kibanaSVG,
@@ -120,6 +121,10 @@ const jobExperiences: Array<IExperienceItem> = [
         name: 'Kibana',
         svg: kibanaSVG,
       },
+      {
+        name: 'Git',
+        svg: gitSVG,
+      }
     ],
     image: {
       src: alfaIcon,
