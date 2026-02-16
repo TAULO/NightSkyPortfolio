@@ -100,8 +100,8 @@ const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps
 
   if (userNotFound) {
     return (
-      <h3 className={'text-xl font-bold text-white'}>
-        {`This GitHub user does not exists '${githubUsername}'`}
+      <h3 className={'text-xl font-bold text-white text-center'}>
+        {`${githubUsername} is not a GitHub user`}
       </h3>
     );
   }
