@@ -1,6 +1,4 @@
 import { githubSVG } from '../Sections/TechStack/TechSVG.tsx';
-import HeroTitle from './HeroTitle.tsx';
-import Button from './Button.tsx';
 
 const Hero = () => {
   return (
@@ -10,8 +8,6 @@ const Hero = () => {
           {githubSVG}
         </div>
         <div className={'self-center flex flex-col gap-20'}>
-          <HeroTitle></HeroTitle>
-          <Button></Button>
         </div>
       </div>
     </>
