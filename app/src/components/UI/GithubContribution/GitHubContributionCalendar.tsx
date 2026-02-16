@@ -16,29 +16,26 @@ interface ContributionDay {
     | 'FOURTH_QUARTILE';
 }
 
-const GitHubContributionCalendar = ({
-  githubUsername,
-}: IGitHubContributionProps) => {
-  // TODO: We could do a compare with me? That would be cool.
+const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps) => {
   const githubQuery = `
-  query {
-    user(login: "${githubUsername}") {
-      contributionsCollection {
-        contributionCalendar {
-          totalContributions
-          weeks {
-            contributionDays {
-              contributionCount
-              date
-              color
-              contributionLevel
+      query {
+        user(login: "${githubUsername}") {
+          contributionsCollection {
+            contributionCalendar {
+              totalContributions
+              weeks {
+                contributionDays {
+                  contributionCount
+                  date
+                  color
+                  contributionLevel
+                }
+              }
             }
           }
         }
       }
-    }
-  }
-`;
+    `;
 
   const colorMap = {
     NONE: 'bg-transparent border border-[#3e4789]/35',
@@ -48,10 +45,17 @@ const GitHubContributionCalendar = ({
     FOURTH_QUARTILE: 'bg-[#9ba3e8]',
   };
 
-  const [contributions, setContributions] = useState([]);
+  const [contributions, setContributions] = useState<any[]>([]);
   const [totalContributionsCount, setTotalContributionsCount] = useState(0);
+  const [userNotFound, setUserNotFound] = useState(false);
 
   useEffect(() => {
+    if (!githubUsername) return;
+
+    setContributions([]);
+    setTotalContributionsCount(0);
+    setUserNotFound(false);
+
     const response = fetch('https://api.github.com/graphql', {
       method: 'POST',
       headers: {
@@ -64,50 +68,62 @@ const GitHubContributionCalendar = ({
     response
       .then((data) => data.json())
       .then((data) => {
-        setContributions(
-          data['data']['user']['contributionsCollection'][
-            'contributionCalendar'
-          ]['weeks']
-        );
-        setTotalContributionsCount(
-          data['data']['user']['contributionsCollection'][
-            'contributionCalendar'
-          ]['totalContributions']
-        );
-      })
-      .catch((error) => console.debug(error));
-  }, []);
+        if (data?.errors?.length) {
+          setUserNotFound(true);
+          setContributions([]);
+          setTotalContributionsCount(0);
+          return;
+        }
 
-  return contributions.length === 0 ? (
-    <h3
-      className={'text-xl font-bold text-white'}
-    >{`This GitHub user does not exists '${githubUsername}'`}</h3>
-  ) : (
-    <div
-      id={'github-contributions'}
-      className={'flex max-w-fit flex-col gap-3'}
-    >
+        const user = data?.data?.user;
+        if (!user) {
+          setUserNotFound(true);
+          setContributions([]);
+          setTotalContributionsCount(0);
+          return;
+        }
+
+        const calendar =
+          user.contributionsCollection?.contributionCalendar;
+
+        setContributions(calendar?.weeks ?? []);
+        setTotalContributionsCount(calendar?.totalContributions ?? 0);
+      })
+      .catch(() => {
+        setUserNotFound(true);
+        setContributions([]);
+        setTotalContributionsCount(0);
+      });
+  }, [githubQuery]);
+
+  if (!githubUsername) return null;
+
+  if (userNotFound) {
+    return (
+      <h3 className={'text-xl font-bold text-white'}>
+        {`This GitHub user does not exists '${githubUsername}'`}
+      </h3>
+    );
+  }
+
+  return contributions.length === 0 ? null : (
+    <div id={'github-contributions'} className={'flex max-w-fit flex-col gap-3'}>
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
         <h3 className={'text-xl font-bold text-white'}>
-          {totalContributionsCount} Total Contributions in the last year
+          {totalContributionsCount} Contributions in the last year
         </h3>
       </div>
-      <div
-        id={'github-contributions-calendar'}
-        className={'flex flex-wrap gap-1'}
-      >
+      <div id={'github-contributions-calendar'} className={'flex flex-wrap gap-1'}>
         {contributions.map((week, weekIndex) => (
           <div key={weekIndex} className={'flex flex-col gap-1'}>
-            {(week['contributionDays'] as Array<ContributionDay>).map(
-              (day, dayIndex) => (
-                <div
-                  key={dayIndex}
-                  className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
-                  title={day['contributionCount'] + '\n' + day['date']}
-                ></div>
-              )
-            )}
+            {(week['contributionDays'] as Array<ContributionDay>).map((day, dayIndex) => (
+              <div
+                key={dayIndex}
+                className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                title={day['contributionCount'] + '\n' + day['date']}
+              ></div>
+            ))}
           </div>
         ))}
       </div>
