@@ -16,7 +16,13 @@ interface ContributionDay {
     | 'FOURTH_QUARTILE';
 }
 
-const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps) => {
+interface ContributionWeek {
+  contributionDays: ContributionDay[];
+}
+
+const GitHubContributionCalendar = ({
+  githubUsername,
+}: IGitHubContributionProps) => {
   const githubQuery = `
       query {
         user(login: "${githubUsername}") {
@@ -45,9 +51,60 @@ const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps
     FOURTH_QUARTILE: 'bg-[#9ba3e8]',
   };
 
-  const [contributions, setContributions] = useState<any[]>([]);
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  const [contributions, setContributions] = useState<ContributionWeek[]>([]);
   const [totalContributionsCount, setTotalContributionsCount] = useState(0);
   const [userNotFound, setUserNotFound] = useState(false);
+
+  function getWeekDateFromIndex(index: number): string | null {
+    const monthStr = contributions[index]?.contributionDays?.[0]?.date;
+    if (!monthStr) return null;
+
+    const currentMonthIndex = new Date(monthStr).getMonth();
+
+    if (index === 0) return months[currentMonthIndex] ?? null;
+
+    const prevMonthStr = contributions[index - 1]?.contributionDays?.[0]?.date;
+    if (!prevMonthStr) return months[currentMonthIndex] ?? null;
+
+    const prevMonthIndex = new Date(prevMonthStr).getMonth();
+
+    if (currentMonthIndex === prevMonthIndex) return null;
+
+    return months[currentMonthIndex] ?? null;
+  }
+
+  function getWeeklyStreaks(): number {
+    let streak = 0;
+
+    for (let i = contributions.length - 1; i >= 0; i--) {
+      const days = contributions[i]?.contributionDays ?? [];
+      const hasContributions = days.some((day) => day.contributionCount > 0);
+
+      if (!hasContributions) {
+        if (days.length === 7) break;
+        continue;
+      }
+
+      streak++;
+    }
+
+    return streak;
+  }
 
   useEffect(() => {
     if (!githubUsername) return;
@@ -83,8 +140,7 @@ const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps
           return;
         }
 
-        const calendar =
-          user.contributionsCollection?.contributionCalendar;
+        const calendar = user.contributionsCollection?.contributionCalendar;
 
         setContributions(calendar?.weeks ?? []);
         setTotalContributionsCount(calendar?.totalContributions ?? 0);
@@ -100,32 +156,73 @@ const GitHubContributionCalendar = ({ githubUsername }: IGitHubContributionProps
 
   if (userNotFound) {
     return (
-      <h3 className={'text-xl font-bold text-white text-center'}>
+      <h3 className={'text-center text-xl font-bold text-white'}>
         {`${githubUsername} is not a GitHub user`}
       </h3>
     );
   }
 
+  const weeklyStreaks = getWeeklyStreaks();
+
   return contributions.length === 0 ? null : (
-    <div id={'github-contributions'} className={'flex max-w-fit flex-col gap-3'}>
+    <div
+      id={'github-contributions'}
+      className={'flex max-w-fit flex-col gap-3'}
+    >
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
-        <h3 className={'text-xl font-bold text-white'}>
-          {totalContributionsCount} Contributions in the last year
-        </h3>
+        <p  className={'text-xl font-bold text-white'}>{weeklyStreaks}</p>
       </div>
-      <div id={'github-contributions-calendar'} className={'flex flex-wrap gap-1'}>
-        {contributions.map((week, weekIndex) => (
-          <div key={weekIndex} className={'flex flex-col gap-1'}>
-            {(week['contributionDays'] as Array<ContributionDay>).map((day, dayIndex) => (
+      <div
+        id={'github-contributions-calendar'}
+        className={'flex flex-wrap gap-1 pt-6'}
+      >
+        {contributions.map((week, weekIndex) => {
+          const label = getWeekDateFromIndex(weekIndex);
+
+          return (
+            <div key={weekIndex} className={'relative flex flex-col'}>
+              {label ? (
+                <p
+                  className={
+                    'absolute -top-6 left-0 text-sm leading-none text-white/50'
+                  }
+                >
+                  {label}
+                </p>
+              ) : null}
+
+              <div className={'flex flex-col gap-1'}>
+                {(week['contributionDays'] as Array<ContributionDay>).map(
+                  (day, dayIndex) => (
+                    <div
+                      key={dayIndex}
+                      className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                      title={day['contributionCount'] + '\n' + day['date']}
+                    />
+                  )
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className={'flex justify-between'}>
+        <p className={'font-bold text-white'}>
+          {totalContributionsCount} Contributions in the last year
+        </p>
+        <div className={'flex items-center gap-2 text-sm text-white/50'}>
+          <p>Less</p>
+          <div className={'flex flex-wrap gap-1'}>
+            {Object.keys(colorMap).map((level, index) => (
               <div
-                key={dayIndex}
-                className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
-                title={day['contributionCount'] + '\n' + day['date']}
+                key={index}
+                className={`rounded-xs size-4 ${colorMap[level as keyof typeof colorMap]}`}
               ></div>
             ))}
           </div>
-        ))}
+          <p>More</p>
+        </div>
       </div>
     </div>
   );
