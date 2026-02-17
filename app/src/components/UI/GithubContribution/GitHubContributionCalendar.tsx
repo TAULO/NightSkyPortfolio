@@ -4,6 +4,30 @@ interface IGitHubContributionProps {
   githubUsername: string;
 }
 
+interface ContributionStats {
+  totalCommitContributions: number;
+  totalIssueContributions: number;
+  totalPullRequestContributions: number;
+  totalPullRequestReviewContributions: number;
+  totalRepositoriesWithContributedCommits: number;
+  totalRepositoriesWithContributedIssues: number;
+  totalRepositoriesWithContributedPullRequestReviews: number;
+  totalRepositoriesWithContributedPullRequests: number;
+  totalRepositoryContributions: number;
+}
+
+const initialContributionStats: ContributionStats = {
+  totalCommitContributions: 0,
+  totalIssueContributions: 0,
+  totalPullRequestContributions: 0,
+  totalPullRequestReviewContributions: 0,
+  totalRepositoriesWithContributedCommits: 0,
+  totalRepositoriesWithContributedIssues: 0,
+  totalRepositoriesWithContributedPullRequestReviews: 0,
+  totalRepositoriesWithContributedPullRequests: 0,
+  totalRepositoryContributions: 0,
+};
+
 interface ContributionDay {
   contributionCount: number;
   date: string;
@@ -27,6 +51,15 @@ const GitHubContributionCalendar = ({
       query {
         user(login: "${githubUsername}") {
           contributionsCollection {
+            totalCommitContributions
+            totalIssueContributions
+            totalPullRequestContributions
+            totalPullRequestReviewContributions
+            totalRepositoriesWithContributedCommits
+            totalRepositoriesWithContributedIssues
+            totalRepositoriesWithContributedPullRequestReviews
+            totalRepositoriesWithContributedPullRequests
+            totalRepositoryContributions
             contributionCalendar {
               totalContributions
               weeks {
@@ -66,6 +99,7 @@ const GitHubContributionCalendar = ({
     'Dec',
   ];
 
+  const [contributionStats, setContributionStats] = useState<ContributionStats>()
   const [contributions, setContributions] = useState<ContributionWeek[]>([]);
   const [totalContributionsCount, setTotalContributionsCount] = useState(0);
   const [userNotFound, setUserNotFound] = useState(false);
@@ -159,6 +193,7 @@ const GitHubContributionCalendar = ({
 
         const calendar = user.contributionsCollection?.contributionCalendar;
 
+        setContributionStats(user.contributionsCollection ?? initialContributionStats);
         setContributions(calendar?.weeks ?? []);
         setTotalContributionsCount(calendar?.totalContributions ?? 0);
       })
@@ -181,6 +216,8 @@ const GitHubContributionCalendar = ({
 
   const weeklyStreaks = getWeeklyStreaks();
   const dailyStreaks = getDailyStreaks();
+
+  console.log(contributionStats)
 
   return contributions.length === 0 ? null : (
     <div
