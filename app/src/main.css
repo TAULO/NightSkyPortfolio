@@ -7,6 +7,7 @@
     'Montserrat', 'Montserrat Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-montserrat);
 
+    /* #06080e */
   --color-primary: #15162c;
   --color-secondary: rgba(255,253,253,.05);
 
