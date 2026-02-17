@@ -99,7 +99,8 @@ const GitHubContributionCalendar = ({
     'Dec',
   ];
 
-  const [contributionStats, setContributionStats] = useState<ContributionStats>()
+  const [contributionStats, setContributionStats] =
+    useState<ContributionStats>();
   const [contributions, setContributions] = useState<ContributionWeek[]>([]);
   const [totalContributionsCount, setTotalContributionsCount] = useState(0);
   const [userNotFound, setUserNotFound] = useState(false);
@@ -193,7 +194,9 @@ const GitHubContributionCalendar = ({
 
         const calendar = user.contributionsCollection?.contributionCalendar;
 
-        setContributionStats(user.contributionsCollection ?? initialContributionStats);
+        setContributionStats(
+          user.contributionsCollection ?? initialContributionStats
+        );
         setContributions(calendar?.weeks ?? []);
         setTotalContributionsCount(calendar?.totalContributions ?? 0);
       })
@@ -217,12 +220,10 @@ const GitHubContributionCalendar = ({
   const weeklyStreaks = getWeeklyStreaks();
   const dailyStreaks = getDailyStreaks();
 
-  console.log(contributionStats)
-
   return contributions.length === 0 ? null : (
     <div
       id={'github-contributions'}
-      className={'flex min-w-0 max-w-fit flex-col gap-2 overflow-x-auto pt-6'}
+      className={'flex min-w-0 max-w-fit flex-col gap-2 overflow-x-auto'}
     >
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
@@ -264,7 +265,9 @@ const GitHubContributionCalendar = ({
           );
         })}
       </div>
-      <div className={'flex flex-col-reverse sm:flex-row sm:justify-between'}>
+      <div
+        className={'flex flex-col-reverse gap-1 sm:flex-row sm:justify-between'}
+      >
         <p className={'font-bold text-white'}>
           {totalContributionsCount} Contributions in the last year
         </p>
