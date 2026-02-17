@@ -7,7 +7,7 @@ import Layout from './Layout/Layout.tsx';
 import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
-import ProjectsItem from './components/Sections/Projects/ProjectsItem.tsx';
+import Projects from './components/Sections/Projects/Projects.tsx';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -27,23 +27,20 @@ function App() {
       ></NavBar>
       <Hero></Hero>
       <Layout>
-        <section ref={techStackRef} id={'tech-stack'}>
-          <TechStack></TechStack>
-        </section>
         <section ref={experienceRef} id={'experience'}>
           <Experience></Experience>
         </section>
         <section ref={projectsRef} id={'projects'}>
-          <div className={'h-100'}>
-            <Title title={'Projects'}></Title>
-            <ProjectsItem></ProjectsItem>
-          </div>
+          <Projects></Projects>
         </section>
         <section ref={aboutMeRef} id={'about-me'}>
           <GithubContribution></GithubContribution>
         </section>
+        <section ref={techStackRef} id={'tech-stack'}>
+          <TechStack></TechStack>
+        </section>
         <section ref={contactRef} id={'contact'}>
-          <div className={'h-100'}>
+          <div className={'h-200'}>
             <Title title={'Contact'}></Title>
           </div>
         </section>
