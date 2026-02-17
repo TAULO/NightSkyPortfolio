@@ -2,9 +2,9 @@ import { RefObject, useEffect, useState } from 'react';
 
 interface INavItem {
   name: string;
+  id: string;
   isActive: boolean;
   isSelected: boolean;
-  index: number;
   ref?: RefObject<HTMLElement | null>;
 }
 
@@ -33,38 +33,38 @@ const NavBar = ({
 }: INavBarProps) => {
   const [navItems, setNavItems] = useState<Array<INavItem>>([
     {
-      name: 'TECH STACK',
-      isActive: false,
-      isSelected: false,
-      index: 0,
-      ref: techStackRef,
-    },
-    {
       name: 'EXPERIENCE',
+      id: 'experience',
       isActive: false,
       isSelected: false,
-      index: 1,
       ref: experienceRef,
     },
     {
       name: 'PROJECTS',
+      id: 'projects',
       isActive: false,
       isSelected: false,
-      index: 2,
       ref: projectsRef,
     },
     {
       name: 'ABOUT ME',
+      id: 'about-me',
       isActive: false,
       isSelected: false,
-      index: 3,
       ref: aboutMeRef,
     },
     {
-      name: 'CONTACT',
+      name: 'TECH STACK',
+      id: 'tech-stack',
       isActive: false,
       isSelected: false,
-      index: 4,
+      ref: techStackRef,
+    },
+    {
+      name: 'CONTACT',
+      id: 'contact',
+      isActive: false,
+      isSelected: false,
       ref: contactRef,
     },
   ]);
@@ -102,7 +102,10 @@ const NavBar = ({
             smallestTop = rect.top;
           }
           // Priority 2: If ratios are similar, choose the one closest to top
-          else if (Math.abs(ratio - highestRatio) < 0.1 && Math.abs(rect.top) < Math.abs(smallestTop)) {
+          else if (
+            Math.abs(ratio - highestRatio) < 0.1 &&
+            Math.abs(rect.top) < Math.abs(smallestTop)
+          ) {
             mostVisibleSection = id;
             smallestTop = rect.top;
           }
@@ -111,23 +114,12 @@ const NavBar = ({
 
       // Update navigation based on the most visible section
       if (mostVisibleSection) {
-        switch (mostVisibleSection) {
-          case 'tech-stack':
-            setNavItemActiveAndSelectedItem(0);
-            break;
-          case 'experience':
-            setNavItemActiveAndSelectedItem(1);
-            break;
-          case 'projects':
-            setNavItemActiveAndSelectedItem(2);
-            break;
-          case 'about-me':
-            setNavItemActiveAndSelectedItem(3);
-            break;
-          case 'contact':
-            setNavItemActiveAndSelectedItem(4);
-            break;
-        }
+        setNavItemActiveAndSelectedItem(
+          navItems.findIndex(
+            (item) =>
+              item.id.toLowerCase() === mostVisibleSection?.toLowerCase()
+          )
+        );
       }
     };
 
@@ -216,7 +208,7 @@ const NavBar = ({
                 {item.name}
               </div>
               <div
-                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500 transition-all duration-300 ease-in-out delay-200 ${
+                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-red-500 transition-all delay-200 duration-300 ease-in-out ${
                   item.isActive || item.isSelected ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
