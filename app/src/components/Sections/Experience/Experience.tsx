@@ -124,7 +124,7 @@ const jobExperiences: Array<IExperienceItem> = [
       {
         name: 'Git',
         svg: gitSVG,
-      }
+      },
     ],
     image: {
       src: alfaIcon,
@@ -209,7 +209,7 @@ const Experience = () => {
     <>
       <div className={'flex flex-col'}>
         <Title title={'Experience'}></Title>
-        <div className={'gap-15 flex flex-col self-center sm:self-start'}>
+        <div className={'flex flex-col gap-14 self-center sm:self-start'}>
           <Switch
             items={['Jobs', 'Education']}
             onSelectionChange={handleSwitchChange}

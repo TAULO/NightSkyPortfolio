@@ -33,8 +33,6 @@ function App() {
         <section ref={experienceRef} id={'experience'}>
           <Experience></Experience>
         </section>
-      </Layout>
-      <Layout>
         <section ref={projectsRef} id={'projects'}>
           <div className={'h-100'}>
             <Title title={'Projects'}></Title>
@@ -42,9 +40,7 @@ function App() {
           </div>
         </section>
         <section ref={aboutMeRef} id={'about-me'}>
-          <div className={'h-200'}>
-            <GithubContribution></GithubContribution>
-          </div>
+          <GithubContribution></GithubContribution>
         </section>
         <section ref={contactRef} id={'contact'}>
           <div className={'h-100'}>
