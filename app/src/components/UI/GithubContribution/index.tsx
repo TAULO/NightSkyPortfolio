@@ -9,12 +9,9 @@ const GithubContribution = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className={'flex flex-col'}>
+    <div className={'flex min-w-0 max-w-fit flex-col'}>
       <Title title={'About Me'}></Title>
-      <h3 className={'text-2xl font-bold text-white'}>
-        My GitHub Contributions
-      </h3>
-      <div className={'flex w-fit flex-col gap-8 mt-8'}>
+      <div className={'mt-8 flex flex-col gap-8'}>
         <GitHubContributionCalendar githubUsername={'TAULO'} />
         <GitHubContributionCalendar githubUsername={otherGithubUsername} />
         <div className={'flex gap-2'}>

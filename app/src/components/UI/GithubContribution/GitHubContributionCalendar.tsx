@@ -106,6 +106,23 @@ const GitHubContributionCalendar = ({
     return streak;
   }
 
+  function getDailyStreaks(): number {
+    let streak = 0;
+
+    for (let i = contributions.length - 1; i >= 0; i--) {
+      const days = contributions[i]?.contributionDays ?? [];
+
+      for (let j = days.length - 2; j >= 0; j--) {
+        const day = days[j];
+
+        if (day.contributionCount <= 0) return streak;
+        streak++;
+      }
+    }
+
+    return streak;
+  }
+
   useEffect(() => {
     if (!githubUsername) return;
 
@@ -163,19 +180,22 @@ const GitHubContributionCalendar = ({
   }
 
   const weeklyStreaks = getWeeklyStreaks();
+  const dailyStreaks = getDailyStreaks();
 
   return contributions.length === 0 ? null : (
     <div
       id={'github-contributions'}
-      className={'flex max-w-fit flex-col gap-3'}
+      className={'flex min-w-0 max-w-fit flex-col gap-2 overflow-x-auto pt-6'}
     >
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
-        <p  className={'text-xl font-bold text-white'}>{weeklyStreaks}</p>
+        <p className={'text-xl font-bold text-white'}>
+          {weeklyStreaks} - {dailyStreaks}
+        </p>
       </div>
       <div
         id={'github-contributions-calendar'}
-        className={'flex flex-wrap gap-1 pt-6'}
+        className={'flex gap-1 overflow-x-auto pt-6'}
       >
         {contributions.map((week, weekIndex) => {
           const label = getWeekDateFromIndex(weekIndex);
@@ -207,7 +227,7 @@ const GitHubContributionCalendar = ({
           );
         })}
       </div>
-      <div className={'flex justify-between'}>
+      <div className={'flex flex-col-reverse sm:flex-row sm:justify-between'}>
         <p className={'font-bold text-white'}>
           {totalContributionsCount} Contributions in the last year
         </p>
