@@ -21,7 +21,10 @@ const GithubContribution = () => {
             ref={inputRef}
           />
           <Button
-            onClick={() => setOtherGithubUsername(inputRef.current.value)}
+            onClick={() => {
+              if (!inputRef.current) return;
+              setOtherGithubUsername(inputRef.current.value);
+            }}
             text={'Search'}
           />
         </div>

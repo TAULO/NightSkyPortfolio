@@ -217,6 +217,8 @@ const GitHubContributionCalendar = ({
     );
   }
 
+  console.log(contributionStats);
+
   const weeklyStreaks = getWeeklyStreaks();
   const dailyStreaks = getDailyStreaks();
 
