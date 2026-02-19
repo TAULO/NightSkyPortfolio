@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
 import Projects from './components/Sections/Projects/Projects.tsx';
+import Modal from './components/UI/Modal/Modal.tsx';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -46,6 +47,7 @@ function App() {
         </section>
       </Layout>
       <NightSky></NightSky>
+      <Modal></Modal>
     </>
   );
 }

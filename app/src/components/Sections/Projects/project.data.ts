@@ -110,7 +110,15 @@ const athleticaProject: IProject = {
   images: [
     {
       src: testImage,
-      alt: 'Athletica',
+      alt: 'Athletica 1',
+    },
+    {
+      src: testImage,
+      alt: 'Athletica 2',
+    },
+    {
+      src: testImage,
+      alt: 'Athletica 3',
     },
   ],
 
