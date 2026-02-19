@@ -1,4 +1,4 @@
-import { IProject } from './Projects.tsx';
+import { IProject } from './project.data';
 
 const ProjectsItem = (project: IProject) => {
   return (

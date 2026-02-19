@@ -1,4 +1,4 @@
-import { ITechStack } from './TechStack.tsx';
+import { ITechStack } from './techstack.data';
 
 const Stack = (techStack: ITechStack) => {
   return (

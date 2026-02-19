@@ -1,4 +1,4 @@
-import { IExperienceItem } from './Experience.tsx';
+import { IExperienceItem } from './experience.data';
 
 const experienceItem = (experiences: Array<IExperienceItem>) => {
   return experiences.map((item, index) => (
