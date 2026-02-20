@@ -196,7 +196,7 @@ const NavBar = ({
             <div
               key={index}
               className={'relative flex flex-col'}
-              onClick={() => selectNavItem(index, item.ref)}
+              onClick={() => selectNavItem(index, item.ref as RefObject<HTMLElement>)}
               onMouseEnter={() => setNavItemActive(index)}
               onMouseLeave={() => setNavItemInactive()}
             >
