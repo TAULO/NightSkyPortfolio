@@ -1,7 +1,6 @@
 import { IProject } from './project.data';
 import { useModal } from '../../UI/Modal/ModalProvider.tsx';
 
-
 const ProjectsItem = (project: IProject) => {
   const { openModal } = useModal();
 
@@ -28,7 +27,7 @@ const ProjectsItem = (project: IProject) => {
           <h1 className={'mt-2 text-xl font-bold text-white'}>
             {project.name}
           </h1>
-          <div className={'self-end'}>
+          <div className={'self-end'} onClick={(e) => e.stopPropagation()}>
             <a
               href={project.hrefCode}
               target="_blank"
