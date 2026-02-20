@@ -35,7 +35,9 @@ const Star = ({ starContainerRef }: { starContainerRef: Element | null }) => {
           top: `${y}px`,
           animationDelay: `${delay}s`,
         }}
-        className={'animate-twinkle absolute rounded-full bg-white opacity-0'}
+        className={
+          'animate-twinkle pointer-events-none absolute rounded-full bg-white opacity-0'
+        }
       ></div>
     </>
   );

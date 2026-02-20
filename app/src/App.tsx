@@ -28,8 +28,8 @@ function App() {
           aboutMeRef={aboutMeRef}
           contactRef={contactRef}
         ></NavBar>
-        <Hero></Hero>
-        <Layout>
+        <NightSky>
+          <Hero></Hero>
           <section ref={experienceRef} id={'experience'}>
             <Experience></Experience>
           </section>
@@ -47,8 +47,7 @@ function App() {
               <Title title={'Contact'}></Title>
             </div>
           </section>
-        </Layout>
-        <NightSky></NightSky>
+        </NightSky>
         <Modal></Modal>
       </ModalProvider>
     </>

@@ -52,7 +52,9 @@ const ShootingStar = ({
     <>
       <div
         key={key}
-        className={'animate-shooting-star absolute size-2'}
+        className={
+          'animate-shooting-star pointer-events-none absolute z-50 size-2'
+        }
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
