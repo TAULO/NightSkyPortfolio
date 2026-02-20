@@ -8,7 +8,7 @@ const ProjectsItem = (project: IProject) => {
     <div
       id={'card'}
       className={
-        'border-secondary h-full rounded-3xl border shadow hover:cursor-pointer'
+        'border-secondary h-full rounded-3xl overflow-hidden border shadow hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
     >
