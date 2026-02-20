@@ -36,7 +36,10 @@ function App() {
             <Projects></Projects>
           </section>
           <section ref={aboutMeRef} id={'about-me'}>
-            <GithubContribution></GithubContribution>
+            <div className={'flex flex-col'}>
+              <Title title={'About Me'}></Title>
+              <GithubContribution></GithubContribution>
+            </div>
           </section>
           <section ref={techStackRef} id={'tech-stack'}>
             <TechStack></TechStack>

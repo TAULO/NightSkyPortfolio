@@ -1,5 +1,4 @@
 import GitHubContributionCalendar from './GitHubContributionCalendar.tsx';
-import Title from '../Title/Title.tsx';
 import { useRef, useState } from 'react';
 import Button from '../Button/Button.tsx';
 import Input from '../Input/Input.tsx';
@@ -10,8 +9,7 @@ const GithubContribution = () => {
 
   return (
     <div className={'flex min-w-0 max-w-fit flex-col'}>
-      <Title title={'About Me'}></Title>
-      <div className={'mt-8 flex flex-col gap-8'}>
+      <div className={'flex flex-col gap-8'}>
         <GitHubContributionCalendar githubUsername={'TAULO'} />
         <GitHubContributionCalendar githubUsername={otherGithubUsername} />
         <div className={'flex gap-2'}>

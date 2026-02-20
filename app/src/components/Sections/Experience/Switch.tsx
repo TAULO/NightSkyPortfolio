@@ -63,7 +63,7 @@ const Switch = ({ items, defaultItem = 0, onSelectionChange }: SwitchProps) => {
     <>
       <div
         className={
-          'bg-secondary relative flex w-fit self-center rounded-lg shadow sm:self-start'
+          'bg-secondary/40 border-secondary relative flex w-fit self-center rounded-lg border shadow sm:self-start'
         }
       >
         <div
