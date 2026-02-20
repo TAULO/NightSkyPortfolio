@@ -8,6 +8,7 @@ import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
 import Projects from './components/Sections/Projects/Projects.tsx';
+import { ModalProvider } from './components/UI/Modal/ModalProvider.tsx';
 import Modal from './components/UI/Modal/Modal.tsx';
 
 function App() {
@@ -19,35 +20,37 @@ function App() {
 
   return (
     <>
-      <NavBar
-        techStackRef={techStackRef}
-        experienceRef={experienceRef}
-        projectsRef={projectsRef}
-        aboutMeRef={aboutMeRef}
-        contactRef={contactRef}
-      ></NavBar>
-      <Hero></Hero>
-      <Layout>
-        <section ref={experienceRef} id={'experience'}>
-          <Experience></Experience>
-        </section>
-        <section ref={projectsRef} id={'projects'}>
-          <Projects></Projects>
-        </section>
-        <section ref={aboutMeRef} id={'about-me'}>
-          <GithubContribution></GithubContribution>
-        </section>
-        <section ref={techStackRef} id={'tech-stack'}>
-          <TechStack></TechStack>
-        </section>
-        <section ref={contactRef} id={'contact'}>
-          <div className={'h-200'}>
-            <Title title={'Contact'}></Title>
-          </div>
-        </section>
-      </Layout>
-      <NightSky></NightSky>
-      <Modal></Modal>
+      <ModalProvider>
+        <NavBar
+          techStackRef={techStackRef}
+          experienceRef={experienceRef}
+          projectsRef={projectsRef}
+          aboutMeRef={aboutMeRef}
+          contactRef={contactRef}
+        ></NavBar>
+        <Hero></Hero>
+        <Layout>
+          <section ref={experienceRef} id={'experience'}>
+            <Experience></Experience>
+          </section>
+          <section ref={projectsRef} id={'projects'}>
+            <Projects></Projects>
+          </section>
+          <section ref={aboutMeRef} id={'about-me'}>
+            <GithubContribution></GithubContribution>
+          </section>
+          <section ref={techStackRef} id={'tech-stack'}>
+            <TechStack></TechStack>
+          </section>
+          <section ref={contactRef} id={'contact'}>
+            <div className={'h-200'}>
+              <Title title={'Contact'}></Title>
+            </div>
+          </section>
+        </Layout>
+        <NightSky></NightSky>
+        <Modal></Modal>
+      </ModalProvider>
     </>
   );
 }

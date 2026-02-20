@@ -1,12 +1,17 @@
 import { IProject } from './project.data';
+import { useModal } from '../../UI/Modal/ModalProvider.tsx';
+
 
 const ProjectsItem = (project: IProject) => {
+  const { openModal } = useModal();
+
   return (
     <div
       id={'card'}
       className={
         'border-secondary bg-muted/20 h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
       }
+      onClick={() => openModal(project)}
     >
       <img
         src={project.images[0].src}

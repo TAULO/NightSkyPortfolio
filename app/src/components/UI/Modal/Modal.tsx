@@ -1,24 +1,26 @@
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import { IProject, projects } from '../../Sections/Projects/project.data.ts';
+import { useModal } from './ModalProvider.tsx';
 
-function ModalComponent(project: IProject) {
-  const [isOpen, setIsOpen] = useState(true);
+function Modal() {
+  const { project, isOpen, closeModal } = useModal();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  if (!isOpen || !project) return null;
 
   function nextSlide() {
     setCurrentSlide(
-      currentSlide + 1 >= project.images.length ? 0 : currentSlide + 1
+      currentSlide + 1 >= project!.images.length ? 0 : currentSlide + 1
     );
   }
 
   function prevSlide() {
     setCurrentSlide(
-      currentSlide - 1 < 0 ? project.images.length - 1 : currentSlide - 1
+      currentSlide - 1 < 0 ? project!.images.length - 1 : currentSlide - 1
     );
   }
 
-  return !isOpen ? null : (
+  return createPortal(
     <div
       className={
         'bg-primary border-secondary border-1 sm:max-w-10/12 fixed bottom-0 z-50 grid w-full overflow-hidden rounded-t-3xl p-4 shadow-lg duration-200 sm:left-1/2 sm:top-1/2 sm:h-fit sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl sm:p-8 sm:pt-12 xl:max-w-fit'
@@ -33,6 +35,7 @@ function ModalComponent(project: IProject) {
         className={
           'absolute right-4 top-4 hidden text-gray-400 transition-colors duration-300 hover:cursor-pointer hover:text-white sm:block'
         }
+        onClick={closeModal}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +175,7 @@ function ModalComponent(project: IProject) {
             className={
               'border-secondary hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
             }
-            onClick={() => setIsOpen(false)}
+            onClick={closeModal}
           >
             Close
           </button>
@@ -187,14 +190,9 @@ function ModalComponent(project: IProject) {
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
-export default function Modal() {
-  return (
-    <div>
-      {createPortal(<ModalComponent {...projects[0]} />, document.body)}
-    </div>
-  );
-}
+export default Modal;
