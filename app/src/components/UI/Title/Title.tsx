@@ -7,7 +7,7 @@ const Title = ({ title }: ITitleProps) => {
     <>
       <h1
         className={
-          'mb-5 text-center text-4xl font-bold text-white sm:text-start'
+          'mb-5 text-center text-2xl font-bold text-white sm:text-start sm:text-4xl'
         }
       >
         {title}

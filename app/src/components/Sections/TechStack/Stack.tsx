@@ -15,7 +15,7 @@ const Stack = (techStack: ITechStack) => {
             </div>
           ))}
         </div>
-        <h1 className={'text-3xl font-bold'}> {techStack.name} </h1>
+        <h1 className={'sm:text-3xl text-2xl font-bold'}> {techStack.name} </h1>
         <p className={'grow'}> {techStack.description} </p>
         <div className={'flex flex-wrap gap-2'}>
           <p className={'font-extralight'}>
