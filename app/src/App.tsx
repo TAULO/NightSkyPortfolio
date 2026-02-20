@@ -3,7 +3,6 @@ import Hero from './components/Hero';
 import NavBar from './components/NavBar/NavBar.tsx';
 import TechStack from './components/Sections/TechStack/TechStack.tsx';
 import Experience from './components/Sections/Experience/Experience.tsx';
-import Layout from './Layout/Layout.tsx';
 import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
