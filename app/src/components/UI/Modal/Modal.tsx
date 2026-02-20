@@ -1,10 +1,14 @@
 import { createPortal } from 'react-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useModal } from './ModalProvider.tsx';
 
 function Modal() {
   const { project, isOpen, closeModal } = useModal();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [project]);
 
   if (!isOpen || !project) return null;
 
