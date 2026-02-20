@@ -7,9 +7,11 @@
     'Montserrat', 'Montserrat Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-montserrat);
 
-    /* #06080e */
-  --color-primary: #15162c;
-  --color-secondary: rgba(255,253,253,.05);
+  /* #06080e */
+  /*  --color-primary: #15162c;*/
+    --color-primary: #06080e;
+    /*--color-secondary: rgba(255, 253, 253, 0.05);*/
+    --color-secondary: #1f2937;
 
   --color-menu: rgba(41, 46, 86, 0.2);
 
@@ -26,6 +28,14 @@
 
 .animate-nav-item-active {
   animation: nav-item-active 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s cubic-bezier(.32, .72, 0, 1);
+}
+
+.animate-slide-down {
+  animation: slide-down 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @keyframes twinkle {
@@ -49,5 +59,23 @@
   100% {
     transform: translate(200px, 200px);
     opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
   }
 }
