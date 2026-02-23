@@ -9,9 +9,9 @@
 
   /* #06080e */
   /*  --color-primary: #15162c;*/
-    --color-primary: #06080e;
-    /*--color-secondary: rgba(255, 253, 253, 0.05);*/
-    --color-secondary: #1f2937;
+  --color-primary: #06080e;
+  /*--color-secondary: rgba(255, 253, 253, 0.05);*/
+  --color-secondary: #1f2937;
 
   --color-menu: rgba(41, 46, 86, 0.2);
 
@@ -31,11 +31,15 @@
 }
 
 .animate-slide-up {
-  animation: slide-up 0.5s cubic-bezier(.32, .72, 0, 1);
+  animation: slide-up 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .animate-slide-down {
   animation: slide-down 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.animate-toggle-popover {
+    animation: toggle-popover 0.3s ease-in-out;
 }
 
 @keyframes twinkle {
@@ -77,5 +81,16 @@
   }
   to {
     transform: translateY(100%);
+  }
+}
+
+@keyframes toggle-popover {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
   }
 }

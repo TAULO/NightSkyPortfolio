@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Popover from '../Popover/Popover.tsx';
 
 interface IGitHubContributionProps {
   githubUsername: string;
@@ -217,10 +218,10 @@ const GitHubContributionCalendar = ({
     );
   }
 
-  console.log(contributionStats);
-
   const weeklyStreaks = getWeeklyStreaks();
   const dailyStreaks = getDailyStreaks();
+
+  console.log(contributionStats, weeklyStreaks, dailyStreaks);
 
   return contributions.length === 0 ? null : (
     <div
@@ -229,9 +230,6 @@ const GitHubContributionCalendar = ({
     >
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
-        <p className={'text-xl font-bold text-white'}>
-          {weeklyStreaks} - {dailyStreaks}
-        </p>
       </div>
       <div
         id={'github-contributions-calendar'}
@@ -254,13 +252,34 @@ const GitHubContributionCalendar = ({
 
               <div className={'flex flex-col gap-1'}>
                 {(week['contributionDays'] as Array<ContributionDay>).map(
-                  (day, dayIndex) => (
-                    <div
-                      key={dayIndex}
-                      className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
-                      title={day['contributionCount'] + '\n' + day['date']}
-                    />
-                  )
+                  (day, dayIndex) => {
+                    const popoverId = `popover-${dayIndex}-${weekIndex}-${githubUsername}`;
+                    const date = new Date(day.date);
+                    const dayOfMonth = date.getDate();
+                    const monthName = months[date.getMonth()];
+                    const content = `${day.contributionCount} contributions on ${monthName} ${dayOfMonth}`;
+                    return (
+                      <div key={popoverId}>
+                        <div
+                          className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                          onMouseEnter={(e) => {
+                            const popover = document.getElementById(popoverId);
+                            const rect =
+                              e.currentTarget.getBoundingClientRect();
+                            if (popover) {
+                              popover.showPopover();
+                              popover.style.top = `${rect.bottom + 10}px`;
+                              popover.style.left = `${rect.left + rect.width / 2 - popover.offsetWidth / 2}px`;
+                            }
+                          }}
+                          onMouseLeave={() =>
+                            document.getElementById(popoverId)?.hidePopover()
+                          }
+                        />
+                        <Popover id={popoverId} content={content} />
+                      </div>
+                    );
+                  }
                 )}
               </div>
             </div>
