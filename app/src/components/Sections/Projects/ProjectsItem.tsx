@@ -8,7 +8,7 @@ const ProjectsItem = (project: IProject) => {
     <div
       id={'card'}
       className={
-        'border-secondary h-full rounded-3xl overflow-hidden border shadow hover:cursor-pointer'
+        'bg-secondary/40 border-secondary h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
     >
@@ -19,12 +19,13 @@ const ProjectsItem = (project: IProject) => {
           'object-top-left border-secondary h-40 w-full border-b object-cover lg:h-52'
         }
       />
-      <div
-        id={'card-body'}
-        className={'bg-secondary/40 flex flex-1 flex-col gap-2 py-6 px-4'}
-      >
+      <div id={'card-body'} className={'flex flex-1 flex-col gap-2 px-4 py-6'}>
         <div className={'flex justify-between'}>
-          <h1 className={'mt-2 text-xl font-bold text-white'}>
+          <h1
+            className={
+              'sm:max-w-9/12 max-w-8/12 mt-2 truncate text-xl font-bold text-white'
+            }
+          >
             {project.name}
           </h1>
           <div className={'self-end'} onClick={(e) => e.stopPropagation()}>
