@@ -1,10 +1,17 @@
 import {
   csharpSVG,
+  cssSVG,
   dotnetcoreSVG,
+  firebaseSVG,
+  htmlSVG,
+  javascriptSVG,
   nuxtSVG,
   openAPISVG,
   postgressqlSVG,
+  reactSVG,
   typescriptSVG,
+  unitySVG,
+  vitestSVG,
   vueSVG,
 } from '../TechStack/TechSVG.tsx';
 import { JSX } from 'react';
@@ -22,7 +29,7 @@ export interface IProject {
   hrefLive?: string;
   techStack: Array<{ svg: JSX.Element; name: string }>;
   images: Array<{ src: string; alt: string }>;
-  architecture?: IProjectArchitecture,
+  architecture?: IProjectArchitecture;
 }
 
 const athleticaImages = useProjectAssets('athletica');
@@ -72,7 +79,7 @@ const athelticaArchitecture = `
     %% Infra
     docker:L --> R:db
     docker:L --> R:keycloak
-`
+`;
 
 const athleticaProject: IProject = {
   name: 'Athletica',
@@ -87,6 +94,10 @@ const athleticaProject: IProject = {
     {
       svg: nuxtSVG,
       name: 'Nuxt',
+    },
+    {
+      svg: vitestSVG,
+      name: 'Vitest',
     },
     {
       svg: typescriptSVG,
@@ -113,7 +124,154 @@ const athleticaProject: IProject = {
 
   architecture: {
     architecture: athelticaArchitecture,
-  }
+  },
 };
 
-export const projects: Array<IProject> = [athleticaProject];
+const hvordanErVejretProject: IProject = {
+  name: 'Hvordan Er Vejret',
+  description:
+    'I designed and developed a promotional website for the podcast Hvordan Er Vejret, created to help expand the show’s digital presence and reach a broader audience. The goal of the project was to create a central platform where listeners could easily access episodes, learn more about the hosts, and engage with the podcast across major streaming platforms.',
+  hrefCode: 'https://github.com/TAULO/HvordanErVejret',
+  hrefLive: 'https://hvordanervejret.dk/forside/',
+  techStack: [
+    {
+      svg: vueSVG,
+      name: 'VueJS',
+    },
+    {
+      svg: typescriptSVG,
+      name: 'TypeScript',
+    },
+  ],
+  images: athleticaImages
+};
+
+const biavlerProject: IProject = {
+  name: "Odense Beekeepers' Association",
+  description:
+    "I developed a custom homepage for 'Ringe og Omegns Biavlerforening', a historic Danish beekeepers’ association that has existed since 1887 and is part of the national Danmarks Biavlerforening. The site serves as the association’s digital hub for members and potential future members, offering information about the organization’s purpose, activities, courses, recipes and galleries.",
+  hrefCode: 'https://github.com/TAULO/BiavlerFrontApp',
+  techStack: [
+    {
+      svg: vueSVG,
+      name: 'VueJS',
+    },
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
+    },
+    {
+      svg: firebaseSVG,
+      name: 'Firebase',
+    },
+  ],
+  images: athleticaImages,
+};
+
+const atWEBProject: IProject = {
+  name: 'AT Portfolio',
+  description:
+    'A small personal portfolio website for my mother to showcase her artwork. The website is integrated with the Instagram API, automatically displaying her latest posts.',
+  hrefCode: 'https://github.com/TAULO/ATWeb',
+  techStack: [
+    {
+      svg: reactSVG,
+      name: 'React',
+    },
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
+    },
+    {
+      svg: firebaseSVG,
+      name: 'Firebase',
+    },
+  ],
+  images: athleticaImages,
+};
+
+const gitSnakeProject: IProject = {
+  name: 'GitSnake',
+  description:
+    'A Chrome Extension tool to play Snake on your GitHub Contributions.',
+  hrefCode: 'https://github.com/TAULO/GitSnake',
+  techStack: [
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
+    },
+    {
+      svg: htmlSVG,
+      name: 'HTML',
+    },
+    {
+      svg: cssSVG,
+      name: 'CSS',
+    },
+  ],
+  images: athleticaImages,
+};
+
+const gitGraffitiProject: IProject = {
+  name: 'GitGraffiti',
+  description:
+    'A Chrome Extension tool to customize your GitHub Contributions to impress your friends.',
+  hrefCode: 'https://github.com/TAULO/GitGraffiti',
+  techStack: [
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
+    },
+  ],
+  images: athleticaImages,
+};
+
+const adSkipperProject: IProject = {
+  name: 'AD Skipper',
+  description:
+    'A Chrome Extension detect AD videos on difference websites and skip them automatically.',
+  hrefCode: 'https://github.com/TAULO/ytp-hide-ads-extension',
+  techStack: [
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
+    },
+    {
+      svg: htmlSVG,
+      name: 'HTML',
+    },
+    {
+      svg: cssSVG,
+      name: 'CSS',
+    },
+  ],
+  images: athleticaImages,
+};
+
+const cpGameJam2024Project: IProject = {
+  name: 'CP GameJam 2024',
+  description: '',
+  hrefCode: 'https://github.com/BossenGames/CPGameJam2024',
+  techStack: [
+    {
+      svg: unitySVG,
+      name: 'Unity',
+    },
+    {
+      svg: csharpSVG,
+      name: 'C#',
+    }
+  ],
+  images: athleticaImages,
+}
+
+export const projects: Array<IProject> = [
+  athleticaProject,
+  hvordanErVejretProject,
+  biavlerProject,
+  atWEBProject,
+  gitSnakeProject,
+  gitGraffitiProject,
+  adSkipperProject,
+  cpGameJam2024Project,
+];
