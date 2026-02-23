@@ -4,7 +4,7 @@ import ShootingStar from './ShootingStar.tsx';
 import { useModal } from '../UI/Modal/ModalProvider.tsx';
 
 const STARS_COUNT = 400;
-const SHOOTING_STARS_COUNT = 15;
+const SHOOTING_STARS_COUNT = 5;
 
 const NightSky = ({ children }: { children: Array<ReactElement> }) => {
   const { isOpen } = useModal();
