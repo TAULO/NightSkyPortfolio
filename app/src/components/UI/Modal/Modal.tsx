@@ -139,10 +139,7 @@ function Modal() {
           </div>
           <div id={'body'} className={'mt-auto flex flex-col gap-2 sm:mt-0'}>
             <div className={'flex justify-between'}>
-              <h1 className={'text-xl font-bold text-white'}>
-                {' '}
-                {project.name}{' '}
-              </h1>
+              <h1 className={'text-xl font-bold text-white'}>{project.name}</h1>
               <div className={'self-end'}>
                 <a
                   href={project.hrefCode}
