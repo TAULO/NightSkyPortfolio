@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import useJobDuration from '../../../hooks/useJobDuration.tsx';
+import useJobDuration from '../../../hooks/useJobDuration.ts';
 import {
   csharpSVG,
   cssSVG,
