@@ -7,8 +7,8 @@ import {
   typescriptSVG,
   vueSVG,
 } from '../TechStack/TechSVG.tsx';
-import testImage from '../../../assets/static/projects/athletica/foo.webp';
 import { JSX } from 'react';
+import { useProjectAssets } from '../../../hooks/useProjectAssets.ts';
 
 interface IProjectArchitecture {
   classDiagram?: string;
@@ -24,6 +24,8 @@ export interface IProject {
   images: Array<{ src: string; alt: string }>;
   architecture?: IProjectArchitecture,
 }
+
+const athleticaImages = useProjectAssets('athletica');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -107,20 +109,7 @@ const athleticaProject: IProject = {
       name: 'OpenAPI',
     },
   ],
-  images: [
-    {
-      src: testImage,
-      alt: 'Athletica 1',
-    },
-    {
-      src: testImage,
-      alt: 'Athletica 2',
-    },
-    {
-      src: testImage,
-      alt: 'Athletica 3',
-    },
-  ],
+  images: athleticaImages,
 
   architecture: {
     architecture: athelticaArchitecture,
