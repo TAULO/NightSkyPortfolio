@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
+import { useModal } from '../UI/Modal/ModalProvider.tsx';
 
 interface INavItem {
   name: string;
@@ -68,6 +69,8 @@ const NavBar = ({
       ref: contactRef,
     },
   ]);
+
+  const { isOpen } = useModal();
 
   useEffect(() => {
     // Track which sections are currently intersecting
@@ -186,7 +189,12 @@ const NavBar = ({
 
   return (
     <>
-      <div className={'top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2'}>
+      <div
+        className={
+          'bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2'
+        }
+        hidden={isOpen}
+      >
         <div
           className={
             'bg-menu backdrop-grayscale-25 border-secondary flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-2xl border px-5 py-3 text-[.55rem] font-semibold text-white shadow-lg backdrop-blur-lg sm:gap-10 sm:text-sm 2xl:text-sm'
@@ -196,7 +204,9 @@ const NavBar = ({
             <div
               key={index}
               className={'relative flex flex-col'}
-              onClick={() => selectNavItem(index, item.ref as RefObject<HTMLElement>)}
+              onClick={() =>
+                selectNavItem(index, item.ref as RefObject<HTMLElement>)
+              }
               onMouseEnter={() => setNavItemActive(index)}
               onMouseLeave={() => setNavItemInactive()}
             >
