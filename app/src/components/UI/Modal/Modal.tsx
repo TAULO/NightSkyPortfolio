@@ -193,6 +193,7 @@ function Modal() {
                 className={
                   'border-secondary hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
                 }
+                onClick={() => window.open(project?.hrefLive, '__blank')}
               >
                 Visit
               </button>
