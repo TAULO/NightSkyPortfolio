@@ -70,7 +70,9 @@ const NavBar = ({
     },
   ]);
 
-  const { isOpen } = useModal();
+  const { isOpen: isProjectOpen } = useModal('project-modal');
+  const { isOpen: isFooOpen } = useModal('github-modal');
+  const isAnyModalOpen = isProjectOpen || isFooOpen;
 
   useEffect(() => {
     // Track which sections are currently intersecting
@@ -193,7 +195,7 @@ const NavBar = ({
         className={
           'bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2'
         }
-        hidden={isOpen}
+        hidden={isAnyModalOpen}
       >
         <div
           className={

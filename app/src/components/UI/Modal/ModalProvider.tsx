@@ -1,40 +1,54 @@
-import { IProject } from '../../Sections/Projects/project.data.ts';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
+
+interface ModalEntry {
+  data: unknown;
+  isOpen: boolean;
+}
 
 interface ModalContextType {
-  project: IProject | null;
-  isOpen: boolean;
-  openModal: (project: IProject) => void;
-  closeModal: () => void;
+  modal: Record<string, ModalEntry>;
+  openModal: (id: string, data: unknown) => void;
+  closeModal: (id: string) => void;
 }
 
 const ModalContext = createContext<ModalContextType | null>(null);
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
-  const [project, setProject] = useState<IProject | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModals] = useState<Record<string, ModalEntry>>({});
 
-  function openModal(project: IProject) {
-    setProject(project);
-    setIsOpen(true);
-  }
+  const openModal = useCallback((id: string, data: unknown) => {
+    setModals((prev) => ({
+      ...prev,
+      [id]: { data, isOpen: true },
+    }));
+  }, []);
 
-  function closeModal() {
-    setProject(null);
-    setIsOpen(false);
-  }
+  const closeModal = useCallback((id: string) => {
+    setModals((prev) => ({
+      ...prev,
+      [id]: { data: null, isOpen: false },
+    }));
+  }, []);
 
   return (
-    <ModalContext.Provider value={{ project, isOpen, openModal, closeModal }}>
+    <ModalContext.Provider value={{ modal, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   );
 }
 
-export function useModal() {
+export function useModal<T>(id: string) {
   const context = useContext(ModalContext);
   if (!context) {
     throw new Error('useModal must be used within a ModalProvider');
   }
-  return context;
+
+  const modal = context.modal[id];
+
+  return {
+    data: (modal?.data ?? null) as T | null,
+    isOpen: modal?.isOpen ?? false,
+    openModal: (data: T) => context.openModal(id, data),
+    closeModal: () => context.closeModal(id),
+  };
 }

@@ -2,7 +2,7 @@ import { IProject } from './project.data';
 import { useModal } from '../../UI/Modal/ModalProvider.tsx';
 
 const ProjectsItem = (project: IProject) => {
-  const { openModal } = useModal();
+  const { openModal } = useModal<IProject>('project-modal');
 
   return (
     <div

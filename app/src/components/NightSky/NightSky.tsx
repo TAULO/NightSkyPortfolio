@@ -7,7 +7,10 @@ const STARS_COUNT = 400;
 const SHOOTING_STARS_COUNT = 5;
 
 const NightSky = ({ children }: { children: Array<ReactElement> }) => {
-  const { isOpen } = useModal();
+  const { isOpen: isProjectOpen } = useModal('project-modal');
+  const { isOpen: isFooOpen } = useModal('github-modal');
+  const isAnyModalOpen = isProjectOpen || isFooOpen;
+
   const starContainerRef = useRef<HTMLDivElement | null>(null);
   const [stars, setStars] = useState<Array<ReactElement>>([]);
   const [shootingStars, setShootingStars] = useState<Array<ReactElement>>([]);
@@ -30,7 +33,7 @@ const NightSky = ({ children }: { children: Array<ReactElement> }) => {
 
   return (
     <div
-      className={`relative bg-[#040615] p-5 transition-all duration-300 sm:p-20 ${isOpen ? 'brightness-25' : ''}`}
+      className={`relative bg-[#040615] p-5 transition-all duration-300 sm:p-20 ${isAnyModalOpen ? 'brightness-25' : ''}`}
       ref={starContainerRef}
     >
       <div className={'gap-35 flex flex-col'}>{children}</div>

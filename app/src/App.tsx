@@ -8,7 +8,8 @@ import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
 import Projects from './components/Sections/Projects/Projects.tsx';
 import { ModalProvider } from './components/UI/Modal/ModalProvider.tsx';
-import Modal from './components/UI/Modal/Modal.tsx';
+import ModalProject from './components/UI/Modal/ModalProject.tsx';
+import ModalGithub from './components/UI/Modal/ModalGithub.tsx';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -50,7 +51,8 @@ function App() {
             </div>
           </section>
         </NightSky>
-        <Modal></Modal>
+        <ModalProject modalId={'project-modal'}></ModalProject>
+        <ModalGithub modalId={'github-modal'}></ModalGithub>
       </ModalProvider>
     </>
   );
