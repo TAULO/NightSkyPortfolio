@@ -10,6 +10,7 @@ import Projects from './components/Sections/Projects/Projects.tsx';
 import { ModalProvider } from './components/UI/Modal/ModalProvider.tsx';
 import ModalProject from './components/UI/Modal/ModalProject.tsx';
 import ModalGithub from './components/UI/Modal/ModalGithub.tsx';
+import { Contact } from './components/Sections/Contact';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -46,8 +47,9 @@ function App() {
             <TechStack></TechStack>
           </section>
           <section ref={contactRef} id={'contact'}>
-            <div className={'h-200'}>
+            <div className={'h-120'}>
               <Title title={'Contact'}></Title>
+              <Contact></Contact>
             </div>
           </section>
         </NightSky>
