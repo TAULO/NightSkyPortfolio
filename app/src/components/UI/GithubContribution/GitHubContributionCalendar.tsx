@@ -254,10 +254,13 @@ const GitHubContributionCalendar = ({
                 {(week['contributionDays'] as Array<ContributionDay>).map(
                   (day, dayIndex) => {
                     const popoverId = `popover-${dayIndex}-${weekIndex}-${githubUsername}`;
+                    const count = day.contributionCount;
+
                     const date = new Date(day.date);
                     const dayOfMonth = date.getDate();
                     const monthName = months[date.getMonth()];
-                    const content = `${day.contributionCount} contributions on ${monthName} ${dayOfMonth}`;
+
+                    const content = `${count} contribution${count !== 1 ? 's' : ''} on ${monthName} ${dayOfMonth}`;
                     return (
                       <div key={popoverId}>
                         <div
