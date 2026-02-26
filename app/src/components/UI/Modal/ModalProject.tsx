@@ -43,7 +43,7 @@ function ModalProject({ modalId }: { modalId: string }) {
                   className={'min-w-0 shrink-0 grow-0 basis-full'}
                 >
                   <img
-                    className={'border-secondary w-full rounded-xl border'}
+                    className={'border-border w-full rounded-xl border'}
                     alt={image.alt}
                     src={image.src}
                   />
@@ -54,7 +54,7 @@ function ModalProject({ modalId }: { modalId: string }) {
           <div id={'controls'} className={'flex items-center gap-2'}>
             <button
               className={
-                'border-secondary hover:bg-secondary bg-secondary/25 inline-flex items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+                'border-border hover:bg-secondary bg-secondary/25 inline-flex items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
               onClick={prevSlide}
             >
@@ -76,7 +76,7 @@ function ModalProject({ modalId }: { modalId: string }) {
             </button>
             <button
               className={
-                'border-secondary hover:bg-secondary bg-secondary/25 rotate-180 items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+                'border-border hover:bg-secondary bg-secondary/25 rotate-180 items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
               onClick={nextSlide}
             >
@@ -146,7 +146,7 @@ function ModalProject({ modalId }: { modalId: string }) {
         <div id={'buttons'} className={'flex gap-2 sm:col-span-2'}>
           <button
             className={
-              'border-secondary hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+              'border-border hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
             }
             onClick={closeModal}
           >
@@ -155,7 +155,7 @@ function ModalProject({ modalId }: { modalId: string }) {
           {project.hrefLive && (
             <button
               className={
-                'border-secondary hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+                'border-border hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
               onClick={() => window.open(project?.hrefLive, '__blank')}
             >

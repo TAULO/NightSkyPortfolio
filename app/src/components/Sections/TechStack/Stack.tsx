@@ -5,7 +5,7 @@ const Stack = (techStack: ITechStack) => {
     <>
       <div
         className={
-          'border-secondary bg-secondary/40 flex flex-col gap-5 rounded-2xl border p-5 text-white'
+          'border-border bg-secondary flex flex-col gap-5 rounded-2xl border p-5 text-white'
         }
       >
         <div className={'flex flex-wrap gap-2'}>

@@ -9,7 +9,7 @@ const Input = forwardRef<HTMLInputElement, IInput>(
     return (
       <input
         ref={ref}
-        className={`border-secondary w-full rounded px-4 py-2 text-white border-1 ${className ?? ''}`}
+        className={`border-border w-full rounded px-4 py-2 text-white border-1 ${className ?? ''}`}
         {...props}
       />
     );

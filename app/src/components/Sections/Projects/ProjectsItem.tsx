@@ -8,7 +8,7 @@ const ProjectsItem = (project: IProject) => {
     <div
       id={'card'}
       className={
-        'bg-secondary/40 border-secondary h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
+        'bg-secondary border-border h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
     >
@@ -16,7 +16,7 @@ const ProjectsItem = (project: IProject) => {
         src={project.images[0].src}
         alt={project.images[0].alt}
         className={
-          'object-top-left border-secondary h-40 w-full border-b object-cover lg:h-52'
+          'object-top-left border-border h-40 w-full border-b object-cover lg:h-52'
         }
       />
       <div id={'card-body'} className={'flex flex-1 flex-col gap-2 px-4 py-6'}>

@@ -7,15 +7,10 @@
     'Montserrat', 'Montserrat Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-montserrat);
 
-  /* #06080e */
-  /*  --color-primary: #15162c;*/
   --color-primary: #06080e;
-  /*--color-secondary: rgba(255, 253, 253, 0.05);*/
-  --color-secondary: #1f2937;
-
+  --color-secondary: rgb(12 15 25 / 1);
   --color-menu: rgba(41, 46, 86, 0.2);
-
-  --color-border: rgba(62, 71, 137, 0.3);
+  --color-border: #858b9833;
 }
 
 .animate-twinkle {
@@ -39,7 +34,7 @@
 }
 
 .animate-toggle-popover {
-    animation: toggle-popover 0.3s ease-in-out;
+  animation: toggle-popover 0.3s ease-in-out;
 }
 
 @keyframes twinkle {
