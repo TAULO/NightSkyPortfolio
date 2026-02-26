@@ -2,10 +2,12 @@ import GitHubContributionCalendar from './GitHubContributionCalendar.tsx';
 import { useRef, useState } from 'react';
 import Button from '../Button/Button.tsx';
 import Input from '../Input/Input.tsx';
+import { useModal } from '../Modal/ModalProvider.tsx';
 
 const GithubContribution = () => {
   const [otherGithubUsername, setOtherGithubUsername] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const { openModal } = useModal('github-modal');
 
   return (
     <div className={'flex min-w-0 max-w-fit flex-col'}>
@@ -26,6 +28,10 @@ const GithubContribution = () => {
             text={'Search'}
           />
         </div>
+        <Button
+          onClick={() => openModal({ content: 'Hello World' })}
+          text={'Open Modal'}
+        />
       </div>
     </div>
   );
