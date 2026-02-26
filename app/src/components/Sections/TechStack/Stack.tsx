@@ -5,7 +5,7 @@ const Stack = (techStack: ITechStack) => {
     <>
       <div
         className={
-          'border-border bg-secondary flex flex-col gap-5 rounded-2xl border p-5 text-white'
+          'border-border bg-secondary hover:border-border-hover flex flex-col gap-5 rounded-2xl border p-5 text-white'
         }
       >
         <div className={'flex flex-wrap gap-2'}>
@@ -15,7 +15,7 @@ const Stack = (techStack: ITechStack) => {
             </div>
           ))}
         </div>
-        <h1 className={'sm:text-3xl text-2xl font-bold'}> {techStack.name} </h1>
+        <h1 className={'text-2xl font-bold sm:text-3xl'}> {techStack.name} </h1>
         <p className={'grow'}> {techStack.description} </p>
         <div className={'flex flex-wrap gap-2'}>
           <p className={'font-extralight'}>
