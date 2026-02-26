@@ -12,7 +12,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   return (
     <a
       href={href}
-      className="mx-1 underline decoration-blue-400 decoration-2 underline-offset-4 hover:text-blue-400"
+      className="mx-1 underline transition-all decoration-blue-400 decoration-2 underline-offset-4 hover:underline-offset-8"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -31,7 +31,7 @@ export const Contact = () => {
       <p>
         You can catch me over on
         <ExternalLink href={githubHref}>GitHub</ExternalLink>
-        or <ExternalLink href={linkedinHref}>LinkedIn</ExternalLink>or you can
+        &&<ExternalLink href={linkedinHref}>LinkedIn</ExternalLink>or you can
         send me a good old-fashioned email at
         <ExternalLink href="mailto:taulo@live.com">taulo@live.com</ExternalLink>
       </p>
