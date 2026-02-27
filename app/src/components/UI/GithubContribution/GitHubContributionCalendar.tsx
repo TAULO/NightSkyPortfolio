@@ -261,26 +261,13 @@ const GitHubContributionCalendar = ({
                     const monthName = months[date.getMonth()];
 
                     const content = `${count} contribution${count !== 1 ? 's' : ''} on ${monthName} ${dayOfMonth}`;
+
                     return (
-                      <div key={popoverId}>
+                      <Tooltip id={popoverId} content={content}>
                         <div
                           className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
-                          onMouseEnter={(e) => {
-                            const popover = document.getElementById(popoverId);
-                            const rect =
-                              e.currentTarget.getBoundingClientRect();
-                            if (popover) {
-                              popover.showPopover();
-                              popover.style.top = `${rect.bottom + 10}px`;
-                              popover.style.left = `${rect.left + rect.width / 2 - popover.offsetWidth / 2}px`;
-                            }
-                          }}
-                          onMouseLeave={() =>
-                            document.getElementById(popoverId)?.hidePopover()
-                          }
                         />
-                        <Tooltip id={popoverId} content={content} />
-                      </div>
+                      </Tooltip>
                     );
                   }
                 )}
