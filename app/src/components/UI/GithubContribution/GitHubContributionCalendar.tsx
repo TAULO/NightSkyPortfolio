@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Popover from '../Popover/Popover.tsx';
+import Tooltip from '../Tooltip/Tooltip.tsx';
 
 interface IGitHubContributionProps {
   githubUsername: string;
@@ -279,7 +279,7 @@ const GitHubContributionCalendar = ({
                             document.getElementById(popoverId)?.hidePopover()
                           }
                         />
-                        <Popover id={popoverId} content={content} />
+                        <Tooltip id={popoverId} content={content} />
                       </div>
                     );
                   }

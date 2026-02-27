@@ -3,7 +3,7 @@ interface IPopover {
   content: string;
 }
 
-export default function Popover({ id, content }: IPopover) {
+export default function Tooltip({ id, content }: IPopover) {
   return (
     <div
       className={
