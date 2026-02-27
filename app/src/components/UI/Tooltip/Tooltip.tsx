@@ -25,12 +25,12 @@ export default function Tooltip({ id, content, children }: IPopover) {
       </div>
       <div
         className={
-          'bg-secondary animate-toggle-popover border-border fixed min-w-[75px]  justify-center rounded border p-2'
+          'bg-secondary animate-toggle-popover border-border fixed min-w-[75px] justify-center rounded border p-2'
         }
         popover={'manual'}
         id={id}
       >
-        <p className={'text-xs font-bold text-white text-center'}>{content}</p>
+        <p className={'text-center text-xs font-bold text-white'}>{content}</p>
       </div>
     </div>
   );
