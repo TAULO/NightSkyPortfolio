@@ -6,7 +6,7 @@ const button = ({ text, ...props }: IButton) => {
   return (
     <button
       className={
-        'border-border hover:bg-secondary/25 bg-secondary rounded border px-4 py-2 font-semibold text-white transition-colors duration-300 hover:cursor-pointer'
+        'border-border hover:bg-secondary/25 hover:border-border-hover bg-secondary min-w-[85px] rounded border px-4 py-2 font-semibold text-white transition-colors duration-300 hover:cursor-pointer'
       }
       {...props}
     >
