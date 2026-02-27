@@ -13,7 +13,7 @@ function ModalContainer({
   if (!isOpen) return null;
 
   return createPortal(
-    <div className={'bg-primary/10 fixed inset-0'} onClick={closeModal}>
+    <div className={'fixed inset-0'} onClick={closeModal}>
       <div
         id={'modal-component'}
         className={`bg-primary border-border border-1 sm:max-w-10/12 fixed bottom-0 z-20 grid w-full overflow-hidden rounded-t-3xl p-4 shadow-lg sm:left-1/2 sm:top-1/2 sm:h-fit sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl sm:p-8 sm:pt-12 xl:max-w-fit ${

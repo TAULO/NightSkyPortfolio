@@ -1,14 +1,19 @@
 import { IProject } from './project.data';
 import { useModal } from '../../UI/Modal/ModalProvider.tsx';
 
-const ProjectsItem = (project: IProject) => {
+const ProjectsItem = ({
+  selectedStacks,
+  ...project
+}: IProject & { selectedStacks: string[] }) => {
   const { openModal } = useModal<IProject>('project-modal');
 
+  const stackIsSelected = (techName: string) =>
+    selectedStacks.includes(techName);
   return (
     <div
       id={'card'}
       className={
-        'bg-secondary border-border h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer hover:border-border-hover'
+        'bg-secondary border-border hover:border-border-hover h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
     >
@@ -60,7 +65,14 @@ const ProjectsItem = (project: IProject) => {
         </div>
         <div className={'mb-1 flex flex-wrap gap-2'}>
           {project.techStack.map((stack, index) => (
-            <div key={index} className={'size-5 shrink-0'}>
+            <div
+              key={index}
+              className={`size-5 shrink-0 text-white ${
+                selectedStacks.length > 0 && !stackIsSelected(stack.name)
+                  ? 'animate-infinite animate-bounce'
+                  : 'animate-none'
+              }`}
+            >
               {stack.svg}
             </div>
           ))}

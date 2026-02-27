@@ -3,6 +3,7 @@ import Title from '../../UI/Title/Title.tsx';
 import { projects, allUniqTechStacks } from './project.data.ts';
 import { useEffect, useState } from 'react';
 import { ITechSkill } from '../TechStack/techstack.data.ts';
+import Button from '../../UI/Button/Button.tsx';
 
 type UniqueTechStack = ITechSkill & { isSelected: boolean };
 
@@ -28,6 +29,14 @@ const Projects = () => {
     project.techStack.some((tech) => !selectedStacks.includes(tech.name))
   );
 
+  const hasSelectedTechStack = allUniqTechStacksSelected.some(
+    (stack) => stack.isSelected
+  );
+
+  const allUniqTechStacksSelectedLen = allUniqTechStacksSelected.filter(
+    (stack) => !stack.isSelected
+  ).length;
+
   function toggleTechStackClick(index: number) {
     const updatedTechStacks = allUniqTechStacksSelected.map((stack, i) => {
       if (i === index) {
@@ -38,17 +47,11 @@ const Projects = () => {
     setAllUniqTechStacksSelected(updatedTechStacks);
   }
 
-  function hasSelectedTechStack() {
-    return allUniqTechStacksSelected.some((stack) => stack.isSelected);
-  }
-
-  function disabledAllTechStacks() {
-    const hasSelected = hasSelectedTechStack();
-
+  function toggleTechStackSelection() {
     setAllUniqTechStacksSelected(
       allUniqTechStacks.map((stack) => ({
         ...stack,
-        isSelected: !hasSelected,
+        isSelected: !hasSelectedTechStack,
       }))
     );
   }
@@ -56,22 +59,23 @@ const Projects = () => {
   return (
     <div className={'flex flex-col gap-4'}>
       <Title title={'Projects'}></Title>
-      <div className={'flex flex-col'}>
-        <div className={'flex flex-wrap items-center gap-2'}>
+      <div className={'flex flex-col gap-2 md:flex-row'}>
+        <div className={'relative'}>
+          <Button
+            text={hasSelectedTechStack ? 'All' : 'Clear'}
+            onClick={toggleTechStackSelection}
+          />
           <div
             className={
-              'border-border bg-secondary hover:border-border-hover min-w-24 rounded-full border border-dashed text-center text-white hover:cursor-pointer'
+              'absolute -right-1 -top-1 size-4 rounded-full bg-blue-400'
             }
-            onClick={disabledAllTechStacks}
           >
-            <div
-              className={
-                'flex items-center justify-center gap-2 p-1 text-white'
-              }
-            >
-              <p>{hasSelectedTechStack() ? 'All' : 'Clear'}</p>
-            </div>
+            <p className={'text-center text-xs font-bold text-white'}>
+              {allUniqTechStacksSelectedLen}
+            </p>
           </div>
+        </div>
+        <div className={'flex flex-wrap items-center gap-2'}>
           {allUniqTechStacksSelected.map((techStack, index) => {
             return (
               <div
@@ -93,7 +97,11 @@ const Projects = () => {
         }
       >
         {filteredProjects.map((project, index) => (
-          <ProjectsItem {...project} key={index} />
+          <ProjectsItem
+            {...project}
+            selectedStacks={selectedStacks}
+            key={index}
+          />
         ))}
       </div>
     </div>
