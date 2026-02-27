@@ -1,4 +1,5 @@
 import {
+  bootstrapSVG,
   csharpSVG,
   cssSVG,
   dotnetcoreSVG,
@@ -9,6 +10,7 @@ import {
   openAPISVG,
   postgressqlSVG,
   reactSVG,
+  tailwindSVG,
   typescriptSVG,
   unitySVG,
   vitestSVG,
@@ -104,6 +106,10 @@ const athleticaProject: IProject = {
       name: 'TypeScroåt',
     },
     {
+      svg: tailwindSVG,
+      name: 'Tailwind CSS',
+    },
+    {
       svg: dotnetcoreSVG,
       name: '.NET Aspire',
     },
@@ -142,6 +148,10 @@ const hvordanErVejretProject: IProject = {
       svg: typescriptSVG,
       name: 'TypeScript',
     },
+    {
+      svg: tailwindSVG,
+      name: 'Tailwind CSS',
+    },
   ],
   images: athleticaImages,
 };
@@ -159,6 +169,10 @@ const biavlerProject: IProject = {
     {
       svg: javascriptSVG,
       name: 'JavaScript',
+    },
+    {
+      svg: bootstrapSVG,
+      name: 'Bootstrap',
     },
     {
       svg: firebaseSVG,
@@ -181,6 +195,10 @@ const atWEBProject: IProject = {
     {
       svg: javascriptSVG,
       name: 'JavaScript',
+    },
+    {
+      svg: bootstrapSVG,
+      name: 'Bootstrap',
     },
     {
       svg: firebaseSVG,
