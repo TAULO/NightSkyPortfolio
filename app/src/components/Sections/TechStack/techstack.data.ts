@@ -42,10 +42,15 @@ import {
 } from './TechSVG.tsx';
 import { ReactElement } from 'react';
 
+export interface ITechSkill {
+  name: string;
+  svg: ReactElement;
+}
+
 export interface ITechStack {
   name: string;
   description: string;
-  skills: Array<{ name: string; svg: ReactElement }>;
+  skills: ITechSkill[];
 }
 
 const frontendSkill: ITechStack = {

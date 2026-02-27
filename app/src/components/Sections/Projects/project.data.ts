@@ -143,7 +143,7 @@ const hvordanErVejretProject: IProject = {
       name: 'TypeScript',
     },
   ],
-  images: athleticaImages
+  images: athleticaImages,
 };
 
 const biavlerProject: IProject = {
@@ -260,12 +260,12 @@ const cpGameJam2024Project: IProject = {
     {
       svg: csharpSVG,
       name: 'C#',
-    }
+    },
   ],
   images: athleticaImages,
-}
+};
 
-export const projects: Array<IProject> = [
+const projects: Array<IProject> = [
   athleticaProject,
   hvordanErVejretProject,
   biavlerProject,
@@ -275,3 +275,14 @@ export const projects: Array<IProject> = [
   adSkipperProject,
   cpGameJam2024Project,
 ];
+
+const allUniqTechStacks = projects
+  .flatMap((project) => project.techStack)
+  .filter(
+    (value, index, self) =>
+      self.findIndex((stack) => stack.name === value.name) === index
+  );
+
+console.log(allUniqTechStacks);
+
+export { projects, allUniqTechStacks };
