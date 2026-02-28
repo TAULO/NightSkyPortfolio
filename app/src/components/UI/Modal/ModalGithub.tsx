@@ -48,14 +48,23 @@ function ModalGithub({ modalId }: { modalId: string }) {
 
   function getDailyStreaks(contributions: Array<IContributionWeek>): number {
     let streak = 0;
+    let isFirstDay = true;
 
     for (let i = contributions.length - 1; i >= 0; i--) {
       const days = contributions[i]?.contributionDays ?? [];
 
-      for (let j = days.length - 2; j >= 0; j--) {
+      for (let j = days.length - 1; j >= 0; j--) {
         const day = days[j];
 
-        if (day.contributionCount <= 0) return streak;
+        if (day.contributionCount <= 0) {
+          if (isFirstDay) {
+            isFirstDay = false;
+            continue; // skip today if no contributions
+          }
+          return streak;
+        }
+
+        isFirstDay = false;
         streak++;
       }
     }
