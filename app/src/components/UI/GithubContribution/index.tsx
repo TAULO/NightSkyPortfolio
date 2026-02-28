@@ -3,17 +3,28 @@ import { useRef, useState } from 'react';
 import Button from '../Button/Button.tsx';
 import Input from '../Input/Input.tsx';
 import { useModal } from '../Modal/ModalProvider.tsx';
+import {
+  useGitHubContributions,
+} from '../../../hooks/useGithubContributions.ts';
+import { IGithubModal } from '../Modal/ModalGithub.tsx';
 
 const GithubContribution = () => {
+  const myGithubUsername = 'TAULO';
+
   const [otherGithubUsername, setOtherGithubUsername] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const { openModal } = useModal('github-modal');
+  const { openModal } = useModal<IGithubModal>('github-modal');
+
+  const myGithubUser = useGitHubContributions(myGithubUsername);
+  const opponentGithubUser = useGitHubContributions(otherGithubUsername);
+
+  console.log(myGithubUser);
 
   return (
     <div className={'flex min-w-0 max-w-fit flex-col'}>
       <div className={'flex flex-col gap-8'}>
-        <GitHubContributionCalendar githubUsername={'TAULO'} />
-        <GitHubContributionCalendar githubUsername={otherGithubUsername} />
+        <GitHubContributionCalendar githubUser={myGithubUser} />
+        <GitHubContributionCalendar githubUser={opponentGithubUser} />
         <div className={'flex gap-2'}>
           <Input
             className={'grow'}
@@ -28,10 +39,18 @@ const GithubContribution = () => {
             text={'Search'}
           />
         </div>
-        <Button
-          onClick={() => openModal({ content: 'Hello World' })}
-          text={'Open Modal'}
-        />
+
+        {myGithubUser && opponentGithubUser && (
+          <Button
+            onClick={() =>
+              openModal({
+                myGithub: myGithubUser,
+                opponentGithub: opponentGithubUser,
+              })
+            }
+            text={`${myGithubUser.name.toUpperCase()} vs ${opponentGithubUser.name.toUpperCase()}`}
+          />
+        )}
       </div>
     </div>
   );

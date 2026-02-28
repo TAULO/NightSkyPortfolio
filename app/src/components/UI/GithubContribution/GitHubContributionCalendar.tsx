@@ -1,81 +1,21 @@
-import { useEffect, useState } from 'react';
 import Tooltip from '../Tooltip/Tooltip.tsx';
-
-interface IGitHubContributionProps {
-  githubUsername: string;
-}
-
-interface ContributionStats {
-  totalCommitContributions: number;
-  totalIssueContributions: number;
-  totalPullRequestContributions: number;
-  totalPullRequestReviewContributions: number;
-  totalRepositoriesWithContributedCommits: number;
-  totalRepositoriesWithContributedIssues: number;
-  totalRepositoriesWithContributedPullRequestReviews: number;
-  totalRepositoriesWithContributedPullRequests: number;
-  totalRepositoryContributions: number;
-}
-
-const initialContributionStats: ContributionStats = {
-  totalCommitContributions: 0,
-  totalIssueContributions: 0,
-  totalPullRequestContributions: 0,
-  totalPullRequestReviewContributions: 0,
-  totalRepositoriesWithContributedCommits: 0,
-  totalRepositoriesWithContributedIssues: 0,
-  totalRepositoriesWithContributedPullRequestReviews: 0,
-  totalRepositoriesWithContributedPullRequests: 0,
-  totalRepositoryContributions: 0,
-};
-
-interface ContributionDay {
-  contributionCount: number;
-  date: string;
-  color: string;
-  contributionLevel:
-    | 'NONE'
-    | 'FIRST_QUARTILE'
-    | 'SECOND_QUARTILE'
-    | 'THIRD_QUARTILE'
-    | 'FOURTH_QUARTILE';
-}
-
-interface ContributionWeek {
-  contributionDays: ContributionDay[];
-}
+import {
+  IContributionDay,
+  IGitHubUser,
+} from '../../../hooks/useGithubContributions.ts';
 
 const GitHubContributionCalendar = ({
-  githubUsername,
-}: IGitHubContributionProps) => {
-  const githubQuery = `
-      query {
-        user(login: "${githubUsername}") {
-          contributionsCollection {
-            totalCommitContributions
-            totalIssueContributions
-            totalPullRequestContributions
-            totalPullRequestReviewContributions
-            totalRepositoriesWithContributedCommits
-            totalRepositoriesWithContributedIssues
-            totalRepositoriesWithContributedPullRequestReviews
-            totalRepositoriesWithContributedPullRequests
-            totalRepositoryContributions
-            contributionCalendar {
-              totalContributions
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                  color
-                  contributionLevel
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
+  githubUser,
+}: {
+  githubUser: IGitHubUser | null;
+}) => {
+  if (!githubUser) {
+    return (
+      <h3 className={'text-center text-xl font-bold text-white'}>
+        {`TODO is not a GitHub user`}
+      </h3>
+    );
+  }
 
   const colorMap = {
     NONE: 'bg-transparent border border-[#3e4789]/35',
@@ -100,11 +40,11 @@ const GitHubContributionCalendar = ({
     'Dec',
   ];
 
-  const [contributionStats, setContributionStats] =
-    useState<ContributionStats>();
-  const [contributions, setContributions] = useState<ContributionWeek[]>([]);
-  const [totalContributionsCount, setTotalContributionsCount] = useState(0);
-  const [userNotFound, setUserNotFound] = useState(false);
+  const githubUsername = githubUser.name;
+  const contributions =
+    githubUser.contributionsCollection.contributionCalendar.weeks;
+  const totalContributionsCount =
+    githubUser.contributionsCollection.contributionCalendar.totalContributions;
 
   function getWeekDateFromIndex(index: number): string | null {
     const monthStr = contributions[index]?.contributionDays?.[0]?.date;
@@ -123,105 +63,6 @@ const GitHubContributionCalendar = ({
 
     return months[currentMonthIndex] ?? null;
   }
-
-  function getWeeklyStreaks(): number {
-    let streak = 0;
-
-    for (let i = contributions.length - 1; i >= 0; i--) {
-      const days = contributions[i]?.contributionDays ?? [];
-      const hasContributions = days.some((day) => day.contributionCount > 0);
-
-      if (!hasContributions) {
-        if (days.length === 7) break;
-        continue;
-      }
-
-      streak++;
-    }
-
-    return streak;
-  }
-
-  function getDailyStreaks(): number {
-    let streak = 0;
-
-    for (let i = contributions.length - 1; i >= 0; i--) {
-      const days = contributions[i]?.contributionDays ?? [];
-
-      for (let j = days.length - 2; j >= 0; j--) {
-        const day = days[j];
-
-        if (day.contributionCount <= 0) return streak;
-        streak++;
-      }
-    }
-
-    return streak;
-  }
-
-  useEffect(() => {
-    if (!githubUsername) return;
-
-    setContributions([]);
-    setTotalContributionsCount(0);
-    setUserNotFound(false);
-
-    const response = fetch('https://api.github.com/graphql', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: githubQuery }),
-    });
-
-    response
-      .then((data) => data.json())
-      .then((data) => {
-        if (data?.errors?.length) {
-          setUserNotFound(true);
-          setContributions([]);
-          setTotalContributionsCount(0);
-          return;
-        }
-
-        const user = data?.data?.user;
-        if (!user) {
-          setUserNotFound(true);
-          setContributions([]);
-          setTotalContributionsCount(0);
-          return;
-        }
-
-        const calendar = user.contributionsCollection?.contributionCalendar;
-
-        setContributionStats(
-          user.contributionsCollection ?? initialContributionStats
-        );
-        setContributions(calendar?.weeks ?? []);
-        setTotalContributionsCount(calendar?.totalContributions ?? 0);
-      })
-      .catch(() => {
-        setUserNotFound(true);
-        setContributions([]);
-        setTotalContributionsCount(0);
-      });
-  }, [githubQuery]);
-
-  if (!githubUsername) return null;
-
-  if (userNotFound) {
-    return (
-      <h3 className={'text-center text-xl font-bold text-white'}>
-        {`${githubUsername} is not a GitHub user`}
-      </h3>
-    );
-  }
-
-  const weeklyStreaks = getWeeklyStreaks();
-  const dailyStreaks = getDailyStreaks();
-
-  console.log(contributionStats, weeklyStreaks, dailyStreaks);
 
   return contributions.length === 0 ? null : (
     <div
@@ -251,7 +92,7 @@ const GitHubContributionCalendar = ({
               ) : null}
 
               <div className={'flex flex-col gap-1'}>
-                {(week['contributionDays'] as Array<ContributionDay>).map(
+                {(week['contributionDays'] as Array<IContributionDay>).map(
                   (day, dayIndex) => {
                     const popoverId = `popover-${dayIndex}-${weekIndex}-${githubUsername}`;
                     const count = day.contributionCount;
