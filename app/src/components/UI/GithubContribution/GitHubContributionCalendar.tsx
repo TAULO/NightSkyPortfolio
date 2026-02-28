@@ -104,7 +104,7 @@ const GitHubContributionCalendar = ({
                     const content = `${count} contribution${count !== 1 ? 's' : ''} on ${monthName} ${dayOfMonth}`;
 
                     return (
-                      <Tooltip id={popoverId} content={content}>
+                      <Tooltip id={popoverId} content={content} key={popoverId}>
                         <div
                           className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
                         />

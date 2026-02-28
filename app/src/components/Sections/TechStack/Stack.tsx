@@ -13,7 +13,7 @@ const Stack = (techStack: ITechStack) => {
           {techStack.skills.map((skill, index) => {
             const skillId = `skill-${skill.name}-${index}`;
             return (
-              <Tooltip id={skillId} content={skill.name}>
+              <Tooltip id={skillId} content={skill.name} key={skillId}>
                 <div key={index} className={'size-5 sm:size-8'}>
                   {skill.svg}
                 </div>
