@@ -8,7 +8,7 @@ const TechStack = () => {
     <>
       <div className={'flex flex-col'}>
         <Title title={'Tech Stack'}></Title>
-        <div className={'grid gap-5 md:grid-cols-2'}>
+        <div className={'grid gap-5 '}>
           <Stack {...frontendSkill}></Stack>
           <Stack {...backendSkill}></Stack>
           <Stack {...environmentSkill}></Stack>

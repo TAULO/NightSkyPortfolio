@@ -22,7 +22,8 @@ import {
   mysqlSVG,
   nginxSVG,
   nodejsSVG,
-  nuxtSVG, openAPISVG,
+  nuxtSVG,
+  openAPISVG,
   postgressqlSVG,
   postmanSVG,
   pythonSVG,
@@ -56,8 +57,7 @@ export interface ITechStack {
 const frontendSkill: ITechStack = {
   name: 'Frontend',
   description: `
-    Frontend development is where my passion truly lies.  
-    I love combining creativity with technology to bring ideas to life.
+   
   `,
   skills: [
     {
@@ -149,8 +149,7 @@ const backendSkill: ITechStack = {
 const environmentSkill: ITechStack = {
   name: 'Environment',
   description: `
-      When it comes to development environments, I enjoy exploring new tools and 
-      technologies — never getting too comfortable with just one. 
+   
   `,
   skills: [
     {
@@ -222,9 +221,7 @@ const environmentSkill: ITechStack = {
 
 const languagesSkill = {
   name: 'Languages',
-  description: `I have experience with multiple programming languages across different domains, 
-    from backend development with C# and Java, to frontend applications with TypeScript 
-    and JavaScript, mobile development with dart, as well as scripting with Python.`,
+  description: ``,
   skills: [
     {
       name: 'C#',
@@ -253,9 +250,4 @@ const languagesSkill = {
   ],
 };
 
-export {
-  frontendSkill,
-  backendSkill,
-  environmentSkill,
-  languagesSkill,
-}
+export { frontendSkill, backendSkill, environmentSkill, languagesSkill };
