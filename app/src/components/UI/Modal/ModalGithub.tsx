@@ -189,11 +189,15 @@ function ModalGithub({ modalId }: { modalId: string }) {
         <div className={'flex h-2 w-full'}>
           <div
             style={{ width: `${myPercentage}%` }}
-            className={`rounded-full bg-[#F03060]`}
+            className={`bg-[#F03060] ${
+              myPercentage === 100 ? 'rounded-full' : 'rounded-l-full'
+            }`}
           ></div>
           <div
             style={{ width: `${opponentPercentage}%` }}
-            className={`rounded-full bg-[#2D1B5E]`}
+            className={`bg-[#2D1B5E] ${
+              opponentPercentage === 100 ? 'rounded-full' : 'rounded-r-full'
+            }`}
           ></div>
         </div>
       </div>
@@ -246,7 +250,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
         )}
         {vsRemoved && (
           <div className={'animate-fade-in flex flex-col gap-8'}>
-            <div id={'avatars-container'} className={'grid grid-cols-2'}>
+            <div id={'avatars-container'} className={'grid sm:grid-cols-2'}>
               <div className={'flex gap-4 text-center'}>
                 <img
                   className={'size-18 rounded-full bg-white'}
@@ -286,7 +290,9 @@ function ModalGithub({ modalId }: { modalId: string }) {
             </div>
             <div
               id={'head-to-head'}
-              className={'bg-secondary flex flex-col gap-4 rounded-xl p-6'}
+              className={
+                'bg-secondary px-8 flex flex-col gap-4 rounded-xl py-4'
+              }
             >
               <h3 className={'font-bold text-white/60'}>Head to Head</h3>
               {headToHeadArr.map((item, index) => (
