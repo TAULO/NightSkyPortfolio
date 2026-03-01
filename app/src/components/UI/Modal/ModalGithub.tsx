@@ -102,7 +102,9 @@ function ModalGithub({ modalId }: { modalId: string }) {
   const opponentStreaks = getDailyStreaks(opponentContributionsWeek);
 
   const myLongestStreak = getLongestDailyStreak(myContributionsWeek);
-  const opponentLongestStreaks = getLongestDailyStreak(myContributionsWeek);
+  const opponentLongestStreaks = getLongestDailyStreak(
+    opponentContributionsWeek
+  );
 
   const headToHeadArr = [
     {
@@ -189,11 +191,15 @@ function ModalGithub({ modalId }: { modalId: string }) {
     return (
       <div className={'flex flex-col'}>
         <div
-          className={'flex justify-between text-sm font-semibold text-white/40'}
+          className={
+            'grid grid-cols-[1fr_auto_1fr] text-sm font-semibold text-white/40'
+          }
         >
           <p className={`${iWon ? 'text-my-github' : ''}`}>{myVal}</p>
-          <p>{title}</p>
-          <p className={`${!iWon ? 'text-opponent-github' : ''}`}>
+          <p className={'place-self-center'}>{title}</p>
+          <p
+            className={`place-self-end ${!iWon ? 'text-opponent-github' : ''}`}
+          >
             {opponentVal}
           </p>
         </div>
@@ -272,10 +278,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
     return (
       <div className="flex items-end justify-center gap-2">
         {podiums.map((p) => (
-          <div
-            key={p.rank}
-            className={`flex flex-col items-center ${p.rank === 1 ? 'order-0' : 'order-2'}`}
-          >
+          <div key={p.rank} className={`flex flex-col items-center`}>
             {/* Avatar */}
             <div className={'relative'}>
               <img
@@ -363,7 +366,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
         </div>
 
         {/* Score badge */}
-        <p className={'sm:text-lg font-extrabold text-white'}>
+        <p className={'font-extrabold text-white sm:text-lg'}>
           {myWins} - {opponentWins}
         </p>
 
