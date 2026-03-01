@@ -5,6 +5,7 @@ import {
   IGitHubUser,
 } from '../../../hooks/useGithubContributions.ts';
 import { useEffect, useState } from 'react';
+import Tooltip from '../Tooltip/Tooltip.tsx';
 
 export interface IGithubModal {
   myGithub: IGitHubUser;
@@ -164,7 +165,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
       >
         <div className={'flex flex-col items-center'}>
           <img
-            className={'sm:size-32 size-24 rounded-full bg-white'}
+            className={'size-24 rounded-full bg-white sm:size-32'}
             src={props.src}
             alt={`${props.githubName} avatar`}
           />
@@ -276,11 +277,34 @@ function ModalGithub({ modalId }: { modalId: string }) {
             className={`flex flex-col items-center ${p.rank === 1 ? 'order-0' : 'order-2'}`}
           >
             {/* Avatar */}
-            <img
-              className={'mb-1 size-12 rounded-full bg-white'}
-              src={p.src}
-              alt={`${p.name} avatar`}
-            />
+            <div className={'relative'}>
+              <img
+                className={'mb-1 size-12 rounded-full bg-white'}
+                src={p.src}
+                alt={`${p.name} avatar`}
+              />
+              <div
+                className={`absolute -right-[20px] -top-[10px] size-6 rotate-[55deg] text-yellow-400 ${
+                  p.rank !== 1 ? 'hidden' : ''
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M21.8382 11.1263C22.0182 9.2137 22.1082 8.25739 21.781 7.86207C21.604 7.64823 21.3633 7.5172 21.106 7.4946C20.6303 7.45282 20.0329 8.1329 18.8381 9.49307C18.2202 10.1965 17.9113 10.5482 17.5666 10.6027C17.3757 10.6328 17.1811 10.6018 17.0047 10.5131C16.6865 10.3529 16.4743 9.91812 16.0499 9.04851L13.8131 4.46485C13.0112 2.82162 12.6102 2 12 2C11.3898 2 10.9888 2.82162 10.1869 4.46486L7.95007 9.04852C7.5257 9.91812 7.31351 10.3529 6.99526 10.5131C6.81892 10.6018 6.62434 10.6328 6.43337 10.6027C6.08872 10.5482 5.77977 10.1965 5.16187 9.49307C3.96708 8.1329 3.36968 7.45282 2.89399 7.4946C2.63666 7.5172 2.39598 7.64823 2.21899 7.86207C1.8918 8.25739 1.9818 9.2137 2.16181 11.1263L2.391 13.5616C2.76865 17.5742 2.95748 19.5805 4.14009 20.7902C5.32271 22 7.09517 22 10.6401 22H13.3599C16.9048 22 18.6773 22 19.8599 20.7902C20.7738 19.8553 21.0942 18.4447 21.367 16"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M9 18H15"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
             {/* Name & Score */}
             <p className={'text-sm font-bold text-white'}>{p.name}</p>
             <p className={'mb-2 text-xs text-white/70'}>{p.score} pts</p>
@@ -304,6 +328,64 @@ function ModalGithub({ modalId }: { modalId: string }) {
             </div>
           </div>
         ))}
+      </div>
+    );
+  };
+
+  const WinLossBreakdown = () => {
+    const myWins = headToHeadArr.filter(
+      (item) => item.myVal >= item.opponentVal
+    ).length;
+    const opponentWins = headToHeadArr.filter(
+      (item) => item.opponentVal >= item.myVal
+    ).length;
+
+    return (
+      <div className={'flex items-center justify-center gap-3'}>
+        {/* My dots */}
+        <div className={'flex gap-1'}>
+          {headToHeadArr.map((item, i) => {
+            const tooltipId = `popover-my-${item.title}-${i}`;
+            return (
+              <Tooltip id={tooltipId} content={item.title} key={i}>
+                <div
+                  className={`size-3 rounded-full ${
+                    item.myVal > item.opponentVal
+                      ? 'bg-my-github'
+                      : item.myVal === item.opponentVal
+                        ? 'bg-white/20'
+                        : 'bg-white/10'
+                  }`}
+                />
+              </Tooltip>
+            );
+          })}
+        </div>
+
+        {/* Score badge */}
+        <p className={'sm:text-lg font-extrabold text-white'}>
+          {myWins} - {opponentWins}
+        </p>
+
+        {/* Opponent dots */}
+        <div className={'flex gap-1'}>
+          {headToHeadArr.map((item, i) => {
+            const tooltipId = `popover-opponent-${item.title}-${i}`;
+            return (
+              <Tooltip id={tooltipId} content={item.title} key={i}>
+                <div
+                  className={`size-3 rounded-full ${
+                    item.opponentVal > item.myVal
+                      ? 'bg-opponent-github'
+                      : item.opponentVal === item.myVal
+                        ? 'bg-white/20'
+                        : 'bg-white/10'
+                  }`}
+                />
+              </Tooltip>
+            );
+          })}
+        </div>
       </div>
     );
   };
@@ -333,7 +415,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
             <div
               style={{ animationDelay: '0.5s' }}
               className={
-                'animate-jump-in absolute right-1/2 top-1/2 grid sm:size-16 size-12 -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-white'
+                'animate-jump-in absolute right-1/2 top-1/2 grid size-12 -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-white sm:size-16'
               }
             >
               <p className={'text-my-github text-2xl font-extrabold'}>VS</p>
@@ -410,10 +492,11 @@ function ModalGithub({ modalId }: { modalId: string }) {
             </div>
             <div
               className={
-                'bg-secondary flex flex-col gap-4 rounded-xl px-8 pt-4'
+                'bg-secondary flex flex-col gap-4 rounded-t-xl px-8 pt-4'
               }
             >
               <h3 className={'font-bold text-white/60'}>Leaderboard</h3>
+              <WinLossBreakdown></WinLossBreakdown>
               <Leaderboard></Leaderboard>
             </div>
           </div>
