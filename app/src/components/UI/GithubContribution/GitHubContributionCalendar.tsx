@@ -6,13 +6,17 @@ import {
 
 const GitHubContributionCalendar = ({
   githubUser,
+  githubUsernameFromInput,
 }: {
   githubUser: IGitHubUser | null;
+  githubUsernameFromInput: string;
 }) => {
+  if (!githubUsernameFromInput) return null;
+
   if (!githubUser) {
     return (
       <h3 className={'text-center text-xl font-bold text-white'}>
-        {`TODO is not a GitHub user`}
+        {`${githubUsernameFromInput} is not a GitHub user`}
       </h3>
     );
   }

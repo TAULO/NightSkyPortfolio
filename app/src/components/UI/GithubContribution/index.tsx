@@ -3,9 +3,7 @@ import { useRef, useState } from 'react';
 import Button from '../Button/Button.tsx';
 import Input from '../Input/Input.tsx';
 import { useModal } from '../Modal/ModalProvider.tsx';
-import {
-  useGitHubContributions,
-} from '../../../hooks/useGithubContributions.ts';
+import { useGitHubContributions } from '../../../hooks/useGithubContributions.ts';
 import { IGithubModal } from '../Modal/ModalGithub.tsx';
 
 const GithubContribution = () => {
@@ -18,13 +16,11 @@ const GithubContribution = () => {
   const myGithubUser = useGitHubContributions(myGithubUsername);
   const opponentGithubUser = useGitHubContributions(otherGithubUsername);
 
-  console.log(myGithubUser);
-
   return (
     <div className={'flex min-w-0 max-w-fit flex-col'}>
       <div className={'flex flex-col gap-8'}>
-        <GitHubContributionCalendar githubUser={myGithubUser} />
-        <GitHubContributionCalendar githubUser={opponentGithubUser} />
+        <GitHubContributionCalendar githubUser={myGithubUser} githubUsernameFromInput={myGithubUsername} />
+        <GitHubContributionCalendar githubUser={opponentGithubUser} githubUsernameFromInput={otherGithubUsername} />
         <div className={'flex gap-2'}>
           <Input
             className={'grow'}
