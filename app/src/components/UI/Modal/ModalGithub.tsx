@@ -45,6 +45,9 @@ function ModalGithub({ modalId }: { modalId: string }) {
 
   const myContributions = myGithub.contributionsCollection;
   const opponentContributions = opponentGithub.contributionsCollection;
+  const myContributionsWeek = myContributions.contributionCalendar.weeks;
+  const opponentContributionsWeek =
+    opponentContributions.contributionCalendar.weeks;
 
   function getDailyStreaks(contributions: Array<IContributionWeek>): number {
     let streak = 0;
@@ -72,12 +75,40 @@ function ModalGithub({ modalId }: { modalId: string }) {
     return streak;
   }
 
-  const myStreaks = getDailyStreaks(myContributions.contributionCalendar.weeks);
-  const opponentStreaks = getDailyStreaks(
-    opponentContributions.contributionCalendar.weeks
-  );
+  function getLongestDailyStreak(
+    contributions: Array<IContributionWeek>
+  ): number {
+    let longest = 0;
+    let current = 0;
+
+    for (let i = 0; i < contributions.length; i++) {
+      const days = contributions[i]?.contributionDays ?? [];
+
+      for (let j = 0; j < days.length; j++) {
+        if (days[j].contributionCount > 0) {
+          current++;
+          longest = Math.max(longest, current);
+        } else {
+          current = 0;
+        }
+      }
+    }
+
+    return longest;
+  }
+
+  const myStreaks = getDailyStreaks(myContributionsWeek);
+  const opponentStreaks = getDailyStreaks(opponentContributionsWeek);
+
+  const myLongestStreak = getLongestDailyStreak(myContributionsWeek);
+  const opponentLongestStreaks = getLongestDailyStreak(myContributionsWeek);
 
   const headToHeadArr = [
+    {
+      title: 'LONGEST STREAK',
+      myVal: myLongestStreak,
+      opponentVal: opponentLongestStreaks,
+    },
     {
       title: 'DAILY STREAKS',
       myVal: myStreaks,
@@ -108,29 +139,6 @@ function ModalGithub({ modalId }: { modalId: string }) {
       myVal: myContributions.totalRepositoryContributions,
       opponentVal: opponentContributions.totalRepositoryContributions,
     },
-    {
-      title: 'REPOS W/ COMMITS',
-      myVal: myContributions.totalRepositoriesWithContributedCommits,
-      opponentVal:
-        opponentContributions.totalRepositoriesWithContributedCommits,
-    },
-    {
-      title: 'REPOS W/ ISSUES',
-      myVal: myContributions.totalRepositoriesWithContributedIssues,
-      opponentVal: opponentContributions.totalRepositoriesWithContributedIssues,
-    },
-    {
-      title: 'REPOS W/ PRS',
-      myVal: myContributions.totalRepositoriesWithContributedPullRequests,
-      opponentVal:
-        opponentContributions.totalRepositoriesWithContributedPullRequests,
-    },
-    {
-      title: 'REPOS W/ REVIEWS',
-      myVal: myContributions.totalRepositoriesWithContributedPullRequestReviews,
-      opponentVal:
-        opponentContributions.totalRepositoriesWithContributedPullRequestReviews,
-    },
   ];
 
   const score = headToHeadArr.reduce(
@@ -156,7 +164,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
       >
         <div className={'flex flex-col items-center'}>
           <img
-            className={'size-32 rounded-full bg-white'}
+            className={'sm:size-32 size-24 rounded-full bg-white'}
             src={props.src}
             alt={`${props.githubName} avatar`}
           />
@@ -182,24 +190,120 @@ function ModalGithub({ modalId }: { modalId: string }) {
         <div
           className={'flex justify-between text-sm font-semibold text-white/40'}
         >
-          <p className={`${iWon ? 'text-[#F03060]' : ''}`}>{myVal}</p>
+          <p className={`${iWon ? 'text-my-github' : ''}`}>{myVal}</p>
           <p>{title}</p>
-          <p className={`${!iWon ? 'text-[#2D1B5E]' : ''}`}>{opponentVal}</p>
+          <p className={`${!iWon ? 'text-opponent-github' : ''}`}>
+            {opponentVal}
+          </p>
         </div>
         <div className={'flex h-2 w-full'}>
           <div
             style={{ width: `${myPercentage}%` }}
-            className={`bg-[#F03060] ${
+            className={`bg-my-github ${
               myPercentage === 100 ? 'rounded-full' : 'rounded-l-full'
             }`}
           ></div>
           <div
             style={{ width: `${opponentPercentage}%` }}
-            className={`bg-[#2D1B5E] ${
+            className={`bg-opponent-github ${
               opponentPercentage === 100 ? 'rounded-full' : 'rounded-r-full'
             }`}
           ></div>
         </div>
+      </div>
+    );
+  };
+
+  const Leaderboard = () => {
+    const myName = myGithub.name;
+    const opponentName = opponentGithub.name;
+
+    const iWon = score.myScore > score.opponentScore;
+    const maxScore = Math.max(score.myScore, score.opponentScore);
+    const minScore = Math.min(score.myScore, score.opponentScore);
+
+    const MAX_HEIGHT = 200;
+    const MIN_HEIGHT = 80;
+    const winnerHeight = MAX_HEIGHT;
+    const loserHeight =
+      maxScore > 0
+        ? Math.max(MIN_HEIGHT, (minScore / maxScore) * MAX_HEIGHT)
+        : MIN_HEIGHT;
+
+    const podiums = iWon
+      ? [
+          {
+            rank: 2,
+            height: loserHeight,
+            color: 'bg-opponent-github',
+            name: opponentName,
+            score: score.opponentScore,
+            src: opponentGithub.avatarUrl,
+          },
+          {
+            rank: 1,
+            height: winnerHeight,
+            color: 'bg-my-github',
+            name: myName,
+            score: score.myScore,
+            src: myGithub.avatarUrl,
+          },
+        ]
+      : [
+          {
+            rank: 2,
+            height: loserHeight,
+            color: 'bg-my-github',
+            name: myName,
+            score: score.myScore,
+            src: myGithub.avatarUrl,
+          },
+          {
+            rank: 1,
+            height: winnerHeight,
+            color: 'bg-opponent-github',
+            name: opponentName,
+            score: score.opponentScore,
+            src: opponentGithub.avatarUrl,
+          },
+        ];
+
+    return (
+      <div className="flex items-end justify-center gap-2">
+        {podiums.map((p) => (
+          <div
+            key={p.rank}
+            className={`flex flex-col items-center ${p.rank === 1 ? 'order-0' : 'order-2'}`}
+          >
+            {/* Avatar */}
+            <img
+              className={'mb-1 size-12 rounded-full bg-white'}
+              src={p.src}
+              alt={`${p.name} avatar`}
+            />
+            {/* Name & Score */}
+            <p className={'text-sm font-bold text-white'}>{p.name}</p>
+            <p className={'mb-2 text-xs text-white/70'}>{p.score} pts</p>
+
+            {/* Podium block */}
+            <div
+              className={`relative flex w-[100px] items-center justify-center rounded-t-2xl ${p.color}`}
+              style={{ height: `${p.height}px`, containerType: 'size' }}
+            >
+              <p
+                className={'font-extrabold text-white/30'}
+                style={{ fontSize: '40cqh' }}
+              >
+                {p.rank}
+              </p>
+              <div
+                className={
+                  'absolute inset-x-0 top-0 h-4 rounded-t-2xl bg-white/10'
+                }
+              />
+            </div>
+          </div>
+        ))}
       </div>
     );
   };
@@ -218,21 +322,21 @@ function ModalGithub({ modalId }: { modalId: string }) {
               }
             ></div>
             {/*LEFT (MY GITHUB) */}
-            <div className={'absolute inset-0 bg-[#F03060]'}></div>
+            <div className={'bg-my-github absolute inset-0'}></div>
             {/*RIGHT (OPPONENT GITHUB) */}
             <div
               className={
-                'absolute inset-0 bg-[#2D1B5E] [clip-path:polygon(61%_0%,100%_0%,100%_100%,40%_100%)]'
+                'bg-opponent-github absolute inset-0 [clip-path:polygon(61%_0%,100%_0%,100%_100%,40%_100%)]'
               }
             ></div>
             {/* VS */}
             <div
               style={{ animationDelay: '0.5s' }}
               className={
-                'animate-jump-in absolute right-1/2 top-1/2 grid size-16 -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-white'
+                'animate-jump-in absolute right-1/2 top-1/2 grid sm:size-16 size-12 -translate-y-1/2 translate-x-1/2 place-items-center rounded-full bg-white'
               }
             >
-              <p className={'text-2xl font-extrabold text-[#2D1B5E]'}>VS</p>
+              <p className={'text-my-github text-2xl font-extrabold'}>VS</p>
             </div>
             <GithubUserComponent
               float={'left'}
@@ -291,7 +395,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
             <div
               id={'head-to-head'}
               className={
-                'bg-secondary px-8 flex flex-col gap-4 rounded-xl py-4'
+                'bg-secondary flex flex-col gap-4 rounded-xl px-8 py-4'
               }
             >
               <h3 className={'font-bold text-white/60'}>Head to Head</h3>
@@ -304,9 +408,13 @@ function ModalGithub({ modalId }: { modalId: string }) {
                 />
               ))}
             </div>
-            <div id={'scoreboard'} className={'flex flex-col gap-4 text-white'}>
-              <div>{score.myScore}</div>
-              <div>{score.opponentScore}</div>
+            <div
+              className={
+                'bg-secondary flex flex-col gap-4 rounded-xl px-8 pt-4'
+              }
+            >
+              <h3 className={'font-bold text-white/60'}>Leaderboard</h3>
+              <Leaderboard></Leaderboard>
             </div>
           </div>
         )}

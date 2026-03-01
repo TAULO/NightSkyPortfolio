@@ -12,6 +12,9 @@
   --color-menu: rgba(41, 46, 86, 0.2);
   --color-border: #858b9833;
   --color-border-hover: #858b9866;
+
+  --color-my-github: #7c6cdb;
+  --color-opponent-github: #2dd4bf;
 }
 
 .animate-twinkle {
