@@ -240,38 +240,38 @@ function ModalGithub({ modalId }: { modalId: string }) {
     const podiums = iWon
       ? [
           {
-            rank: 2,
-            height: loserHeight,
-            color: 'bg-opponent-github',
-            name: opponentName,
-            score: score.opponentScore,
-            src: opponentGithub.avatarUrl,
-          },
-          {
             rank: 1,
             height: winnerHeight,
             color: 'bg-my-github',
             name: myName,
             score: score.myScore,
             src: myGithub.avatarUrl,
+          },
+          {
+            rank: 2,
+            height: loserHeight,
+            color: 'bg-opponent-github',
+            name: opponentName,
+            score: score.opponentScore,
+            src: opponentGithub.avatarUrl,
           },
         ]
       : [
           {
-            rank: 2,
-            height: loserHeight,
-            color: 'bg-my-github',
-            name: myName,
-            score: score.myScore,
-            src: myGithub.avatarUrl,
-          },
-          {
             rank: 1,
             height: winnerHeight,
             color: 'bg-opponent-github',
             name: opponentName,
             score: score.opponentScore,
             src: opponentGithub.avatarUrl,
+          },
+          {
+            rank: 2,
+            height: loserHeight,
+            color: 'bg-my-github',
+            name: myName,
+            score: score.myScore,
+            src: myGithub.avatarUrl,
           },
         ];
 
@@ -343,10 +343,12 @@ function ModalGithub({ modalId }: { modalId: string }) {
       (item) => item.opponentVal >= item.myVal
     ).length;
 
+    const iWin = score.myScore > score.opponentScore;
+
     return (
       <div className={'flex items-center justify-center gap-3'}>
         {/* My dots */}
-        <div className={'flex gap-1'}>
+        <div className={`flex gap-1 ${iWin ? 'order-1' : 'order-3'}`}>
           {headToHeadArr.map((item, i) => {
             const tooltipId = `popover-my-${item.title}-${i}`;
             return (
@@ -366,12 +368,12 @@ function ModalGithub({ modalId }: { modalId: string }) {
         </div>
 
         {/* Score badge */}
-        <p className={'font-extrabold text-white sm:text-lg'}>
-          {myWins} - {opponentWins}
+        <p className={'order-2 font-extrabold text-white sm:text-lg'}>
+          {iWin ? myWins : opponentWins} - {iWin ? opponentWins : myWins}
         </p>
 
         {/* Opponent dots */}
-        <div className={'flex gap-1'}>
+        <div className={`flex gap-1 ${iWin ? 'order-3' : 'order-1'}`}>
           {headToHeadArr.map((item, i) => {
             const tooltipId = `popover-opponent-${item.title}-${i}`;
             return (
