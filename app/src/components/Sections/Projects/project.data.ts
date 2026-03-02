@@ -103,7 +103,7 @@ const athleticaProject: IProject = {
     },
     {
       svg: typescriptSVG,
-      name: 'TypeScroåt',
+      name: 'TypeScript',
     },
     {
       svg: tailwindSVG,
