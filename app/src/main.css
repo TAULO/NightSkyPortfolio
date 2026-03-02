@@ -13,8 +13,12 @@
   --color-border: #858b9833;
   --color-border-hover: #858b9866;
 
-  --color-my-github: #7c6cdb;
-  --color-opponent-github: #2dd4bf;
+  /*--color-my-github: #7c6cdb;*/
+  /*--color-opponent-github: #2dd4bf;*/
+
+
+    --color-my-github: oklch(71.4% 0.203 305.504);
+    --color-opponent-github: oklch(70.7% 0.165 254.624);
 }
 
 .animate-twinkle {
