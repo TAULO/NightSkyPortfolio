@@ -301,6 +301,4 @@ const allUniqTechStacks = projects
       self.findIndex((stack) => stack.name === value.name) === index
   );
 
-console.log(allUniqTechStacks);
-
 export { projects, allUniqTechStacks };
