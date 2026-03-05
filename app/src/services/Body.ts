@@ -1,37 +1,26 @@
-import bodies from "./Bodies.js";
-
-const sun = bodies[0];
-const moon = bodies[1];
-const mercury = bodies[2];
-const venus = bodies[3];
-const earth = bodies[4];
-const mars = bodies[5];
-const jupiter = bodies[6];
-const saturn = bodies[7];
-const uranus = bodies[8];
-const neptune = bodies[9];
-const pluto = bodies[10];
-
-class CelestialBody {
+export class CelestialBody {
   private readonly _body: any;
+  name: string;
 
-  constructor(body) {
+  constructor(body: unknown) {
     this._body = body;
+    this.name = this._body['entry']['name'];
+    console.log(this._body);
   }
 
-  getName() {
-    return this._body['entry']['name'];
-  }
-
-  getDistanceFromEarthInKm() {
+  getDistanceFromEarthInKm(): number {
     return this._body['cells'][0]['distance']['fromEarth']['km'];
+  }
+
+  getDistanceFromEarthInAU(): number {
+    return this._body['cells'][0]['distance']['fromEarth']['au'];
   }
 
   /**
    * Up / Down
    * @returns {*}
    */
-  getAltitudeInDeg() {
+  getAltitudeInDeg(): number {
     return this._body['cells'][0]['position']['horizontal']['altitude'][
       'degrees'
     ];
@@ -42,28 +31,9 @@ class CelestialBody {
    * 0° = North, 90° = East, 180° = South, 270° = West
    * @returns {*}
    */
-  getAzimuthInDeg() {
+  getAzimuthInDeg(): number {
     return this._body['cells'][0]['position']['horizontal']['azimuth'][
       'degrees'
     ];
   }
-}
-
-
-export class Sun extends CelestialBody {
-    constructor() {
-        super(sun);
-    }
-}
-
-export class Moon extends CelestialBody {
-    constructor() {
-        super(moon);
-    }
-}
-
-export class Mars extends CelestialBody {
-    constructor() {
-        super(mars);
-    }
 }

@@ -39,7 +39,6 @@ async function getBodiesPositions() {
   apiUrl.searchParams.append('time', time);
 
   const res = await getRes(apiUrl);
-
   return res.json();
 }
 
@@ -58,7 +57,7 @@ async function getRes(url) {
   });
 }
 
-// const bodies = await getBodies();
-const bodiesPositions = await getBodiesPositions();
-
-export default bodiesPositions['data']['table']['rows'];
+export async function fetchBodiesPositions() {
+  const bodiesPositions = await getBodiesPositions();
+  return bodiesPositions['data']['table']['rows'];
+}

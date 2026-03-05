@@ -1,13 +1,10 @@
-import { Mars, Moon, Sun } from '../../services/Body.ts';
-const sun = new Sun();
-const moon = new Moon();
-const mars = new Mars();
+import { CelestialBody } from '../../services/Body.ts';
 
 function getScreenPosition(
-  altitudeDeg,
-  azimuthDeg,
-  containerWidth,
-  containerHeight
+  altitudeDeg: number,
+  azimuthDeg: number,
+  containerWidth: number,
+  containerHeight: number
 ) {
   // Horizontal position based on azimuth (0° = North at center, wraps around)
   // Map azimuth to screen width: 0°-360° maps to full width
@@ -34,9 +31,15 @@ function getScreenPosition(
   };
 }
 
-function updateBodyPosition(bodyName, altitude, azimuth) {
+function updateBodyPosition(
+  bodyName: string,
+  altitude: number,
+  azimuth: number
+) {
   const hero = document.getElementById('hero');
   const sunEl = document.getElementById(bodyName);
+
+  if (!hero || !sunEl) return null;
 
   const pos = getScreenPosition(
     altitude,
@@ -55,12 +58,35 @@ function updateBodyPosition(bodyName, altitude, azimuth) {
   );
 }
 
-const CelestialBody = (props) => {
+const CelestialBodyComponent = ({
+  body,
+}: {
+  body: CelestialBody | undefined;
+}) => {
+  if (!body) return null;
+
+  updateBodyPosition(
+    body.name,
+    body.getAltitudeInDeg(),
+    body.getAzimuthInDeg()
+  );
+
   return (
     <>
-      <div> {props.name} </div>
+      <div
+        className={
+          'absolute flex size-12 items-center justify-center rounded-full bg-yellow-400 text-center text-white'
+        }
+        id={body.name}
+      >
+        <div className={'flex flex-col font-bold'}>
+          <p>{body.name}</p>
+          <p>{body.getDistanceFromEarthInKm()} </p>
+          <p>{body.getDistanceFromEarthInAU()} </p>
+        </div>
+      </div>
     </>
   );
 };
 
-export default CelestialBody;
+export default CelestialBodyComponent;
