@@ -482,7 +482,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
             <div
               id={'head-to-head'}
               className={
-                'bg-secondary flex flex-col gap-4 rounded-xl px-8 py-4'
+                'bg-secondary border-border flex flex-col gap-4 rounded-xl border px-8 py-4'
               }
             >
               <h3 className={'font-bold text-white/60'}>Head to Head</h3>
@@ -497,7 +497,7 @@ function ModalGithub({ modalId }: { modalId: string }) {
             </div>
             <div
               className={
-                'bg-secondary flex flex-col gap-4 rounded-t-xl px-8 pt-4'
+                'bg-secondary border-border flex flex-col gap-4 rounded-t-xl border-x border-t px-8 pt-4'
               }
             >
               <h3 className={'font-bold text-white/60'}>Leaderboard</h3>
