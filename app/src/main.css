@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons&display=block');
 @import 'tailwindcss';
 @import 'tailwindcss-animated';
 
@@ -16,9 +17,8 @@
   /*--color-my-github: #7c6cdb;*/
   /*--color-opponent-github: #2dd4bf;*/
 
-
-    --color-my-github: oklch(71.4% 0.203 305.504);
-    --color-opponent-github: oklch(70.7% 0.165 254.624);
+  --color-my-github: oklch(71.4% 0.203 305.504);
+  --color-opponent-github: oklch(70.7% 0.165 254.624);
 }
 
 .animate-twinkle {
