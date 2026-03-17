@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import NavBar from './components/NavBar/NavBar.tsx';
 import TechStack from './components/Sections/TechStack/TechStack.tsx';
 import Experience from './components/Sections/Experience/Experience.tsx';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
 import GithubContribution from './components/UI/GithubContribution';
 import Projects from './components/Sections/Projects/Projects.tsx';
@@ -11,6 +11,19 @@ import { ModalProvider } from './components/UI/Modal/ModalProvider.tsx';
 import ModalProject from './components/UI/Modal/ModalProject.tsx';
 import ModalGithub from './components/UI/Modal/ModalGithub.tsx';
 import { Contact } from './components/Sections/Contact';
+import '@taulo1999/heyshorty';
+import { IShorty } from '@taulo1999/heyshorty';
+import { projects } from './components/Sections/Projects/project.data.ts';
+
+function scrollIntoView(element: RefObject<HTMLElement | null>) {
+  if (!element.current) return;
+
+  const offset = 40;
+  window.scrollTo({
+    top: element.current.offsetTop - offset,
+    behavior: 'smooth',
+  });
+}
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -18,6 +31,51 @@ function App() {
   const projectsRef = useRef<HTMLElement>(null);
   const aboutMeRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+
+  console.log(projects);
+
+  const projectsChildren: Array<IShorty> = projects.map((project) => {
+    return {
+      id: project.name,
+      name: project.name,
+      icon: 'commit',
+      handler: () => window.open(project.hrefCode, '_blank'),
+    };
+  });
+
+  const shortyData: Array<IShorty> = [
+    {
+      id: 'Experience',
+      name: 'Experience',
+      icon: 'work',
+      handler: () => scrollIntoView(experienceRef),
+    },
+    {
+      id: 'Projects',
+      name: 'Projects...',
+      icon: 'folder_special',
+      children: projectsChildren,
+      // handler: () => scrollIntoView(projectsRef),
+    },
+    {
+      id: 'About Me',
+      name: 'About Me',
+      icon: 'person',
+      handler: () => scrollIntoView(aboutMeRef),
+    },
+    {
+      id: 'Tech Stack',
+      name: 'Tech Stack',
+      icon: 'layers',
+      handler: () => scrollIntoView(techStackRef),
+    },
+    {
+      id: 'Contact',
+      name: 'Contact',
+      icon: 'mail',
+      handler: () => scrollIntoView(contactRef),
+    },
+  ];
 
   return (
     <>
@@ -56,6 +114,8 @@ function App() {
         <ModalProject modalId={'project-modal'}></ModalProject>
         <ModalGithub modalId={'github-modal'}></ModalGithub>
       </ModalProvider>
+      {/*@ts-ignore*/}
+      <hey-shorty data={shortyData}></hey-shorty>
     </>
   );
 }
