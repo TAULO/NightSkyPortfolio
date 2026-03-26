@@ -60,7 +60,7 @@ const Projects = () => {
     <div className={'flex flex-col gap-4'}>
       <Title title={'Projects'}></Title>
       <div className={'flex flex-col gap-2 md:flex-row'}>
-        <div className={'relative'}>
+        <div className={'relative w-fit'}>
           <Button
             text={hasSelectedTechStack ? 'All' : 'Clear'}
             onClick={toggleTechStackSelection}
