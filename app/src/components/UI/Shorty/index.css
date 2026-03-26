@@ -2,5 +2,7 @@ hey-shorty {
     --shorty-primary-color: var(--color-secondary);
     --shorty-secondary-color: var(--color-tertiary);
     --shorty-font-family: var(--font-sans);
-    --shorty-key-background-color: var(--color-primary);
+    --shorty-breadcrumb-color: var(--color-primary);
+    --shorty-border: 1px solid var(--color-border);
+    --shorty-keys-color: var(--color-secondary);
 }
