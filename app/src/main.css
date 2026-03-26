@@ -10,6 +10,7 @@
 
   --color-primary: #06080e;
   --color-secondary: rgb(12 15 25 / 1);
+  --color-tertiary: oklch(70.7% 0.165 254.624);
   --color-menu: rgba(41, 46, 86, 0.2);
   --color-border: #858b9833;
   --color-border-hover: #858b9866;

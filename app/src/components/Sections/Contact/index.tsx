@@ -12,7 +12,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   return (
     <a
       href={href}
-      className="mx-1 underline transition-all decoration-blue-400 decoration-2 underline-offset-4 hover:underline-offset-8"
+      className="mx-1 underline transition-all decoration-tertiary decoration-2 underline-offset-4 hover:underline-offset-8"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -38,7 +38,7 @@ export const Contact = () => {
       <div className={'my-8 flex justify-center gap-4'}>
         <a
           className={
-            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-blue-400'
+            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-tertiary'
           }
           href={githubHref}
           target={'_blank'}
@@ -47,7 +47,7 @@ export const Contact = () => {
         </a>
         <a
           className={
-            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-blue-400'
+            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-tertiary'
           }
           href={linkedinHref}
           target={'_blank'}
