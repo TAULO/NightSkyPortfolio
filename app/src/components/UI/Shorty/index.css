@@ -6,3 +6,5 @@ hey-shorty {
     --shorty-border: 1px solid var(--color-border);
     --shorty-keys-color: var(--color-secondary);
 }
+
+/*.shorty-underlay { background-color: red!important; }*/

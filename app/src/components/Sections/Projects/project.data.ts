@@ -6,6 +6,7 @@ import {
   firebaseSVG,
   htmlSVG,
   javascriptSVG,
+  litSVG,
   nuxtSVG,
   openAPISVG,
   postgressqlSVG,
@@ -131,6 +132,32 @@ const athleticaProject: IProject = {
   architecture: {
     architecture: athelticaArchitecture,
   },
+};
+
+const heyShortyProject: IProject = {
+  name: 'HeyShorty',
+  description: 'A custom Global Search modal component.',
+  hrefCode: 'https://github.com/TAULO/hey-shorty',
+  hrefLive: 'https://www.npmjs.com/settings/taulo1999/packages',
+  techStack: [
+    {
+      svg: litSVG,
+      name: 'Lit',
+    },
+    {
+      svg: typescriptSVG,
+      name: 'TypeScript',
+    },
+    {
+      svg: htmlSVG,
+      name: 'HTML',
+    },
+    {
+      svg: cssSVG,
+      name: 'CSS',
+    }
+  ],
+  images: athleticaImages,
 };
 
 const hvordanErVejretProject: IProject = {
@@ -285,6 +312,7 @@ const cpGameJam2024Project: IProject = {
 
 const projects: Array<IProject> = [
   athleticaProject,
+  heyShortyProject,
   hvordanErVejretProject,
   biavlerProject,
   atWEBProject,
