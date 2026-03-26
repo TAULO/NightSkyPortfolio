@@ -1,5 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 import { useModal } from '../UI/Modal/ModalProvider.tsx';
+import useScrollTo from '../../hooks/useScrollTo.ts';
 
 interface INavItem {
   name: string;
@@ -17,13 +18,7 @@ interface INavBarProps {
   contactRef: RefObject<HTMLElement | null>;
 }
 
-function scrollIntoView(element: RefObject<HTMLElement>) {
-  const offset = 40;
-  window.scrollTo({
-    top: element.current.offsetTop - offset,
-    behavior: 'smooth',
-  });
-}
+const scrollTo = useScrollTo();
 
 const NavBar = ({
   techStackRef,
@@ -161,7 +156,7 @@ const NavBar = ({
     );
 
     if (element?.current) {
-      scrollIntoView(element);
+      scrollTo(element);
     }
   }
 
