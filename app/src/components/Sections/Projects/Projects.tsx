@@ -67,7 +67,7 @@ const Projects = () => {
           />
           <div
             className={
-              'absolute -right-1 -top-1 size-4 rounded-full bg-blue-400'
+              'absolute -right-1 -top-1 size-4 rounded-full bg-tertiary'
             }
           >
             <p className={'text-center text-xs font-bold text-white'}>

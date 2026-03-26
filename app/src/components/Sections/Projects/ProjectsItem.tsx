@@ -39,7 +39,7 @@ const ProjectsItem = ({
               target="_blank"
               rel="noopener noreferrer"
               className={
-                'group/link flex items-center gap-1 text-sm text-blue-400 transition-colors hover:text-blue-400/80'
+                'group/link flex items-center gap-1 text-sm text-tertiary transition-colors hover:text-tertiary/80'
               }
             >
               <svg
