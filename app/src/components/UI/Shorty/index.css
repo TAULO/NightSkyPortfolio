@@ -1,0 +1,6 @@
+hey-shorty {
+    --shorty-primary-color: var(--color-secondary);
+    --shorty-secondary-color: var(--color-tertiary);
+    --shorty-font-family: var(--font-sans);
+    --shorty-key-background-color: var(--color-primary);
+}

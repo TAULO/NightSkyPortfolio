@@ -58,7 +58,7 @@ const Shorty = (refs: IShortyProps) => {
   ];
 
   return (
-    <div style={}>
+    <div>
       <hey-shorty data={shortyData}></hey-shorty>
     </div>
   );
