@@ -277,7 +277,7 @@ const adSkipperProject: IProject = {
 const taskMiningProject: IProject = {
   name: 'Task Mining',
   description: '',
-  hrefCode: '',
+  hrefCode: 'https://github.com/TAULO/TaskMiningReactApp',
   techStack: [
     {
       svg: reactSVG,
