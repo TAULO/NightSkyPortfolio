@@ -18,8 +18,8 @@ const ProjectsItem = ({
       onClick={() => openModal(project)}
     >
       <img
-        src={project.images[0].src}
-        alt={project.images[0].alt}
+        src={project.images[0]?.src}
+        alt={project.images[0]?.alt}
         className={
           'object-top-left border-border h-40 w-full border-b object-cover lg:h-52'
         }

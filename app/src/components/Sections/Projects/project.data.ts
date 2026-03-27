@@ -87,7 +87,7 @@ const athelticaArchitecture = `
 const athleticaProject: IProject = {
   name: 'Athletica',
   description:
-    'Athletica is a mobile-first workout tracker designed to help you take control of your fitness journey. Easily log workouts, exercises, monitor progress, and visualize your improvements over time. Built with customization at its core, Athletica adapts to your goals — so you can train smarter and stay motivated.',
+    "Athletica is a workout tracker i've co-built with my friend. Our primary goal of the project was to make design solution ourself, and try to experiment with new technologies. The project is still in beta, and we are actively working on improving the user experience and adding new features.",
   hrefCode: 'https://github.com/mahnac/Athletica',
   techStack: [
     {
@@ -136,7 +136,8 @@ const athleticaProject: IProject = {
 
 const heyShortyProject: IProject = {
   name: 'HeyShorty',
-  description: 'A custom Global Search modal component.',
+  description:
+    'A custom Global Search modal component. Try it out on this page with CTRL/CMD + K.',
   hrefCode: 'https://github.com/TAULO/hey-shorty',
   hrefLive: 'https://www.npmjs.com/settings/taulo1999/packages',
   techStack: [
@@ -155,9 +156,9 @@ const heyShortyProject: IProject = {
     {
       svg: cssSVG,
       name: 'CSS',
-    }
+    },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const hvordanErVejretProject: IProject = {
@@ -180,7 +181,7 @@ const hvordanErVejretProject: IProject = {
       name: 'Tailwind CSS',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const biavlerProject: IProject = {
@@ -206,7 +207,7 @@ const biavlerProject: IProject = {
       name: 'Firebase',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const atWEBProject: IProject = {
@@ -232,7 +233,7 @@ const atWEBProject: IProject = {
       name: 'Firebase',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const gitSnakeProject: IProject = {
@@ -254,7 +255,7 @@ const gitSnakeProject: IProject = {
       name: 'CSS',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const gitGraffitiProject: IProject = {
@@ -268,7 +269,7 @@ const gitGraffitiProject: IProject = {
       name: 'JavaScript',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const adSkipperProject: IProject = {
@@ -290,7 +291,7 @@ const adSkipperProject: IProject = {
       name: 'CSS',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const cpGameJam2024Project: IProject = {
@@ -307,7 +308,7 @@ const cpGameJam2024Project: IProject = {
       name: 'C#',
     },
   ],
-  images: athleticaImages,
+  images: [],
 };
 
 const projects: Array<IProject> = [
