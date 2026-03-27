@@ -13,7 +13,6 @@ import {
   reactSVG,
   tailwindSVG,
   typescriptSVG,
-  unitySVG,
   vitestSVG,
   vueSVG,
 } from '../TechStack/TechSVG.tsx';
@@ -39,6 +38,8 @@ const athleticaImages = useProjectAssets('athletica');
 const hvordanErVejretImages = useProjectAssets('hvordanervejret');
 const gitSnakeImages = useProjectAssets('gitsnake');
 const gitGraffitiImages = useProjectAssets('gitgraffiti');
+const biavlerImages = useProjectAssets('biavler');
+const shortyImages = useProjectAssets('shorty');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -161,7 +162,7 @@ const heyShortyProject: IProject = {
       name: 'CSS',
     },
   ],
-  images: [],
+  images: shortyImages,
 };
 
 const hvordanErVejretProject: IProject = {
@@ -210,33 +211,7 @@ const biavlerProject: IProject = {
       name: 'Firebase',
     },
   ],
-  images: [],
-};
-
-const atWEBProject: IProject = {
-  name: 'AT Portfolio',
-  description:
-    'A small personal portfolio website for my mother to showcase her artwork. The website is integrated with the Instagram API, automatically displaying her latest posts.',
-  hrefCode: 'https://github.com/TAULO/ATWeb',
-  techStack: [
-    {
-      svg: reactSVG,
-      name: 'React',
-    },
-    {
-      svg: javascriptSVG,
-      name: 'JavaScript',
-    },
-    {
-      svg: bootstrapSVG,
-      name: 'Bootstrap',
-    },
-    {
-      svg: firebaseSVG,
-      name: 'Firebase',
-    },
-  ],
-  images: [],
+  images: biavlerImages,
 };
 
 const gitSnakeProject: IProject = {
@@ -276,9 +251,9 @@ const gitGraffitiProject: IProject = {
 };
 
 const adSkipperProject: IProject = {
-  name: 'YouTube Ads Skipper',
+  name: 'YouTube and TV2 Ads Skipper',
   description:
-    'I was tired that most ad-blocking extension did not work anymore, so I built a small chrome extension that listens to the YouTube player, and if an Ad is playing, skips it.',
+    'I was tired that most ad-blocking extension did not work anymore, so I built a small chrome extension that listens to the YouTube player, and if an Ad is playing, skips it. Same story for TV2.',
   hrefCode: 'https://github.com/TAULO/ytp-hide-ads-extension',
   techStack: [
     {
@@ -297,33 +272,44 @@ const adSkipperProject: IProject = {
   images: [],
 };
 
-const cpGameJam2024Project: IProject = {
-  name: 'CP GameJam 2024',
-  description: 'Me and a Friend built the game for the 2024 CP GameJam. This year theme was ..., so we were inspired by ... ',
-  hrefCode: 'https://github.com/BossenGames/CPGameJam2024',
+const taskMiningProject: IProject = {
+  name: 'Task Mining',
+  description: '',
+  hrefCode: '',
   techStack: [
     {
-      svg: unitySVG,
-      name: 'Unity',
+      svg: reactSVG,
+      name: 'react',
+    },
+    {
+      svg: javascriptSVG,
+      name: 'JavaScript',
     },
     {
       svg: csharpSVG,
-      name: 'C#',
+      name: 'c#',
+    },
+    {
+      svg: dotnetcoreSVG,
+      name: '.NET Core',
+    },
+    {
+      svg: tailwindSVG,
+      name: 'tailwindcss',
     },
   ],
   images: [],
-};
+}
 
 const projects: Array<IProject> = [
   athleticaProject,
   heyShortyProject,
   hvordanErVejretProject,
   biavlerProject,
-  atWEBProject,
   gitSnakeProject,
   gitGraffitiProject,
   adSkipperProject,
-  cpGameJam2024Project,
+  taskMiningProject,
 ];
 
 const allUniqTechStacks = projects
