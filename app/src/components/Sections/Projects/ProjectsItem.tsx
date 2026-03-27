@@ -14,7 +14,7 @@ const ProjectsItem = ({
     <div
       id={'card'}
       className={
-        'bg-secondary border-border hover:border-border-hover h-full overflow-hidden rounded-3xl border shadow hover:cursor-pointer'
+        'bg-secondary border-border hover:border-border-hover h-full overflow-hidden rounded-3xl border shadow transition-all duration-300 hover:-translate-y-1 hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
     >
