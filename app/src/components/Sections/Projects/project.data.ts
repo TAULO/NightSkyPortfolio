@@ -40,6 +40,8 @@ const gitSnakeImages = useProjectAssets('gitsnake');
 const gitGraffitiImages = useProjectAssets('gitgraffiti');
 const biavlerImages = useProjectAssets('biavler');
 const shortyImages = useProjectAssets('shorty');
+const skipAdsImages = useProjectAssets('adskipper');
+const taskMiningImages = useProjectAssets('taskmining');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -269,7 +271,7 @@ const adSkipperProject: IProject = {
       name: 'CSS',
     },
   ],
-  images: [],
+  images: skipAdsImages,
 };
 
 const taskMiningProject: IProject = {
@@ -298,7 +300,7 @@ const taskMiningProject: IProject = {
       name: 'tailwindcss',
     },
   ],
-  images: [],
+  images: taskMiningImages,
 }
 
 const projects: Array<IProject> = [

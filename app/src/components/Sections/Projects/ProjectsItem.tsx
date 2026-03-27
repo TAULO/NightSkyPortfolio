@@ -9,6 +9,7 @@ const ProjectsItem = ({
 
   const stackIsSelected = (techName: string) =>
     selectedStacks.includes(techName);
+
   return (
     <div
       id={'card'}
@@ -17,6 +18,7 @@ const ProjectsItem = ({
       }
       onClick={() => openModal(project)}
     >
+      {}
       <img
         src={project.images[0]?.src}
         alt={project.images[0]?.alt}
@@ -39,7 +41,7 @@ const ProjectsItem = ({
               target="_blank"
               rel="noopener noreferrer"
               className={
-                'group/link flex items-center gap-1 text-sm text-tertiary transition-colors hover:text-tertiary/80'
+                'group/link text-tertiary hover:text-tertiary/80 flex items-center gap-1 text-sm transition-colors'
               }
             >
               <svg
