@@ -37,12 +37,8 @@ export interface IProject {
 
 const athleticaImages = useProjectAssets('athletica');
 const hvordanErVejretImages = useProjectAssets('hvordanervejret');
-const biavlerImages = useProjectAssets('biavler');
-const atWEBImages = useProjectAssets('atweb');
 const gitSnakeImages = useProjectAssets('gitsnake');
 const gitGraffitiImages = useProjectAssets('gitgraffiti');
-const adSkipperImages = useProjectAssets('adskipper');
-const cpGameJam2024Images = useProjectAssets('cpgamejam2024');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -262,7 +258,7 @@ const gitSnakeProject: IProject = {
       name: 'CSS',
     },
   ],
-  images: [],
+  images: gitSnakeImages,
 };
 
 const gitGraffitiProject: IProject = {
@@ -276,7 +272,7 @@ const gitGraffitiProject: IProject = {
       name: 'JavaScript',
     },
   ],
-  images: [],
+  images: gitGraffitiImages,
 };
 
 const adSkipperProject: IProject = {
