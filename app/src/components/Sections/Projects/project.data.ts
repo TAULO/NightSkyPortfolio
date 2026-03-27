@@ -276,9 +276,9 @@ const gitGraffitiProject: IProject = {
 };
 
 const adSkipperProject: IProject = {
-  name: 'AD Skipper',
+  name: 'YouTube Ads Skipper',
   description:
-    'A Chrome Extension detect AD videos on difference websites and skip them automatically.',
+    'I was tired that most ad-blocking extension did not work anymore, so I built a small chrome extension that listens to the YouTube player, and if an Ad is playing, skips it.',
   hrefCode: 'https://github.com/TAULO/ytp-hide-ads-extension',
   techStack: [
     {
@@ -299,7 +299,7 @@ const adSkipperProject: IProject = {
 
 const cpGameJam2024Project: IProject = {
   name: 'CP GameJam 2024',
-  description: '',
+  description: 'Me and a Friend built the game for the 2024 CP GameJam. This year theme was ..., so we were inspired by ... ',
   hrefCode: 'https://github.com/BossenGames/CPGameJam2024',
   techStack: [
     {
