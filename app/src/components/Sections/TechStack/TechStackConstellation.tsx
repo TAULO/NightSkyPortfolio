@@ -23,7 +23,7 @@ const TechStack = () => {
         <div id={'environment'} className={'place-self-end'}>
           <ConstellationStack {...environmentSkill}></ConstellationStack>
         </div>
-        <div id={'languages'} className={'justify-self-end_'}>
+        <div id={'languages'} className={'self-start'}>
           <ConstellationStack {...languagesSkill}></ConstellationStack>
         </div>
       </div>

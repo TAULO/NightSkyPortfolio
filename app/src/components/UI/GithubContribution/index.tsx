@@ -30,7 +30,7 @@ const GithubContribution = () => {
         <div className={'flex gap-2'}>
           <Input
             className={'grow'}
-            placeholder={'Type a GitHub username'}
+            placeholder={'Type a GitHub username, e.g. torvalds'}
             ref={inputRef}
           />
           <Button
