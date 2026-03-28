@@ -1,5 +1,5 @@
-import './index.css'
-import "@taulo1999/heyshorty"
+import './index.css';
+import '@taulo1999/heyshorty';
 import { IShorty } from '@taulo1999/heyshorty';
 import { projects } from '../../Sections/Projects/project.data.ts';
 import useScrollTo from '../../../hooks/useScrollTo.ts';
@@ -25,35 +25,80 @@ const Shorty = (refs: IShortyProps) => {
 
   const shortyData: Array<IShorty> = [
     {
-      id: 'Experience',
-      name: 'Experience',
-      icon: 'work',
-      handler: () => scrollTo(refs.experienceRef),
-    },
-    {
       id: 'Projects',
       name: 'Projects...',
       icon: 'folder_special',
       children: projectsChildren,
-      // handler: () => scrollTo(refs.projectRef),
     },
     {
-      id: 'About Me',
-      name: 'About Me',
-      icon: 'person',
-      handler: () => scrollTo(refs.aboutMeRef),
+      id: 'Socials',
+      name: 'Socials',
+      icon: 'group_add',
+      children: [
+        {
+          id: 'LinkedIn',
+          name: 'LinkedIn',
+          icon: 'hub',
+          handler: () =>
+            window.open(
+              'https://www.linkedin.com/in/https://www.linkedin.com/in/thomas-taulo-529084128',
+              '_blank'
+            ),
+        },
+        {
+          id: 'Github',
+          name: 'Github',
+          icon: 'merge',
+          handler: () => window.open('https://github.com/TAULO', '_blank'),
+        },
+        {
+          id: 'Goodreads',
+          name: 'Goodreads',
+          icon: 'book',
+          handler: () =>
+            window.open(
+              'https://www.goodreads.com/user/show/170297255-thomas-taulo',
+              '_blank'
+            ),
+        },
+      ],
     },
     {
-      id: 'Tech Stack',
-      name: 'Tech Stack',
-      icon: 'layers',
-      handler: () => scrollTo(refs.techStackRef),
-    },
-    {
-      id: 'Contact',
-      name: 'Contact',
-      icon: 'mail',
-      handler: () => scrollTo(refs.contactRef),
+      id: 'This Page',
+      name: 'On this page',
+      icon: 'menu',
+      children: [
+        {
+          id: 'Experience',
+          name: 'Experience',
+          icon: 'work',
+          handler: () => scrollTo(refs.experienceRef),
+        },
+        {
+          id: 'Project',
+          name: 'Project',
+          icon: 'folder_special',
+          handler: () => scrollTo(refs.projectRef),
+        },
+        {
+          id: 'About Me',
+          name: 'About Me',
+          icon: 'person',
+          handler: () => scrollTo(refs.aboutMeRef),
+        },
+        {
+          id: 'Tech Stack',
+          name: 'Tech Stack',
+          icon: 'layers',
+          handler: () => scrollTo(refs.techStackRef),
+        },
+        {
+          id: 'Contact',
+          name: 'Contact',
+          icon: 'mail',
+          handler: () => scrollTo(refs.contactRef),
+        },
+      ],
     },
   ];
 
