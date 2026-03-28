@@ -1,6 +1,3 @@
-import CelestialBody from '../CelestialBody/CelestialBody.tsx';
-import { useCelestialBodies } from '../../hooks/useCelestialBodies.tsx';
-
 const Hero = () => {
   // const bodies = useCelestialBodies();
   // const sun = bodies?.sun;

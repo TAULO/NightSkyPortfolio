@@ -12,6 +12,7 @@ import ModalGithub from './components/UI/Modal/ModalGithub.tsx';
 import { Contact } from './components/Sections/Contact';
 import Shorty from './components/UI/Shorty';
 import TechStackConstellation from './components/Sections/TechStack/TechStackConstellation.tsx';
+import AboutMe from './components/Sections/AboutMe';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -39,8 +40,9 @@ function App() {
             <Projects></Projects>
           </section>
           <section ref={aboutMeRef} id={'about-me'}>
-            <div className={'flex flex-col'}>
+            <div className={'flex flex-col gap-6'}>
               <Title title={'About Me'}></Title>
+              <AboutMe></AboutMe>
               <GithubContribution></GithubContribution>
             </div>
           </section>
