@@ -1,7 +1,6 @@
 import NightSky from './components/NightSky/NightSky.tsx';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar/NavBar.tsx';
-import TechStack from './components/Sections/TechStack/TechStack.tsx';
 import Experience from './components/Sections/Experience/Experience.tsx';
 import { useRef } from 'react';
 import Title from './components/UI/Title/Title.tsx';
@@ -12,6 +11,7 @@ import ModalProject from './components/UI/Modal/ModalProject.tsx';
 import ModalGithub from './components/UI/Modal/ModalGithub.tsx';
 import { Contact } from './components/Sections/Contact';
 import Shorty from './components/UI/Shorty';
+import TechStackConstellation from './components/Sections/TechStack/TechStackConstellation.tsx';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -45,7 +45,8 @@ function App() {
             </div>
           </section>
           <section ref={techStackRef} id={'tech-stack'}>
-            <TechStack></TechStack>
+            <Title title={'Tech Stack'}></Title>
+            <TechStackConstellation></TechStackConstellation>
           </section>
           <section ref={contactRef} id={'contact'}>
             <div className={'h-120'}>

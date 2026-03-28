@@ -19,6 +19,7 @@ import {
   javascriptSVG,
   javaSVG,
   kibanaSVG,
+  litSVG,
   mysqlSVG,
   nginxSVG,
   nodejsSVG,
@@ -71,6 +72,10 @@ const frontendSkill: ITechStack = {
     {
       name: 'Svelte',
       svg: svelteSVG,
+    },
+    {
+      name: 'Lit',
+      svg: litSVG,
     },
     {
       name: 'Nuxt',
