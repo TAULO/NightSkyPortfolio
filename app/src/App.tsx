@@ -33,28 +33,46 @@ function App() {
         ></NavBar>
         <NightSky>
           <Hero></Hero>
-          <section ref={experienceRef} id={'experience'}>
+          <section
+            ref={experienceRef}
+            id={'experience'}
+            className={'flex flex-col gap-6'}
+          >
+            <Title title={'Experience'} number={'02'}></Title>
             <Experience></Experience>
           </section>
-          <section ref={projectsRef} id={'projects'}>
+          <section
+            ref={projectsRef}
+            id={'projects'}
+            className={'flex flex-col gap-6'}
+          >
+            <Title title={'Projects'} number={'03'}></Title>
             <Projects></Projects>
           </section>
-          <section ref={aboutMeRef} id={'about-me'}>
-            <div className={'flex flex-col gap-6'}>
-              <Title title={'About Me'}></Title>
-              <AboutMe></AboutMe>
-              <GithubContribution></GithubContribution>
-            </div>
+          <section
+            ref={aboutMeRef}
+            id={'about-me'}
+            className={'flex flex-col gap-6'}
+          >
+            <Title title={'About Me'} number={'04'}></Title>
+            <AboutMe></AboutMe>
+            <GithubContribution></GithubContribution>
           </section>
-          <section ref={techStackRef} id={'tech-stack'}>
-            <Title title={'Tech Stack'}></Title>
+          <section
+            ref={techStackRef}
+            id={'tech-stack'}
+            className={'flex flex-col gap-6'}
+          >
+            <Title title={'Tech Stack'} number={'05'}></Title>
             <TechStackConstellation></TechStackConstellation>
           </section>
-          <section ref={contactRef} id={'contact'}>
-            <div className={'h-120'}>
-              <Title title={'Contact'}></Title>
-              <Contact></Contact>
-            </div>
+          <section
+            ref={contactRef}
+            id={'contact'}
+            className={'h-120 flex flex-col gap-6'}
+          >
+            <Title title={'Contact'} number={'06'}></Title>
+            <Contact></Contact>
           </section>
         </NightSky>
         <ModalProject modalId={'project-modal'}></ModalProject>

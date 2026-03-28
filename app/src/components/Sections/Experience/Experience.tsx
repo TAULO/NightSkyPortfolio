@@ -1,5 +1,4 @@
 import Switch from './Switch.tsx';
-import Title from '../../UI/Title/Title.tsx';
 import ExperienceItem from './ExperienceItem.tsx';
 import { useState } from 'react';
 
@@ -25,7 +24,6 @@ const Experience = () => {
   return (
     <>
       <div className={'flex flex-col'}>
-        <Title title={'Experience'}></Title>
         <div className={'flex flex-col gap-14 self-center sm:self-start'}>
           <Switch
             items={['Jobs', 'Education']}

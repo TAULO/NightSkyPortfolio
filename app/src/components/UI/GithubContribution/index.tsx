@@ -23,16 +23,8 @@ const GithubContribution = () => {
           githubUser={myGithubUser}
           githubUsernameFromInput={myGithubUsername}
         />
-        <GitHubContributionCalendar
-          githubUser={opponentGithubUser}
-          githubUsernameFromInput={otherGithubUsername}
-        />
-        <div className={'flex gap-2'}>
-          <Input
-            className={'grow'}
-            placeholder={'Type a GitHub username, e.g. torvalds'}
-            ref={inputRef}
-          />
+        <div className={'flex w-fit gap-2 self-end'}>
+          <Input placeholder={'e.g. torvalds'} ref={inputRef} />
           <Button
             onClick={() => {
               if (!inputRef.current) return;
@@ -41,6 +33,10 @@ const GithubContribution = () => {
             text={'Search'}
           />
         </div>
+        <GitHubContributionCalendar
+          githubUser={opponentGithubUser}
+          githubUsernameFromInput={otherGithubUsername}
+        />
 
         {myGithubUser && opponentGithubUser && (
           <button

@@ -1,5 +1,4 @@
 import ProjectsItem from './ProjectsItem.tsx';
-import Title from '../../UI/Title/Title.tsx';
 import { projects, allUniqTechStacks } from './project.data.ts';
 import { useEffect, useState } from 'react';
 import { ITechSkill } from '../TechStack/techstack.data.ts';
@@ -58,7 +57,6 @@ const Projects = () => {
 
   return (
     <div className={'flex flex-col gap-4'}>
-      <Title title={'Projects'}></Title>
       <div className={'flex flex-col gap-2 md:flex-row'}>
         <div className={'relative w-fit'}>
           <Button

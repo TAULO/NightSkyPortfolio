@@ -11,6 +11,7 @@ const Input = forwardRef<HTMLInputElement, IInput>(
         ref={ref}
         className={`border-border w-full rounded px-4 py-2 text-white border-1 ${className ?? ''}`}
         {...props}
+        name={'input'}
       />
     );
   }

@@ -65,6 +65,8 @@ const NavBar = ({
     },
   ]);
 
+  const [showNav, setShowNav] = useState(false);
+
   const { isOpen: isProjectOpen } = useModal('project-modal');
   const { isOpen: isFooOpen } = useModal('github-modal');
   const isAnyModalOpen = isProjectOpen || isFooOpen;
@@ -143,6 +145,12 @@ const NavBar = ({
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowNav(true);
+    }, 1500);
+  }, []);
+
   function selectNavItem(
     index: number,
     element?: RefObject<HTMLElement> | null
@@ -187,10 +195,11 @@ const NavBar = ({
   return (
     <>
       <div
-        className={
-          'bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2 scale-90 sm:scale-100'
-        }
-        hidden={isAnyModalOpen}
+        className={`bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
+          showNav && !isAnyModalOpen
+            ? 'animate-slide-up'
+            : 'translate-y-4 opacity-0 sm:-translate-y-4'
+        }`}
       >
         <div
           className={
