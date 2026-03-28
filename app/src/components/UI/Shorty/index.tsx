@@ -51,6 +51,12 @@ const Shorty = (refs: IShortyProps) => {
           icon: 'merge',
           handler: () => window.open('https://github.com/TAULO', '_blank'),
         },
+        {
+          id: 'Mail',
+          name: 'Mail',
+          icon: 'mail',
+          handler: () => window.open('mailto:taulo@live.dk', '_blank'),
+        },
       ],
     },
     {
