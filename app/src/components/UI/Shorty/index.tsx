@@ -51,16 +51,6 @@ const Shorty = (refs: IShortyProps) => {
           icon: 'merge',
           handler: () => window.open('https://github.com/TAULO', '_blank'),
         },
-        {
-          id: 'Goodreads',
-          name: 'Goodreads',
-          icon: 'book',
-          handler: () =>
-            window.open(
-              'https://www.goodreads.com/user/show/170297255-thomas-taulo',
-              '_blank'
-            ),
-        },
       ],
     },
     {
