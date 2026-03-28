@@ -2,10 +2,11 @@ hey-shorty {
     --shorty-primary-color: var(--color-secondary);
     --shorty-secondary-color: var(--color-tertiary);
     --shorty-font-family: var(--font-sans);
-    --shorty-breadcrumb-color: var(--color-primary);
+    --shorty-breadcrumb-color: color-mix(in srgb, var(--color-tertiary) 90%, white 10%);
     --shorty-border: 1px solid var(--color-border);
     --shorty-keys-color: var(--color-secondary);
-    --shorty-text-color: rgba(255, 255, 255, 0.5);
+    --shorty-text-color: #e1e3e8;
     --shorty-background-when-visible: rgba(0, 0, 0, 0.5);
+    --shorty-placeholder-color: #6b6f76;
 }
 
