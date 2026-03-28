@@ -13,10 +13,11 @@ const Hero = () => {
 
   return (
     <>
-      <div
-        id={'hero'}
-        className={'relative flex h-screen w-full justify-center'}
-      >
+      <div id={'hero'} className={'relative flex h-screen w-full'}>
+        <div className={'absolute left-[10%] top-[40%]'}>
+          <h1 className={'text-3xl font-bold text-white'}>HI! I'm Thomas</h1>
+          <p className={'text-white/50'}>Developer</p>
+        </div>
         {/*<CelestialBody body={sun}></CelestialBody>*/}
         {/*<CelestialBody body={mercury}></CelestialBody>*/}
         {/*<CelestialBody body={earth}></CelestialBody>*/}

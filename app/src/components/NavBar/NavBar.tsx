@@ -188,7 +188,7 @@ const NavBar = ({
     <>
       <div
         className={
-          'bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2'
+          'bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2 scale-90 sm:scale-100'
         }
         hidden={isAnyModalOpen}
       >
@@ -211,7 +211,7 @@ const NavBar = ({
                 {item.name}
               </div>
               <div
-                className={`absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center bg-tertiary transition-all duration-300 ease-in-out ${
+                className={`bg-tertiary absolute -bottom-[3px] h-0.5 w-2/3 origin-center self-center transition-all duration-300 ease-in-out ${
                   item.isActive || item.isSelected ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
