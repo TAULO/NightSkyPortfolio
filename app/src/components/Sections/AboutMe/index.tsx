@@ -9,8 +9,8 @@ const AboutMe = () => (
       than reach for the same tool every time.
     </p>
     <p className={'leading-7 text-white/50'}>
-      When I'm not in front of a dark-themed IDE, you'll find me at the gym,
-      hanging out with friends and family, or lost in a good book - anything
+      When I'm not sitting in front of a dark-themed IDE, you'll find me at the gym,
+      hanging out with friends or family, or lost in a good book - anything
       from non-fiction to Sci-Fi and High Fantasy. If you're a bookworm too,
       check me out on{' '}
       <a

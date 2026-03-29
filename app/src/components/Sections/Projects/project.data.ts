@@ -93,7 +93,7 @@ const athelticaArchitecture = `
 const athleticaProject: IProject = {
   name: 'Athletica',
   description:
-    "Athletica is a workout tracker i've co-built with my friend. Our primary goal of the project was to make design solution ourself, and try to experiment with new technologies. The project is still in beta, and we are actively working on improving the user experience and adding new features.",
+    "Athletica is a workout tracker I co-built with a friend. The goal was simple: design everything ourselves and experiment with some new technologies we hadn't used before. It's still in beta, but we're actively improving the experience and adding features.",
   hrefCode: 'https://github.com/mahnac/Athletica',
   techStack: [
     {
@@ -143,7 +143,7 @@ const athleticaProject: IProject = {
 const heyShortyProject: IProject = {
   name: 'HeyShorty',
   description:
-    'A custom Global Search modal component. Try it out on this page with CTRL/CMD + K.',
+    'A global search and command palette built as a web component with Lit and TypeScript. Published on npm as @taulo1999/heyshorty. Try it on this page with Ctrl/CMD + K.',
   hrefCode: 'https://github.com/TAULO/hey-shorty',
   hrefLive: 'https://www.npmjs.com/settings/taulo1999/packages',
   techStack: [
@@ -170,7 +170,7 @@ const heyShortyProject: IProject = {
 const hvordanErVejretProject: IProject = {
   name: 'Hvordan Er Vejret',
   description:
-    'I designed and developed a promotional website for the podcast Hvordan Er Vejret, created to help expand the show’s digital presence and reach a broader audience. The goal of the project was to create a central platform where listeners could easily access episodes, learn more about the hosts, and engage with the podcast across major streaming platforms.',
+    'A close friend group of mine started a podcast and needed somewhere to promote it. I built them a simple landing page with Vue and Tailwind - nothing fancy, just clean and easy to update.',
   hrefCode: 'https://github.com/TAULO/HvordanErVejret',
   hrefLive: 'https://hvordanervejret.dk/forside/',
   techStack: [
@@ -193,7 +193,7 @@ const hvordanErVejretProject: IProject = {
 const biavlerProject: IProject = {
   name: "Odense Beekeepers' Association",
   description:
-    "I developed a custom homepage for 'Ringe og Omegns Biavlerforening', a historic Danish beekeepers’ association that has existed since 1887 and is part of the national Danmarks Biavlerforening. The site serves as the association’s digital hub for members and potential future members, offering information about the organization’s purpose, activities, courses, recipes and galleries.",
+    'Built for the Odense Beekeepers Association, where my brother was a member. He asked me if I could build a small community hub with an admin panel for managing recipes, events, galleries, and more. Vue, Firebase, and Bootstrap under the hood.',
   hrefCode: 'https://github.com/TAULO/BiavlerFrontApp',
   techStack: [
     {
@@ -219,7 +219,7 @@ const biavlerProject: IProject = {
 const gitSnakeProject: IProject = {
   name: 'GitSnake',
   description:
-    'A Chrome Extension tool to play Snake on your GitHub Contributions.',
+    'A Chrome extension that turns your GitHub contribution graph into a game of Snake.',
   hrefCode: 'https://github.com/TAULO/GitSnake',
   techStack: [
     {
@@ -240,8 +240,7 @@ const gitSnakeProject: IProject = {
 
 const gitGraffitiProject: IProject = {
   name: 'GitGraffiti',
-  description:
-    'A Chrome Extension tool to customize your GitHub Contributions to impress your friends.',
+  description: 'A Chrome extension that lets you fake your GitHub contribution graph. For bragging, of course.',
   hrefCode: 'https://github.com/TAULO/GitGraffiti',
   techStack: [
     {
@@ -255,7 +254,7 @@ const gitGraffitiProject: IProject = {
 const adSkipperProject: IProject = {
   name: 'YouTube and TV2 Ads Skipper',
   description:
-    'I was tired that most ad-blocking extension did not work anymore, so I built a small chrome extension that listens to the YouTube player, and if an Ad is playing, skips it. Same story for TV2.',
+    'I was tired that most ad-blocking extension was blocked by YT, so I built a small chrome extension that listens to the YouTube player, and if an Ad is playing, skips it. Same story for the TV2 Player.',
   hrefCode: 'https://github.com/TAULO/ytp-hide-ads-extension',
   techStack: [
     {
@@ -301,7 +300,7 @@ const taskMiningProject: IProject = {
     },
   ],
   images: taskMiningImages,
-}
+};
 
 const projects: Array<IProject> = [
   athleticaProject,
