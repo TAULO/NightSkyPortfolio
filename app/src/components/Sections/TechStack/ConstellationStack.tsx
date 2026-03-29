@@ -24,7 +24,11 @@ const Stack = (techStack: ITechStack) => {
         }
       `}</style>
 
-      <div className={'origin-center scale-75 sm:scale-100'}>
+      <div
+        className={'origin-center scale-75 sm:scale-100'}
+        data-aos={'zoom-in'}
+        data-aos-anchor-placement={'bottom-bottom'}
+      >
         <div
           style={{ width: `${radiusInPx}px`, height: `${radiusInPx}px` }}
           className={

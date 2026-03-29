@@ -37,6 +37,7 @@ function App() {
             ref={experienceRef}
             id={'experience'}
             className={'flex flex-col gap-6'}
+            data-aos={'fade'}
           >
             <Title title={'Experience'} number={'02'}></Title>
             <Experience></Experience>
@@ -45,6 +46,7 @@ function App() {
             ref={projectsRef}
             id={'projects'}
             className={'flex flex-col gap-6'}
+            data-aos={'fade'}
           >
             <Title title={'Projects'} number={'03'}></Title>
             <Projects></Projects>
@@ -53,6 +55,7 @@ function App() {
             ref={aboutMeRef}
             id={'about-me'}
             className={'flex flex-col gap-6 sm:px-32'}
+            data-aos={'fade'}
           >
             <Title title={'About Me'} number={'04'}></Title>
             <AboutMe></AboutMe>
@@ -62,6 +65,7 @@ function App() {
             ref={techStackRef}
             id={'tech-stack'}
             className={'flex flex-col gap-6'}
+            data-aos={'fade'}
           >
             <Title title={'Tech Stack'} number={'05'}></Title>
             <TechStackConstellation></TechStackConstellation>
@@ -70,6 +74,7 @@ function App() {
             ref={contactRef}
             id={'contact'}
             className={'flex flex-col gap-6 sm:px-32'}
+            data-aos={'fade'}
           >
             <Title title={'Contact'} number={'06'}></Title>
             <Contact></Contact>
