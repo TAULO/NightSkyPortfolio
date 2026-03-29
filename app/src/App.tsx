@@ -52,7 +52,7 @@ function App() {
           <section
             ref={aboutMeRef}
             id={'about-me'}
-            className={'flex flex-col gap-6'}
+            className={'flex flex-col gap-6 sm:px-32'}
           >
             <Title title={'About Me'} number={'04'}></Title>
             <AboutMe></AboutMe>
@@ -69,7 +69,7 @@ function App() {
           <section
             ref={contactRef}
             id={'contact'}
-            className={'h-120 flex flex-col gap-6'}
+            className={'flex flex-col gap-6 sm:px-32'}
           >
             <Title title={'Contact'} number={'06'}></Title>
             <Contact></Contact>
