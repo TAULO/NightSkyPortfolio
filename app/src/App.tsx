@@ -13,6 +13,7 @@ import { Contact } from './components/Sections/Contact';
 import Shorty from './components/UI/Shorty';
 import TechStackConstellation from './components/Sections/TechStack/TechStackConstellation.tsx';
 import AboutMe from './components/Sections/AboutMe';
+import Footer from './components/Sections/Footer';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -81,6 +82,7 @@ function App() {
             <Title title={'Contact'} number={'06'}></Title>
             <Contact></Contact>
           </section>
+          <Footer></Footer>
         </NightSky>
         <ModalProject modalId={'project-modal'}></ModalProject>
         <ModalGithub modalId={'github-modal'}></ModalGithub>

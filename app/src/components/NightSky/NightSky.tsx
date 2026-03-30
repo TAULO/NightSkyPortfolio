@@ -33,7 +33,7 @@ const NightSky = ({ children }: { children: Array<ReactElement> }) => {
 
   return (
     <div
-      className={`relative bg-[#040615] px-5 pb-[100px] transition-all duration-300 sm:px-20 sm:pb-[400px] ${isAnyModalOpen ? 'brightness-25' : ''}`}
+      className={`relative bg-[#040615] px-5 transition-all duration-300 sm:px-20 ${isAnyModalOpen ? 'brightness-25' : ''}`}
       ref={starContainerRef}
     >
       <div className={'mx-auto max-w-[1600px]'}>
