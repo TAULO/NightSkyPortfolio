@@ -15,7 +15,7 @@ import {
   vueSVG,
 } from '../TechStack/TechSVG.tsx';
 import codingPiratesIcon from '../../../assets/static/codingPirates.png';
-import alfaIcon from '../../../assets/static/alfa.jpeg';
+import alfaIcon from '../../../assets/static/alfa.png';
 import sireniaIcon from '../../../assets/static/sirenia.svg';
 import baIcon from '../../../assets/static/ba.svg';
 
