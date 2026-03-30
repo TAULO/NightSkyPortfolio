@@ -16,10 +16,12 @@ const GithubContribution = () => {
   const myGithubUser = useGitHubContributions(myGithubUsername);
   const opponentGithubUser = useGitHubContributions(otherGithubUsername);
 
+  const hasFoundOpponent = !!(myGithubUser && opponentGithubUser);
+
   return (
     <div
       className={
-        'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-2 rounded-xl border p-6 transition-colors duration-300'
+        'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-6 rounded-xl border p-6 transition-colors duration-300'
       }
     >
       <span className={'font-mono text-sm tracking-widest text-white/25'}>
@@ -51,13 +53,23 @@ const GithubContribution = () => {
           }}
           text={'Search'}
         />
+        {hasFoundOpponent && (
+          <Button
+            onClick={() => {
+              if (!inputRef.current) return;
+              setOtherGithubUsername('');
+              inputRef.current.value = '';
+            }}
+            text={'Reset'}
+          />
+        )}
       </div>
       <GitHubContributionCalendar
         githubUser={opponentGithubUser}
         githubUsernameFromInput={otherGithubUsername}
       />
 
-      {myGithubUser && opponentGithubUser ? (
+      {hasFoundOpponent ? (
         <button
           onClick={() =>
             openModal({

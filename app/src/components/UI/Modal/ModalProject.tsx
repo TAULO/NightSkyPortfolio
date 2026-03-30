@@ -6,6 +6,7 @@ import ModalContainer from './ModalContainer.tsx';
 function ModalProject({ modalId }: { modalId: string }) {
   const { data: project, closeModal } = useModal<IProject>(modalId);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     setCurrentSlide(0);
@@ -25,10 +26,23 @@ function ModalProject({ modalId }: { modalId: string }) {
     );
   }
 
+  function toggleExpand() {
+    setIsExpanded(!isExpanded);
+  }
+
   return (
     <ModalContainer modalId={modalId}>
-      <div className={'flex flex-col gap-4 sm:grid sm:h-fit sm:grid-cols-2'}>
-        <div id={'slides'} className={'mb-4 flex flex-col gap-2 sm:mb-0'}>
+      <div
+        className={
+          'relative flex flex-col gap-4 sm:grid sm:h-fit sm:grid-cols-2'
+        }
+      >
+        <div
+          id={'slides'}
+          className={`mb-4 flex flex-col gap-2 sm:mb-0 ${
+            isExpanded ? 'sm:col-span-2' : ''
+          }`}
+        >
           <div className={'overflow-hidden'}>
             <div
               className={'flex gap-4'}
@@ -43,7 +57,13 @@ function ModalProject({ modalId }: { modalId: string }) {
                 return (
                   <div
                     key={index}
-                    className={'min-w-0 shrink-0 grow-0 basis-full'}
+                    className={
+                      'group/slide relative min-w-0 shrink-0 grow-0 basis-full hover:cursor-pointer'
+                    }
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleExpand();
+                    }}
                   >
                     {extension === 'mov' ? (
                       <video
@@ -62,6 +82,43 @@ function ModalProject({ modalId }: { modalId: string }) {
                         src={image.src}
                       />
                     )}
+                    {/* Hover hint */}
+                    <div
+                      className={
+                        'pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 transition-colors duration-300 group-hover/slide:bg-black/30'
+                      }
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={
+                          'text-white opacity-0 transition-opacity duration-300 group-hover/slide:opacity-80'
+                        }
+                      >
+                        {isExpanded ? (
+                          <>
+                            <polyline points="4 14 10 14 10 20" />
+                            <polyline points="20 10 14 10 14 4" />
+                            <line x1="14" y1="10" x2="21" y2="3" />
+                            <line x1="3" y1="21" x2="10" y2="14" />
+                          </>
+                        ) : (
+                          <>
+                            <polyline points="15 3 21 3 21 9" />
+                            <polyline points="9 21 3 21 3 15" />
+                            <line x1="21" y1="3" x2="14" y2="10" />
+                            <line x1="3" y1="21" x2="10" y2="14" />
+                          </>
+                        )}
+                      </svg>
+                    </div>
                   </div>
                 );
               })}
@@ -70,7 +127,7 @@ function ModalProject({ modalId }: { modalId: string }) {
           <div id={'controls'} className={'flex items-center gap-2'}>
             <button
               className={
-                'border-border hover:bg-secondary bg-secondary/25 inline-flex items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+                'border-border hover:bg-secondary bg-secondary/25 hover:border-border-hover inline-flex items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
               onClick={prevSlide}
             >
@@ -92,7 +149,7 @@ function ModalProject({ modalId }: { modalId: string }) {
             </button>
             <button
               className={
-                'border-border hover:bg-secondary bg-secondary/25 rotate-180 items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
+                'border-border hover:bg-secondary bg-secondary/25 hover:border-border-hover rotate-180 items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
               onClick={nextSlide}
             >
@@ -117,7 +174,10 @@ function ModalProject({ modalId }: { modalId: string }) {
             >{`Slide ${currentSlide + 1} of ${project.images.length}`}</p>
           </div>
         </div>
-        <div id={'body'} className={'mt-auto flex flex-col gap-2 sm:mt-0'}>
+        <div
+          id={'body'}
+          className={`mt-auto flex flex-col gap-2 sm:mt-0 ${isExpanded ? 'sm:col-span-2' : ''}`}
+        >
           <div className={'flex justify-between'}>
             <h1 className={'text-xl font-bold text-white'}>{project.name}</h1>
             <div className={'self-end'}>

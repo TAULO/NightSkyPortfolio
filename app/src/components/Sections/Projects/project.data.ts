@@ -275,7 +275,7 @@ const adSkipperProject: IProject = {
 
 const taskMiningProject: IProject = {
   name: 'Task Mining',
-  description: '',
+  description: 'My thesis project at EAAA. At Sirenia we wanted to build data analyser tool, that analyzes user activity to identify automation opportunities - known in the industry as task mining.',
   hrefCode: 'https://github.com/TAULO/TaskMiningReactApp',
   techStack: [
     {

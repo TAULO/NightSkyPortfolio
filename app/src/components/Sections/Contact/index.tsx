@@ -12,7 +12,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   return (
     <a
       href={href}
-      className="mx-1 underline transition-all decoration-tertiary decoration-2 underline-offset-4 hover:underline-offset-8"
+      className="decoration-tertiary mx-1 underline decoration-2 underline-offset-4 transition-all hover:underline-offset-8"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -23,7 +23,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
 
 export const Contact = () => {
   return (
-    <div className={'flex flex-col gap-4 text-white'}>
+    <div className={'flex flex-col gap-1 text-white leading-7'}>
       <p>
         If you want to present a fun opportunity, have questions or just want to
         have a chat, I'm always up to hearing from you.
@@ -31,14 +31,14 @@ export const Contact = () => {
       <p>
         You can catch me over on
         <ExternalLink href={githubHref}>GitHub</ExternalLink>
-        &&<ExternalLink href={linkedinHref}>LinkedIn</ExternalLink>or you can
+        or<ExternalLink href={linkedinHref}>LinkedIn</ExternalLink>or you can
         send me a good old-fashioned email at
         <ExternalLink href="mailto:taulo@live.com">taulo@live.com</ExternalLink>
       </p>
       <div className={'my-8 flex justify-center gap-4'}>
         <a
           className={
-            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-tertiary'
+            'hover:text-tertiary size-14 transition-colors duration-300 hover:cursor-pointer'
           }
           href={githubHref}
           target={'_blank'}
@@ -47,7 +47,7 @@ export const Contact = () => {
         </a>
         <a
           className={
-            'size-14 transition-colors duration-300 hover:cursor-pointer hover:text-tertiary'
+            'hover:text-tertiary size-14 transition-colors duration-300 hover:cursor-pointer'
           }
           href={linkedinHref}
           target={'_blank'}
