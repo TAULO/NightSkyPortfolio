@@ -2,6 +2,7 @@ import { ReactElement, useEffect, useRef, useState } from 'react';
 import Star from './Star.tsx';
 import ShootingStar from './ShootingStar.tsx';
 import { useModal } from '../UI/Modal/ModalProvider.tsx';
+import Socials from '../UI/Socials';
 
 const STARS_COUNT = 400;
 const SHOOTING_STARS_COUNT = 5;
@@ -43,6 +44,7 @@ const NightSky = ({ children }: { children: Array<ReactElement> }) => {
         {stars}
         {shootingStars}
       </div>
+      <Socials></Socials>
     </div>
   );
 };
