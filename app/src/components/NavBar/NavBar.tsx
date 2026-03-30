@@ -203,7 +203,7 @@ const NavBar = ({
       >
         <div
           className={
-            'bg-menu backdrop-grayscale-25 border-border flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-2xl border px-5 py-3 text-[.55rem] font-semibold text-white shadow-lg backdrop-blur-lg sm:gap-10 sm:text-sm 2xl:text-sm'
+            'bg-menu backdrop-grayscale-25 hover:border-border-hover border-border flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-2xl border px-5 py-3 text-[.55rem] font-semibold text-white shadow-lg backdrop-blur-lg transition-colors duration-300 sm:gap-10 sm:text-sm 2xl:text-sm'
           }
         >
           {navItems.map((item, index) => (

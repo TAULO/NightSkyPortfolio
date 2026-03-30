@@ -37,12 +37,16 @@ const Projects = () => {
   ).length;
 
   function toggleTechStackClick(index: number) {
+    const allSelected = allUniqTechStacksSelected.every(({ isSelected }) => isSelected);
+    const noneSelected = allUniqTechStacksSelected.every(({ isSelected }) => !isSelected);
+
     const updatedTechStacks = allUniqTechStacksSelected.map((stack, i) => {
-      if (i === index) {
-        return { ...stack, isSelected: !stack.isSelected };
+      if (allSelected || noneSelected) {
+        return { ...stack, isSelected: i !== index };
       }
-      return stack;
+      return { ...stack, isSelected: i === index ? !stack.isSelected : stack.isSelected };
     });
+
     setAllUniqTechStacksSelected(updatedTechStacks);
   }
 

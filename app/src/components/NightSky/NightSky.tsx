@@ -36,7 +36,7 @@ const NightSky = ({ children }: { children: Array<ReactElement> }) => {
       className={`relative bg-[#040615] px-5 pb-[100px] transition-all duration-300 sm:px-20 sm:pb-[400px] ${isAnyModalOpen ? 'brightness-25' : ''}`}
       ref={starContainerRef}
     >
-      <div className={'flex flex-col gap-36'}>{children}</div>
+      <div className={'sm:gap-42 flex flex-col gap-24'}>{children}</div>
       <div className={'pointer-events-none absolute inset-0 overflow-hidden'}>
         {stars}
         {shootingStars}
