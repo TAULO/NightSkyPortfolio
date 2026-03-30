@@ -1,4 +1,42 @@
+import { useEffect, useState } from 'react';
+const githubQuery = `
+  query {
+    repository(owner: "TAULO", name: "NightSkyPortfolio") {
+      stargazerCount
+      defaultBranchRef {
+        target {
+          ... on Commit {
+            history {
+              totalCount
+            }
+          }
+        }
+      }
+    }
+  }
+    `;
+
 const Footer = () => {
+  const [githubData, setGithubData] = useState<any>(null);
+  useEffect(() => {
+    const response = fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: githubQuery }),
+    });
+
+    response
+      .then((res) => res.json())
+      .then((data) => setGithubData(data))
+      .catch((error) => console.error('Error fetching GitHub data:', error));
+  }, []);
+
+  const stars = githubData?.data?.repository?.stargazerCount ?? '0';
+  const commits = githubData?.data?.repository?.defaultBranchRef?.target?.history?.totalCount ?? '0';
+
   return (
     <footer
       className={
@@ -36,7 +74,7 @@ const Footer = () => {
               }
             />
           </svg>
-          <span>{'8,207'}</span>
+          <span>{stars}</span>
         </span>
         <span className={'flex items-center gap-1'}>
           <svg
@@ -51,7 +89,7 @@ const Footer = () => {
               }
             />
           </svg>
-          <span>{'4,223'}</span>
+          <span>{commits}</span>
         </span>
       </div>
     </footer>
