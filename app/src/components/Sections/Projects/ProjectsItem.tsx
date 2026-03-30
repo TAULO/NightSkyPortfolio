@@ -12,7 +12,7 @@ const ProjectsItem = ({
 
   return (
     <div
-      id={'card'}
+      id={'project-card'}
       className={
         'bg-secondary border-border hover:border-border-hover overflow-hidden rounded-3xl border transition-all duration-300 ease-out hover:-translate-y-1 hover:cursor-pointer'
       }
@@ -27,7 +27,7 @@ const ProjectsItem = ({
           'object-top-left border-border h-40 w-full border-b object-cover lg:h-52'
         }
       />
-      <div id={'card-body'} className={'flex flex-1 flex-col gap-2 px-4 py-6'}>
+      <div id={'project-card-body'} className={'flex flex-1 flex-col gap-2 px-4 py-6'}>
         <div className={'flex justify-between'}>
           <h1
             className={

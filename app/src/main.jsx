@@ -7,7 +7,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 AOS.init({
-  duration: 800, // animation duration in ms
+  once: true,
+  duration: 400, // animation duration in ms
   easing: 'ease-out', // easing function
 });
 
