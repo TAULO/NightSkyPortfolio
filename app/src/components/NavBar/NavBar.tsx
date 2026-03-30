@@ -195,7 +195,7 @@ const NavBar = ({
   return (
     <>
       <div
-        className={`bottom-15 sm:top-15 fixed left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
+        className={`sm:top-15 fixed bottom-5 left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
           showNav && !isAnyModalOpen
             ? 'animate-slide-up'
             : 'translate-y-4 opacity-0 sm:-translate-y-4'
