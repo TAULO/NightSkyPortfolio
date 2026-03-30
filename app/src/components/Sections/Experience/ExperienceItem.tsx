@@ -14,7 +14,7 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
         }
       >
         <img
-          className={'hidden h-fit w-14 rounded-2xl md:block md:w-20'}
+          className={'hidden h-auto w-14 rounded-2xl md:block md:w-20'}
           src={item.image?.src}
           alt={item.image?.alt}
         />
@@ -37,12 +37,10 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
               }
             >
               <h1 className={'text-xl font-bold md:text-2xl'}>{item.title}</h1>
-              <p className={'break-words md:whitespace-nowrap'}>
-                {item.place}
-              </p>
+              <p className={'break-words md:whitespace-nowrap'}>{item.place}</p>
             </div>
             <img
-              className={'h-fit w-14 rounded-2xl md:hidden'}
+              className={'h-auto w-14 rounded-2xl md:hidden'}
               src={item.image?.src}
               alt={item.image?.alt}
             />
