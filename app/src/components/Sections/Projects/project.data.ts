@@ -288,7 +288,7 @@ const taskMiningProject: IProject = {
     },
     {
       svg: csharpSVG,
-      name: 'c#',
+      name: 'C#',
     },
     {
       svg: dotnetcoreSVG,
@@ -296,7 +296,7 @@ const taskMiningProject: IProject = {
     },
     {
       svg: tailwindSVG,
-      name: 'tailwindcss',
+      name: 'Tailwind CSS',
     },
   ],
   images: taskMiningImages,
