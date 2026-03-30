@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 const githubQuery = `
   query {
-    repository(owner: "TAULO", name: "NightSkyPortfolio") {
+    repository(owner: "TAULO", name: "TAULO") {
       stargazerCount
       defaultBranchRef {
         target {
