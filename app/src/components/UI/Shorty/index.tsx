@@ -41,7 +41,7 @@ const Shorty = (refs: IShortyProps) => {
           icon: 'hub',
           handler: () =>
             window.open(
-              'https://www.linkedin.com/in/https://www.linkedin.com/in/thomas-taulo-529084128',
+              'https://www.linkedin.com/in/thomas-taulo-529084128',
               '_blank'
             ),
         },
