@@ -71,11 +71,8 @@ const GitHubContributionCalendar = ({
   }
 
   return contributions.length === 0 ? null : (
-    <div
-      id={'github-contributions'}
-      className={'flex min-w-0 max-w-fit flex-col gap-2 overflow-x-auto'}
-    >
-      <div className={'flex justify-between'}>
+    <div id={'github-contributions'} className={'flex min-w-0 flex-col gap-2'}>
+      <div className={'flex flex-col justify-between md:flex-row'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
         <p className={'font-semibold text-white/50'}>
           {totalContributionsCount} Contributions in the last year
@@ -89,7 +86,7 @@ const GitHubContributionCalendar = ({
           const label = getWeekDateFromIndex(weekIndex);
 
           return (
-            <div key={weekIndex} className={'relative flex flex-col'}>
+            <div key={weekIndex} className={'relative flex shrink-0 flex-col'}>
               {label ? (
                 <p
                   className={

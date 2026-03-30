@@ -54,12 +54,12 @@ function App() {
           <section
             ref={aboutMeRef}
             id={'about-me'}
-            className={'flex flex-col gap-6 sm:px-32'}
+            className={'flex flex-col gap-6 lg:px-32'}
             data-aos={'fade'}
           >
             <Title title={'About Me'} number={'04'}></Title>
             <AboutMe></AboutMe>
-            <div className={'self-center'}>
+            <div className={'lg:self-center'}>
               <GithubContribution></GithubContribution>
             </div>
           </section>

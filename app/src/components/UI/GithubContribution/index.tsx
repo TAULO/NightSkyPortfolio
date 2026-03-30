@@ -17,98 +17,96 @@ const GithubContribution = () => {
   const opponentGithubUser = useGitHubContributions(otherGithubUsername);
 
   return (
-    <div className={'flex flex-col'}>
-      <div
-        className={
-          'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-4 rounded-xl border p-6 transition-colors duration-300'
-        }
-      >
-        <span className={'font-mono text-sm tracking-widest text-white/20'}>
-          // github.activity
+    <div
+      className={
+        'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-2 rounded-xl border p-6 transition-colors duration-300'
+      }
+    >
+      <span className={'font-mono text-sm tracking-widest text-white/25'}>
+        // github.activity
+      </span>
+      <GitHubContributionCalendar
+        githubUser={myGithubUser}
+        githubUsernameFromInput={myGithubUsername}
+      />
+      {/* VS LINE */}
+      <div className={'flex items-center gap-3'}>
+        <div className={'bg-border h-px flex-1'} />
+        <span
+          className={
+            'border-border rounded-full border px-4 py-1 text-center font-mono text-sm tracking-widest text-white/25'
+          }
+        >
+          VS
         </span>
-        <GitHubContributionCalendar
-          githubUser={myGithubUser}
-          githubUsernameFromInput={myGithubUsername}
+        <div className={'bg-border h-px flex-1'} />
+      </div>
+      {/* INPUT VS OTHER USER */}
+      <div className={'flex gap-2'}>
+        <Input placeholder={'e.g. torvalds'} ref={inputRef} />
+        <Button
+          onClick={() => {
+            if (!inputRef.current) return;
+            setOtherGithubUsername(inputRef.current.value);
+          }}
+          text={'Search'}
         />
-        {/* VS LINE */}
-        <div className={'flex items-center gap-3'}>
-          <div className={'bg-border h-px flex-1'} />
-          <span
-            className={
-              'border-border rounded-full border px-4 py-1 text-center font-mono text-sm tracking-widest text-white/25'
-            }
-          >
-            VS
-          </span>
-          <div className={'bg-border h-px flex-1'} />
-        </div>
-        {/* INPUT VS OTHER USER */}
-        <div className={'flex gap-2'}>
-          <Input placeholder={'e.g. torvalds'} ref={inputRef} />
-          <Button
-            onClick={() => {
-              if (!inputRef.current) return;
-              setOtherGithubUsername(inputRef.current.value);
-            }}
-            text={'Search'}
-          />
-        </div>
-        <GitHubContributionCalendar
-          githubUser={opponentGithubUser}
-          githubUsernameFromInput={otherGithubUsername}
-        />
+      </div>
+      <GitHubContributionCalendar
+        githubUser={opponentGithubUser}
+        githubUsernameFromInput={otherGithubUsername}
+      />
 
-        {myGithubUser && opponentGithubUser ? (
-          <button
-            onClick={() =>
-              openModal({
-                myGithub: myGithubUser,
-                opponentGithub: opponentGithubUser,
-              })
-            }
+      {myGithubUser && opponentGithubUser ? (
+        <button
+          onClick={() =>
+            openModal({
+              myGithub: myGithubUser,
+              opponentGithub: opponentGithubUser,
+            })
+          }
+          className={
+            'group relative flex items-center justify-center overflow-hidden rounded-xl px-6 py-2 font-extrabold text-white shadow-lg hover:cursor-pointer'
+          }
+        >
+          {/* Content */}
+          <div
             className={
-              'group relative flex items-center justify-center overflow-hidden rounded-xl px-6 py-2 font-extrabold text-white shadow-lg hover:cursor-pointer'
+              'border-border hover:border-border-hover relative flex items-center gap-3 rounded-xl border px-4 py-2'
             }
           >
-            {/* Content */}
-            <div
+            <img
+              src={myGithubUser.avatarUrl}
+              alt={myGithubUser.name}
+              className={'border-border size-8 rounded-full border'}
+            />
+            <span className={'text-sm tracking-wider'}>
+              {myGithubUser.name.toUpperCase()}
+            </span>
+            <span
               className={
-                'border-border hover:border-border-hover relative flex items-center gap-3 rounded-xl border px-4 py-2'
+                'text-my-github rounded-full bg-white px-2 py-0.5 text-xs font-extrabold'
               }
             >
-              <img
-                src={myGithubUser.avatarUrl}
-                alt={myGithubUser.name}
-                className={'border-border size-8 rounded-full border'}
-              />
-              <span className={'text-sm tracking-wider'}>
-                {myGithubUser.name.toUpperCase()}
-              </span>
-              <span
-                className={
-                  'text-my-github rounded-full bg-white px-2 py-0.5 text-xs font-extrabold'
-                }
-              >
-                VS
-              </span>
-              <span className={'text-sm tracking-wider'}>
-                {opponentGithubUser.name.toUpperCase()}
-              </span>
-              <img
-                src={opponentGithubUser.avatarUrl}
-                alt={opponentGithubUser.name}
-                className={'border-border size-8 rounded-full border'}
-              />
-            </div>
-          </button>
-        ) : (
-          <p className={'mt-2 font-mono text-sm text-white/25'}>
-            {
-              'Type your GitHub username (or any) to compare contributions with me'
-            }
-          </p>
-        )}
-      </div>
+              VS
+            </span>
+            <span className={'text-sm tracking-wider'}>
+              {opponentGithubUser.name.toUpperCase()}
+            </span>
+            <img
+              src={opponentGithubUser.avatarUrl}
+              alt={opponentGithubUser.name}
+              className={'border-border size-8 rounded-full border'}
+            />
+          </div>
+        </button>
+      ) : (
+        <p className={'mt-2 font-mono text-sm text-white/25'}>
+          {
+            'Type your GitHub username (or any) to compare contributions with me'
+          }
+        </p>
+      )}
     </div>
   );
 };
