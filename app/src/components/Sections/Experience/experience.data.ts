@@ -42,7 +42,7 @@ const jobExperiences: Array<IExperienceItem> = [
   {
     title: 'Coding Pirates',
     role: 'Volunteer',
-    date: `Aug. 2024 - Present (${codingPiratesJobDuration.years} year, ${codingPiratesJobDuration.months} months)`,
+    date: `Aug. 2024 - Present (${codingPiratesJobDuration.years}, ${codingPiratesJobDuration.months})`,
     place: 'Aarhus, Denmark',
     tasks: [
       'Mentor children and young adults in developing technological confidence, creativity, and problem-solving skills through coding and game development',
@@ -66,7 +66,7 @@ const jobExperiences: Array<IExperienceItem> = [
   {
     title: 'Sirenia / Alfa eCare',
     role: 'Software Developer',
-    date: `Jan. 2023 - Present (${sireniaJobDuration.years} years, ${sireniaJobDuration.months} months)`,
+    date: `Jan. 2023 - Present (${sireniaJobDuration.years}, ${sireniaJobDuration.months})`,
     place: 'Aarhus, Denmark',
     tasks: [
       'Maintained and developed automation robots, including widely used modules for various EHR systems',
@@ -129,7 +129,7 @@ const jobExperiences: Array<IExperienceItem> = [
   {
     title: 'Sirenia',
     role: 'Intern',
-    date: `Aug. 2022 - Jan. 2023 (${internJobDuration.months} months)`,
+    date: `Aug. 2022 - Jan. 2023 (${internJobDuration.months})`,
     place: 'Aarhus, Denmark',
     tasks: [
       'Designed and developed a custom plugin integrating with the OpenAI API to enhance automation workflows',
@@ -183,7 +183,4 @@ const educationExperiences: Array<IExperienceItem> = [
   },
 ];
 
-export {
-  jobExperiences,
-  educationExperiences,
-}
+export { jobExperiences, educationExperiences };

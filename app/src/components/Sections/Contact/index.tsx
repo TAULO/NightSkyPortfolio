@@ -10,7 +10,9 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   return (
     <a
       href={href}
-      className="decoration-tertiary mx-1 underline decoration-2 underline-offset-4 transition-all hover:underline-offset-8"
+      className={
+        'decoration-tertiary mx-1 underline decoration-2 underline-offset-4 transition-all hover:underline-offset-8'
+      }
       target="_blank"
       rel="noopener noreferrer"
     >

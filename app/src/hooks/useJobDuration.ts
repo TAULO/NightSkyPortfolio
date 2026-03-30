@@ -14,7 +14,7 @@ export default function useJobDuration(from: string | number, to: string | numbe
   }
 
   return {
-    years,
-    months,
+    years: `${years} year${years > 1 ? 's' : ''}`,
+    months: `${months} month${months > 1 ? 's' : ''}`,
   };
 }

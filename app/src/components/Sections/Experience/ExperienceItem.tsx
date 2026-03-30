@@ -35,21 +35,20 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
               }
             >
               <h1 className={'text-xl font-bold md:text-2xl'}>{item.title}</h1>
-              <p className={'break-words font-extralight md:whitespace-nowrap'}>
+              <p className={'break-words md:whitespace-nowrap'}>
                 {item.place}
               </p>
-
             </div>
-              <img
-                className={'h-fit w-14 rounded-2xl md:hidden'}
-                src={item.image?.src}
-                alt={item.image?.alt}
-              />
+            <img
+              className={'h-fit w-14 rounded-2xl md:hidden'}
+              src={item.image?.src}
+              alt={item.image?.alt}
+            />
           </div>
 
           <div className={'mt-1 flex flex-col gap-0.5'}>
-            <p className={'text-sm md:text-base'}>{item.role}</p>
-            <p className={'text-sm md:text-base'}>{item.date}</p>
+            <p className={'text-sm text-white/50 md:text-base'}>{item.role}</p>
+            <p className={'text-sm text-white/50 md:text-base'}>{item.date}</p>
           </div>
         </div>
 
