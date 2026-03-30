@@ -59,7 +59,9 @@ function App() {
           >
             <Title title={'About Me'} number={'04'}></Title>
             <AboutMe></AboutMe>
-            <GithubContribution></GithubContribution>
+            <div className={'self-center'}>
+              <GithubContribution></GithubContribution>
+            </div>
           </section>
           <section
             ref={techStackRef}

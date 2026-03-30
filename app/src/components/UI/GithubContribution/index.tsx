@@ -17,13 +17,33 @@ const GithubContribution = () => {
   const opponentGithubUser = useGitHubContributions(otherGithubUsername);
 
   return (
-    <div className={'flex min-w-0 max-w-fit flex-col'}>
-      <div className={'flex flex-col gap-8'}>
+    <div className={'flex flex-col'}>
+      <div
+        className={
+          'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-4 rounded-xl border p-6 transition-colors duration-300'
+        }
+      >
+        <span className={'font-mono text-sm tracking-widest text-white/20'}>
+          // github.activity
+        </span>
         <GitHubContributionCalendar
           githubUser={myGithubUser}
           githubUsernameFromInput={myGithubUsername}
         />
-        <div className={'flex w-fit gap-2 self-end'}>
+        {/* VS LINE */}
+        <div className={'flex items-center gap-3'}>
+          <div className={'bg-border h-px flex-1'} />
+          <span
+            className={
+              'border-border rounded-full border px-4 py-1 text-center font-mono text-sm tracking-widest text-white/25'
+            }
+          >
+            VS
+          </span>
+          <div className={'bg-border h-px flex-1'} />
+        </div>
+        {/* INPUT VS OTHER USER */}
+        <div className={'flex gap-2'}>
           <Input placeholder={'e.g. torvalds'} ref={inputRef} />
           <Button
             onClick={() => {
@@ -38,7 +58,7 @@ const GithubContribution = () => {
           githubUsernameFromInput={otherGithubUsername}
         />
 
-        {myGithubUser && opponentGithubUser && (
+        {myGithubUser && opponentGithubUser ? (
           <button
             onClick={() =>
               openModal({
@@ -50,27 +70,16 @@ const GithubContribution = () => {
               'group relative flex items-center justify-center overflow-hidden rounded-xl px-6 py-2 font-extrabold text-white shadow-lg hover:cursor-pointer'
             }
           >
-            {/* Split background */}
-            <div className={'bg-my-github absolute inset-0'} />
-            <div
-              className={
-                'bg-opponent-github absolute inset-0 [clip-path:polygon(60%_0%,100%_0%,100%_100%,40%_100%)]'
-              }
-            />
-
-            {/* Shine effect on hover */}
-            <div
-              className={
-                'absolute inset-0 bg-white/0 transition-all group-hover:bg-white/10'
-              }
-            />
-
             {/* Content */}
-            <div className={'relative flex items-center gap-3'}>
+            <div
+              className={
+                'border-border hover:border-border-hover relative flex items-center gap-3 rounded-xl border px-4 py-2'
+              }
+            >
               <img
                 src={myGithubUser.avatarUrl}
                 alt={myGithubUser.name}
-                className={'size-8 rounded-full border-2 border-white/50'}
+                className={'border-border size-8 rounded-full border'}
               />
               <span className={'text-sm tracking-wider'}>
                 {myGithubUser.name.toUpperCase()}
@@ -88,10 +97,16 @@ const GithubContribution = () => {
               <img
                 src={opponentGithubUser.avatarUrl}
                 alt={opponentGithubUser.name}
-                className={'size-8 rounded-full border-2 border-white/50'}
+                className={'border-border size-8 rounded-full border'}
               />
             </div>
           </button>
+        ) : (
+          <p className={'mt-2 font-mono text-sm text-white/25'}>
+            {
+              'Type your GitHub username (or any) to compare contributions with me'
+            }
+          </p>
         )}
       </div>
     </div>

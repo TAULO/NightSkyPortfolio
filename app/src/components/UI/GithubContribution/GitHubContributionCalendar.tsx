@@ -51,6 +51,8 @@ const GitHubContributionCalendar = ({
     githubUser.contributionsCollection.contributionCalendar.totalContributions;
 
   function getWeekDateFromIndex(index: number): string | null {
+    if (index === 0) return null; // skip first month
+
     const monthStr = contributions[index]?.contributionDays?.[0]?.date;
     if (!monthStr) return null;
 
@@ -75,6 +77,9 @@ const GitHubContributionCalendar = ({
     >
       <div className={'flex justify-between'}>
         <h3 className={'text-xl font-bold text-white'}>{githubUsername}</h3>
+        <p className={'font-semibold text-white/50'}>
+          {totalContributionsCount} Contributions in the last year
+        </p>
       </div>
       <div
         id={'github-contributions-calendar'}
@@ -110,7 +115,7 @@ const GitHubContributionCalendar = ({
                     return (
                       <Tooltip id={popoverId} content={content} key={popoverId}>
                         <div
-                          className={`rounded-xs size-4 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                          className={`rounded-xs size-3 ${colorMap[day.contributionLevel ?? 'NONE']}`}
                         />
                       </Tooltip>
                     );
@@ -121,19 +126,14 @@ const GitHubContributionCalendar = ({
           );
         })}
       </div>
-      <div
-        className={'flex flex-col-reverse gap-1 sm:flex-row sm:justify-between'}
-      >
-        <p className={'font-bold text-white'}>
-          {totalContributionsCount} Contributions in the last year
-        </p>
+      <div className={'flex flex-col-reverse gap-1 sm:flex-row sm:justify-end'}>
         <div className={'flex items-center gap-2 text-sm text-white/50'}>
           <p>Less</p>
           <div className={'flex flex-wrap gap-1'}>
             {Object.keys(colorMap).map((level, index) => (
               <div
                 key={index}
-                className={`rounded-xs size-4 ${colorMap[level as keyof typeof colorMap]}`}
+                className={`rounded-xs size-3 ${colorMap[level as keyof typeof colorMap]}`}
               ></div>
             ))}
           </div>
