@@ -23,7 +23,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
 
 export const Contact = () => {
   return (
-    <div className={'flex flex-col gap-1 leading-7 text-white'}>
+    <div className={'flex flex-col gap-1 leading-7 text-white/75'}>
       <p>
         If you want to present a fun opportunity, have questions or just want to
         have a chat, I'm always up to hearing from you.

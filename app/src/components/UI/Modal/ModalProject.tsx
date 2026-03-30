@@ -178,9 +178,9 @@ function ModalProject({ modalId }: { modalId: string }) {
           id={'body'}
           className={`mt-auto flex flex-col gap-2 sm:mt-0 ${isExpanded ? 'sm:col-span-2' : ''}`}
         >
-          <div className={'flex justify-between'}>
+          <div className={'grid- grid grid-cols-[1fr_auto]'}>
             <h1 className={'text-xl font-bold text-white'}>{project.name}</h1>
-            <div className={'self-end'}>
+            <div>
               <a
                 href={project.hrefCode}
                 target="_blank"
@@ -233,7 +233,7 @@ function ModalProject({ modalId }: { modalId: string }) {
               className={
                 'border-border hover:bg-secondary bg-secondary/25 w-full rounded-xl border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
               }
-              onClick={() => window.open(project?.hrefLive, '__blank')}
+              onClick={() => window.open(project?.hrefLive, '_blank')}
             >
               Visit
             </button>

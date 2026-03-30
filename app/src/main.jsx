@@ -8,8 +8,8 @@ import 'aos/dist/aos.css';
 
 AOS.init({
   once: true,
-  duration: 400, // animation duration in ms
-  easing: 'ease-out', // easing function
+  duration: 600,
+  easing: 'ease-out',
 });
 
 createRoot(document.getElementById('root')).render(

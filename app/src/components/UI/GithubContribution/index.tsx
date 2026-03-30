@@ -80,7 +80,7 @@ const GithubContribution = () => {
             })
           }
           className={
-            'group relative flex items-center justify-center overflow-hidden rounded-xl px-6 py-2 font-extrabold text-white shadow-lg hover:cursor-pointer'
+            'group relative flex items-center justify-center overflow-hidden rounded-xl font-extrabold text-white shadow-lg hover:cursor-pointer'
           }
         >
           {/* Content */}

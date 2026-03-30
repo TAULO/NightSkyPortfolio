@@ -48,7 +48,7 @@ const Footer = () => {
     >
       <p
         className={
-          'group-hover:text-tertiary text-center text-sm font-semibold text-white/50 transition-colors duration-300'
+          'group-hover:text-tertiary text-center text-sm text-white/50 transition-colors duration-300'
         }
       >
         {'Designed & Developed by Thomas Taulo'}
