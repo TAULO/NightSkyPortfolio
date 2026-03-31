@@ -14,6 +14,7 @@ import Shorty from './components/UI/Shorty';
 import TechStackConstellation from './components/Sections/TechStack/TechStackConstellation.tsx';
 import AboutMe from './components/Sections/AboutMe';
 import Footer from './components/Sections/Footer';
+import Socials from './components/UI/Socials';
 
 function App() {
   const techStackRef = useRef<HTMLElement>(null);
@@ -87,6 +88,7 @@ function App() {
         <ModalProject modalId={'project-modal'}></ModalProject>
         <ModalGithub modalId={'github-modal'}></ModalGithub>
       </ModalProvider>
+      <Socials></Socials>
       <Shorty
         projectRef={projectsRef}
         aboutMeRef={aboutMeRef}
