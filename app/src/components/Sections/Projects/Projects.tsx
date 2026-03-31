@@ -108,7 +108,7 @@ const Projects = () => {
         {filteredProjects.map((project, index) => {
           const delay = (index % 3) * 150;
           return (
-            <div data-aos="fade-up" data-aos-delay={delay}>
+            <div data-aos="zoom-in-up" data-aos-delay={delay}>
               <ProjectsItem
                 {...project}
                 selectedStacks={selectedStacks}
