@@ -31,7 +31,7 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
               : ''
           }`}
         >
-          {index === experiences.length - 1 && (
+          {experiences.length > 1 && index === experiences.length - 1 && (
             <div
               className={
                 'from-tertiary/20 pointer-events-none absolute inset-0 -left-[4px] w-[10px] rounded-full bg-gradient-to-b to-transparent blur-sm'
@@ -83,9 +83,7 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
             const stackId = `experience-stack-${stack.name}-${index}`;
             return (
               <Tooltip id={stackId} content={stack.name} key={index}>
-                <div className={'size-5 shrink-0'}>
-                  {stack.svg}
-                </div>
+                <div className={'size-5 shrink-0'}>{stack.svg}</div>
               </Tooltip>
             );
           })}
