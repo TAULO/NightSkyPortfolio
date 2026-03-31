@@ -108,12 +108,8 @@ const Projects = () => {
         {filteredProjects.map((project, index) => {
           const delay = (index % 3) * 150;
           return (
-            <div data-aos="zoom-in-up" data-aos-delay={delay}>
-              <ProjectsItem
-                {...project}
-                selectedStacks={selectedStacks}
-                key={index}
-              />
+            <div data-aos="zoom-in-up" data-aos-delay={delay} key={index}>
+              <ProjectsItem {...project} selectedStacks={selectedStacks} />
             </div>
           );
         })}
