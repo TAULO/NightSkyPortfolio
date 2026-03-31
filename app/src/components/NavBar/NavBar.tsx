@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { useModal } from '../UI/Modal/ModalProvider.tsx';
 import useScrollTo from '../../hooks/useScrollTo.ts';
+import MissionControl from '../UI/MissionControl';
 
 interface INavItem {
   name: string;
@@ -208,12 +209,19 @@ const NavBar = ({
   return (
     <>
       <div
-        className={`lg:top-15 fixed bottom-5 left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
+        className={`lg:top-15 group fixed bottom-5 left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
           showNav && !isAnyModalOpen
             ? 'animate-slide-up'
             : 'translate-y-4 opacity-0 sm:-translate-y-4'
         }`}
       >
+        <div
+          className={
+            'absolute -right-[200px] top-0 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:delay-500 lg:block'
+          }
+        >
+          <MissionControl />
+        </div>
         <div
           className={
             'bg-menu backdrop-grayscale-25 hover:border-border-hover border-border flex items-center gap-5 text-ellipsis whitespace-nowrap rounded-2xl border px-5 py-3 text-[.55rem] font-semibold text-white shadow-lg backdrop-blur-lg transition-colors duration-300 sm:gap-10 sm:text-sm 2xl:text-sm'
