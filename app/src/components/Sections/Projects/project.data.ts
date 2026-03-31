@@ -320,6 +320,4 @@ const allUniqTechStacks = projects
       self.findIndex((stack) => stack.svg === value.svg) === index
   );
 
-console.log(allUniqTechStacks);
-
 export { projects, allUniqTechStacks };
