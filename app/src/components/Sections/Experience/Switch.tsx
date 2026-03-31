@@ -67,7 +67,7 @@ const Switch = ({ items, defaultItem = 0, onSelectionChange }: SwitchProps) => {
         }
       >
         <div
-          className="absolute bottom-0 top-0 rounded-lg bg-white transition-all duration-300 ease-in-out"
+          className={'absolute bottom-0 top-0 rounded-lg bg-white transition-all duration-300 ease-in-out'}
           style={{
             width: `${backgroundStyle.width}px`,
             transform: backgroundStyle.transform,
