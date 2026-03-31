@@ -1,4 +1,5 @@
 import { IExperienceItem } from './experience.data';
+import Tooltip from '../../UI/Tooltip/Tooltip.tsx';
 
 const experienceItem = (experiences: Array<IExperienceItem>) => {
   return experiences.map((item, index) => (
@@ -22,10 +23,22 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
         <div
           className={`${
             experiences.length > 1
-              ? 'hidden md:block md:h-full md:w-[1px] md:rounded-full md:bg-white'
+              ? `hidden md:relative md:block md:h-full md:w-[2px] md:rounded-full ${
+                  index === experiences.length - 1
+                    ? 'md:from-tertiary md:bg-gradient-to-b md:to-transparent'
+                    : 'md:bg-tertiary'
+                }`
               : ''
           }`}
-        ></div>
+        >
+          {index === experiences.length - 1 && (
+            <div
+              className={
+                'from-tertiary/20 pointer-events-none absolute inset-0 -left-[4px] w-[10px] rounded-full bg-gradient-to-b to-transparent blur-sm'
+              }
+            />
+          )}
+        </div>
       </div>
 
       <div className={'flex min-w-0 flex-col gap-4 text-white md:gap-5'}>
@@ -52,7 +65,7 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
           </div>
         </div>
 
-        <div className={'flex flex-col gap-2 font-extralight md:gap-0'}>
+        <div className={'flex flex-col gap-2 md:gap-0'}>
           {item.tasks.map((task, index) => (
             <p
               className={
@@ -66,11 +79,16 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
         </div>
 
         <div className={'mb-1 flex flex-wrap gap-2'}>
-          {item.stack.map((stack, index) => (
-            <div key={index} className={'size-5 shrink-0'}>
-              {stack.svg}
-            </div>
-          ))}
+          {item.stack.map((stack, index) => {
+            const stackId = `experience-stack-${stack.name}-${index}`;
+            return (
+              <Tooltip id={stackId} content={stack.name} key={index}>
+                <div className={'size-5 shrink-0'}>
+                  {stack.svg}
+                </div>
+              </Tooltip>
+            );
+          })}
         </div>
       </div>
     </div>
