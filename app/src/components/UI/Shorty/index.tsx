@@ -25,8 +25,8 @@ const Shorty = (refs: IShortyProps) => {
 
   const shortyData: Array<IShorty> = [
     {
-      id: 'Projects',
-      name: 'Projects...',
+      id: 'Mission Control',
+      name: 'Mission Control',
       icon: 'folder_special',
       children: projectsChildren,
     },
@@ -60,8 +60,8 @@ const Shorty = (refs: IShortyProps) => {
       ],
     },
     {
-      id: 'This Page',
-      name: 'On this page',
+      id: 'Explore',
+      name: 'Go to...',
       icon: 'menu',
       children: [
         {
@@ -95,6 +95,75 @@ const Shorty = (refs: IShortyProps) => {
           handler: () => scrollTo(refs.contactRef),
         },
       ],
+    },
+    {
+      id: 'Palette',
+      name: 'Palette',
+      icon: 'palette',
+      children: [
+        {
+          id: 'nebula',
+          name: 'Nebula',
+          icon: 'draw',
+          handler: () => {
+            document.documentElement.style.setProperty(
+              '--color-tertiary',
+              '#8B5CF6'
+            );
+          },
+        },
+        {
+          id: 'supernova',
+          name: 'Supernova',
+          icon: 'draw',
+          handler: () => {
+            document.documentElement.style.setProperty(
+              '--color-tertiary',
+              '#FFA500'
+            );
+          },
+        },
+        {
+          id: 'mars',
+          name: 'Mars',
+          icon: 'draw',
+          handler: () => {
+            document.documentElement.style.setProperty(
+              '--color-tertiary',
+              '#FF6B00'
+            );
+          },
+        },
+        {
+          id: 'aurora',
+          name: 'Aurora',
+          icon: 'draw',
+          handler: () => {
+            document.documentElement.style.setProperty(
+              '--color-tertiary',
+              '#22D3EE'
+            );
+          },
+        },
+        {
+          id: 'starlight',
+          name: 'Starlight',
+          icon: 'draw',
+          handler: () => {
+            document.documentElement.style.setProperty(
+              '--color-tertiary',
+              '#E2E8F0'
+            );
+          },
+        },
+      ],
+    },
+    {
+      id: 'view-source',
+      name: 'View source',
+      icon: 'code',
+      handler: () =>
+        window.open('https://github.com/TAULO/TAULO', '_blank'),
     },
   ];
 
