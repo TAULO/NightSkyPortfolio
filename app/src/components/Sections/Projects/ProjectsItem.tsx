@@ -4,11 +4,11 @@ import { useModal } from '../../UI/Modal/ModalProvider.tsx';
 const ProjectsItem = ({
   selectedStacks,
   ...project
-}: IProject & { selectedStacks: string[] }) => {
+}: IProject & { selectedStacks: React.JSX.Element[] }) => {
   const { openModal } = useModal<IProject>('project-modal');
 
-  const stackIsSelected = (techName: string) =>
-    selectedStacks.includes(techName);
+  const stackIsSelected = (techSvg: React.JSX.Element) =>
+    selectedStacks.includes(techSvg);
 
   return (
     <div
@@ -26,7 +26,10 @@ const ProjectsItem = ({
           'object-top-left border-border h-40 w-full border-b object-cover lg:h-52'
         }
       />
-      <div id={'project-card-body'} className={'flex flex-1 flex-col gap-2 px-4 py-6'}>
+      <div
+        id={'project-card-body'}
+        className={'flex flex-1 flex-col gap-2 px-4 py-6'}
+      >
         <div className={'flex justify-between'}>
           <h1
             className={
@@ -70,7 +73,7 @@ const ProjectsItem = ({
             <div
               key={index}
               className={`size-5 shrink-0 text-white ${
-                selectedStacks.length > 0 && !stackIsSelected(stack.name)
+                selectedStacks.length > 0 && !stackIsSelected(stack.svg)
                   ? 'animate-infinite animate-bounce'
                   : 'animate-none'
               }`}

@@ -22,10 +22,10 @@ const Projects = () => {
 
   const selectedStacks = allUniqTechStacksSelected
     .filter((stack) => stack.isSelected)
-    .map((stack) => stack.name);
+    .map((stack) => stack.svg);
 
   const filteredProjects = projects.filter((project) =>
-    project.techStack.some((tech) => !selectedStacks.includes(tech.name))
+    project.techStack.some((tech) => !selectedStacks.includes(tech.svg))
   );
 
   const hasSelectedTechStack = allUniqTechStacksSelected.some(
