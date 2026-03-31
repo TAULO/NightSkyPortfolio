@@ -217,7 +217,7 @@ const NavBar = ({
       >
         <div
           className={
-            'absolute -right-[200px] top-0 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:delay-500 lg:block'
+            'absolute -right-[200px] top-0 z-50 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:delay-500 lg:block'
           }
         >
           <MissionControl />
