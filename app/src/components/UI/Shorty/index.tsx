@@ -25,7 +25,7 @@ const Shorty = (refs: IShortyProps) => {
 
   const shortyData: Array<IShorty> = [
     {
-      id: 'Mission Control',
+      id: 'Projects',
       name: 'Mission Control',
       icon: 'folder_special',
       children: projectsChildren,
