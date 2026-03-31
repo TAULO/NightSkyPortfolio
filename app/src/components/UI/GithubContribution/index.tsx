@@ -45,27 +45,6 @@ const GithubContribution = () => {
         </span>
         <div className={'bg-border h-px flex-1'} />
       </div>
-      {/* INPUT VS OTHER USER */}
-      <div className={'flex gap-2'}>
-        <Input placeholder={'e.g. torvalds'} ref={inputRef} />
-        <Button
-          onClick={() => {
-            if (!inputRef.current) return;
-            setOtherGithubUsername(inputRef.current.value);
-          }}
-          text={'Search'}
-        />
-        {hasFoundOpponent && (
-          <Button
-            onClick={() => {
-              if (!inputRef.current) return;
-              setOtherGithubUsername('');
-              inputRef.current.value = '';
-            }}
-            text={'Reset'}
-          />
-        )}
-      </div>
       <GitHubContributionCalendar
         githubUser={opponentGithubUser}
         githubUsernameFromInput={otherGithubUsername}
@@ -80,13 +59,13 @@ const GithubContribution = () => {
             })
           }
           className={
-            'group relative flex items-center justify-center overflow-hidden rounded-xl font-extrabold text-white shadow-lg hover:cursor-pointer'
+            'group relative flex w-fit items-center justify-center self-center overflow-hidden rounded-xl font-extrabold text-white shadow-lg transition-colors duration-300 hover:cursor-pointer'
           }
         >
           {/* Content */}
           <div
             className={
-              'border-border hover:border-border-hover relative flex items-center gap-3 rounded-xl border px-4 py-2'
+              'border-border hover:border-border-hover relative flex items-center gap-3 rounded-xl border px-4 py-2 transition-colors duration-300'
             }
           >
             <img
@@ -125,6 +104,27 @@ const GithubContribution = () => {
           }
         </p>
       )}
+      {/* INPUT VS OTHER USER */}
+      <div className={'flex gap-2'}>
+        <Input placeholder={'e.g. torvalds'} ref={inputRef} />
+        <Button
+          onClick={() => {
+            if (!inputRef.current) return;
+            setOtherGithubUsername(inputRef.current.value);
+          }}
+          text={'Search'}
+        />
+        {hasFoundOpponent && (
+          <Button
+            onClick={() => {
+              if (!inputRef.current) return;
+              setOtherGithubUsername('');
+              inputRef.current.value = '';
+            }}
+            text={'Reset'}
+          />
+        )}
+      </div>
     </div>
   );
 };

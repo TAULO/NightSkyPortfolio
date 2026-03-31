@@ -9,9 +9,10 @@ const Input = forwardRef<HTMLInputElement, IInput>(
     return (
       <input
         ref={ref}
-        className={`border-border w-full rounded px-4 py-2 text-white border-1 ${className ?? ''}`}
+        className={`border-border border-1 focus:border-tertiary w-full rounded bg-transparent px-4 py-2 text-white outline-none focus:ring-0 ${className ?? ''}`}
         {...props}
         name={'input'}
+        autoComplete="off"
       />
     );
   }

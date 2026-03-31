@@ -22,11 +22,11 @@ const GitHubContributionCalendar = ({
   }
 
   const colorMap = {
-    NONE: 'bg-transparent border border-[#3e4789]/35',
-    FIRST_QUARTILE: 'bg-[#1e2048]',
-    SECOND_QUARTILE: 'bg-[#3e4789]',
-    THIRD_QUARTILE: 'bg-[#6b74c4]',
-    FOURTH_QUARTILE: 'bg-[#9ba3e8]',
+    NONE: 'bg-transparent border border-tertiary/15',
+    FIRST_QUARTILE: 'bg-tertiary/10',
+    SECOND_QUARTILE: 'bg-tertiary/25',
+    THIRD_QUARTILE: 'bg-tertiary/50',
+    FOURTH_QUARTILE: 'bg-tertiary',
   };
 
   const months = [
