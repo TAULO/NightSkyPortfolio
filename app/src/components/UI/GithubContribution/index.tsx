@@ -99,19 +99,23 @@ const GithubContribution = () => {
             </span>
             <span
               className={
-                'text-my-github rounded-full bg-white px-2 py-0.5 text-xs font-extrabold'
+                'text-tertiary rounded-full bg-white px-2 py-0.5 text-xs font-extrabold'
               }
             >
               VS
             </span>
-            <span className={'text-sm tracking-wider'}>
-              {opponentGithubUser.name.toUpperCase()}
-            </span>
-            <img
-              src={opponentGithubUser.avatarUrl}
-              alt={opponentGithubUser.name}
-              className={'border-border size-8 rounded-full border'}
-            />
+            {opponentGithubUser && (
+              <>
+                <span className={'text-sm tracking-wider'}>
+                  {opponentGithubUser.name.toUpperCase()}
+                </span>
+                <img
+                  src={opponentGithubUser.avatarUrl}
+                  alt={opponentGithubUser.name}
+                  className={'border-border size-8 rounded-full border'}
+                />
+              </>
+            )}
           </div>
         </button>
       ) : (
