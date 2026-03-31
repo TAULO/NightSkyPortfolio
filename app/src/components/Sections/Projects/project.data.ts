@@ -292,7 +292,7 @@ const taskMiningProject: IProject = {
     },
     {
       svg: dotnetcoreSVG,
-      name: '.NET Core',
+      name: '.NET Framework',
     },
     {
       svg: tailwindSVG,
@@ -317,7 +317,7 @@ const allUniqTechStacks = projects
   .flatMap((project) => project.techStack)
   .filter(
     (value, index, self) =>
-      self.findIndex((stack) => stack.name === value.name) === index
+      self.findIndex((stack) => stack.svg === value.svg) === index
   );
 
 export { projects, allUniqTechStacks };
