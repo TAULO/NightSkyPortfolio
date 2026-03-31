@@ -3,6 +3,7 @@ import '@taulo1999/heyshorty';
 import { IShorty } from '@taulo1999/heyshorty';
 import { projects } from '../../Sections/Projects/project.data.ts';
 import useScrollTo from '../../../hooks/useScrollTo.ts';
+import { meteoriteShower } from '../../NightSky/NightSky.tsx';
 
 interface IShortyProps {
   projectRef: React.RefObject<HTMLElement | null>;
@@ -159,11 +160,18 @@ const Shorty = (refs: IShortyProps) => {
       ],
     },
     {
+      id: 'Meteorite Shower',
+      name: 'Meteorite Shower',
+      icon: 'shower',
+      handler: () => {
+        meteoriteShower();
+      },
+    },
+    {
       id: 'view-source',
       name: 'View source',
       icon: 'code',
-      handler: () =>
-        window.open('https://github.com/TAULO/TAULO', '_blank'),
+      handler: () => window.open('https://github.com/TAULO/TAULO', '_blank'),
     },
   ];
 
