@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { useModal } from '../UI/Modal/ModalProvider.tsx';
 import useScrollTo from '../../hooks/useScrollTo.ts';
 
@@ -66,6 +66,7 @@ const NavBar = ({
   ]);
 
   const [showNav, setShowNav] = useState(false);
+  const isScrollingRef = useRef(false);
 
   const { isOpen: isProjectOpen } = useModal('project-modal');
   const { isOpen: isFooOpen } = useModal('github-modal');
@@ -76,12 +77,12 @@ const NavBar = ({
     const intersectingSections = new Map<string, number>();
 
     const callback = (entries: Array<IntersectionObserverEntry>) => {
+      if (isScrollingRef.current) return;
+
       entries.forEach((entry: IntersectionObserverEntry) => {
-        if (entry.isIntersecting) {
-          // Store the intersection ratio for this section
+        if (entry.intersectionRatio > 0) {
           intersectingSections.set(entry.target.id, entry.intersectionRatio);
         } else {
-          // Remove sections that are no longer intersecting
           intersectingSections.delete(entry.target.id);
         }
       });
@@ -127,9 +128,7 @@ const NavBar = ({
 
     const observer = new IntersectionObserver(callback, {
       root: null,
-      // Multiple thresholds to get more granular updates
       threshold: [0, 0.25, 0.5, 0.75, 1.0],
-      // Adjust root margin if navbar is fixed (e.g., '-80px 0px 0px 0px' for 80px navbar)
       rootMargin: '0px 0px 0px 0px',
     });
 
@@ -164,6 +163,20 @@ const NavBar = ({
     );
 
     if (element?.current) {
+      // Disable observer during programmatic scroll
+      isScrollingRef.current = true;
+
+      // Listen for scroll end to re-enable the observer
+      let scrollTimeout: ReturnType<typeof setTimeout>;
+      const onScroll = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrollingRef.current = false;
+          window.removeEventListener('scroll', onScroll);
+        }, 100); // 100ms after last scroll event = scroll finished
+      };
+      window.addEventListener('scroll', onScroll);
+
       scrollTo(element);
     }
   }
@@ -195,7 +208,7 @@ const NavBar = ({
   return (
     <>
       <div
-        className={`sm:top-15 fixed bottom-5 left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
+        className={`lg:top-15 fixed bottom-5 left-1/2 z-50 h-fit -translate-x-1/2 scale-90 transition-all duration-500 ease-out sm:scale-100 ${
           showNav && !isAnyModalOpen
             ? 'animate-slide-up'
             : 'translate-y-4 opacity-0 sm:-translate-y-4'
