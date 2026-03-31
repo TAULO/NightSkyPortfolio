@@ -17,7 +17,6 @@ const ProjectsItem = ({
         'bg-secondary border-border hover:border-border-hover overflow-hidden rounded-3xl border transition-all duration-300 ease-out hover:-translate-y-1 hover:cursor-pointer'
       }
       onClick={() => openModal(project)}
-      data-aos="fade-up"
     >
       {}
       <img

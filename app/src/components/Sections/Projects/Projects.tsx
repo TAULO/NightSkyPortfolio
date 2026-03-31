@@ -37,14 +37,21 @@ const Projects = () => {
   ).length;
 
   function toggleTechStackClick(index: number) {
-    const allSelected = allUniqTechStacksSelected.every(({ isSelected }) => isSelected);
-    const noneSelected = allUniqTechStacksSelected.every(({ isSelected }) => !isSelected);
+    const allSelected = allUniqTechStacksSelected.every(
+      ({ isSelected }) => isSelected
+    );
+    const noneSelected = allUniqTechStacksSelected.every(
+      ({ isSelected }) => !isSelected
+    );
 
     const updatedTechStacks = allUniqTechStacksSelected.map((stack, i) => {
       if (allSelected || noneSelected) {
         return { ...stack, isSelected: i !== index };
       }
-      return { ...stack, isSelected: i === index ? !stack.isSelected : stack.isSelected };
+      return {
+        ...stack,
+        isSelected: i === index ? !stack.isSelected : stack.isSelected,
+      };
     });
 
     setAllUniqTechStacksSelected(updatedTechStacks);
@@ -69,7 +76,7 @@ const Projects = () => {
           />
           <div
             className={
-              'absolute -right-1 -top-1 size-4 rounded-full bg-tertiary'
+              'bg-tertiary absolute -right-1 -top-1 size-4 rounded-full'
             }
           >
             <p className={'text-center text-xs font-bold text-white'}>
@@ -98,13 +105,18 @@ const Projects = () => {
           'grid w-full grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'
         }
       >
-        {filteredProjects.map((project, index) => (
-          <ProjectsItem
-            {...project}
-            selectedStacks={selectedStacks}
-            key={index}
-          />
-        ))}
+        {filteredProjects.map((project, index) => {
+          const delay = (index % 3) * 150;
+          return (
+            <div data-aos="fade-up" data-aos-delay={delay}>
+              <ProjectsItem
+                {...project}
+                selectedStacks={selectedStacks}
+                key={index}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
