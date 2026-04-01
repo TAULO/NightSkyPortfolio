@@ -30,12 +30,8 @@ const ProjectsItem = ({
         id={'project-card-body'}
         className={'flex flex-1 flex-col gap-2 px-4 py-6'}
       >
-        <div className={'flex justify-between'}>
-          <h1
-            className={
-              'sm:max-w-9/12 max-w-8/12 mt-2 truncate text-xl font-bold text-white'
-            }
-          >
+        <div className={'grid grid-cols-[1fr_auto] gap-2'}>
+          <h1 className={'mt-2 truncate text-xl font-bold text-white'}>
             {project.name}
           </h1>
           <div className={'self-end'} onClick={(e) => e.stopPropagation()}>
