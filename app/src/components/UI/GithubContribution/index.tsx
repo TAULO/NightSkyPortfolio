@@ -73,7 +73,7 @@ const GithubContribution = () => {
               alt={myGithubUser.name}
               className={'border-border size-8 rounded-full border'}
             />
-            <span className={'text-sm tracking-wider'}>
+            <span className={'text-xs sm:text-sm sm:tracking-wider'}>
               {myGithubUser.name.toUpperCase()}
             </span>
             <span
@@ -85,7 +85,7 @@ const GithubContribution = () => {
             </span>
             {opponentGithubUser && (
               <>
-                <span className={'text-sm tracking-wider'}>
+                <span className={'text-xs sm:text-sm sm:tracking-wider'}>
                   {opponentGithubUser.name.toUpperCase()}
                 </span>
                 <img
@@ -105,7 +105,7 @@ const GithubContribution = () => {
         </p>
       )}
       {/* INPUT VS OTHER USER */}
-      <div className={'flex gap-2'}>
+      <div className={'flex flex-col gap-2 sm:flex-row'}>
         <Input placeholder={'e.g. torvalds'} ref={inputRef} />
         <Button
           onClick={() => {

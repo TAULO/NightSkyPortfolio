@@ -13,10 +13,10 @@ function ModalContainer({
   if (!isOpen) return null;
 
   return createPortal(
-    <div className={'fixed inset-0'} onClick={closeModal}>
+    <div className={'z-999 fixed inset-0'} onClick={closeModal}>
       <div
         id={'modal-component'}
-        className={`max-h-10/12 bg-primary border-border border-1 sm:max-w-10/12 xl:max-w-6/12 fixed bottom-0 z-20 grid w-full overflow-auto rounded-t-3xl p-4 shadow-lg sm:left-1/2 sm:top-1/2 sm:h-fit sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl sm:p-8 sm:pt-12 ${
+        className={`max-h-10/12 bg-primary border-border border-1 sm:max-w-10/12 xl:max-w-6/12 fixed bottom-0 grid w-full overflow-auto rounded-t-3xl p-4 shadow-lg sm:left-1/2 sm:top-1/2 sm:h-fit sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl sm:p-8 sm:pt-12 ${
           isOpen
             ? 'animate-slide-up sm:animate-fade'
             : 'animate-slide-down sm:animate-fade'
