@@ -7,6 +7,7 @@ import {
   htmlSVG,
   javascriptSVG,
   litSVG,
+  nodejsSVG,
   nuxtSVG,
   openAPISVG,
   postgressqlSVG,
@@ -42,6 +43,8 @@ const biavlerImages = useProjectAssets('biavler');
 const shortyImages = useProjectAssets('shorty');
 const skipAdsImages = useProjectAssets('adskipper');
 const taskMiningImages = useProjectAssets('taskmining');
+const kanplaAPIImages = useProjectAssets('kanplaapi');
+const kanplaRaycastExtenstionImages = useProjectAssets('kanplaraycastextenstion');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -167,6 +170,41 @@ const heyShortyProject: IProject = {
   images: shortyImages,
 };
 
+const kanplaAPIProject: IProject = {
+  name: 'Kanpla API',
+  description: 'TODO',
+  hrefLive: 'https://www.npmjs.com/package/@taulo1999/kanpla-api',
+  hrefCode: 'https://github.com/TAULO/kanpla-api',
+  techStack: [
+    {
+      svg: typescriptSVG,
+      name: 'TypeScript',
+    },
+    {
+      name: 'NodeJS',
+      svg: nodejsSVG,
+    },
+  ],
+  images: kanplaAPIImages,
+};
+
+const kanplaRaycastExtenstionProject: IProject = {
+  name: 'Kanpla Raycast Extenstion',
+  description: 'TODO',
+  hrefCode: 'https://github.com/TAULO/kanpla-raycast-extenstion',
+  techStack: [
+    {
+      svg: typescriptSVG,
+      name: 'TypeScript',
+    },
+    {
+      svg: reactSVG,
+      name: 'React',
+    },
+  ],
+  images: kanplaRaycastExtenstionImages,
+};
+
 const hvordanErVejretProject: IProject = {
   name: 'Hvordan Er Vejret',
   description:
@@ -240,7 +278,8 @@ const gitSnakeProject: IProject = {
 
 const gitGraffitiProject: IProject = {
   name: 'GitGraffiti',
-  description: 'A Chrome extension that lets you fake your GitHub contribution graph. For bragging, of course.',
+  description:
+    'A Chrome extension that lets you fake your GitHub contribution graph. For bragging, of course.',
   hrefCode: 'https://github.com/TAULO/GitGraffiti',
   techStack: [
     {
@@ -275,7 +314,8 @@ const adSkipperProject: IProject = {
 
 const taskMiningProject: IProject = {
   name: 'Task Mining',
-  description: 'My thesis project at EAAA. At Sirenia we wanted to build data analyser tool, that analyzes user activity to identify automation opportunities - known in the industry as task mining.',
+  description:
+    'My thesis project at EAAA. At Sirenia we wanted to build data analyser tool, that analyzes user activity to identify automation opportunities - known in the industry as task mining.',
   hrefCode: 'https://github.com/TAULO/TaskMiningReactApp',
   techStack: [
     {
@@ -305,6 +345,8 @@ const taskMiningProject: IProject = {
 const projects: Array<IProject> = [
   athleticaProject,
   heyShortyProject,
+  kanplaRaycastExtenstionProject,
+  kanplaAPIProject,
   hvordanErVejretProject,
   biavlerProject,
   gitSnakeProject,
