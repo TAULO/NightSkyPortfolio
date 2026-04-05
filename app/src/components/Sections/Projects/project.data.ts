@@ -20,11 +20,6 @@ import {
 import { JSX } from 'react';
 import { useProjectAssets } from '../../../hooks/useProjectAssets.ts';
 
-interface IProjectArchitecture {
-  classDiagram?: string;
-  architecture?: string;
-}
-
 export interface IProject {
   name: string;
   description: string;
@@ -33,6 +28,11 @@ export interface IProject {
   techStack: Array<{ svg: JSX.Element; name: string }>;
   images: Array<{ src: string; alt: string }>;
   architecture?: IProjectArchitecture;
+}
+
+interface IProjectArchitecture {
+  classDiagram?: string;
+  architecture?: string;
 }
 
 const athleticaImages = useProjectAssets('athletica');
@@ -44,7 +44,9 @@ const shortyImages = useProjectAssets('shorty');
 const skipAdsImages = useProjectAssets('adskipper');
 const taskMiningImages = useProjectAssets('taskmining');
 const kanplaAPIImages = useProjectAssets('kanplaapi');
-const kanplaRaycastExtenstionImages = useProjectAssets('kanplaraycastextenstion');
+const kanplaRaycastExtenstionImages = useProjectAssets(
+  'kanplaraycastextenstion'
+);
 
 const athelticaArchitecture = `
   architecture-beta
@@ -172,7 +174,8 @@ const heyShortyProject: IProject = {
 
 const kanplaAPIProject: IProject = {
   name: 'Kanpla API',
-  description: 'TODO',
+  description:
+    'Kanpla is the food provider for the canteen where I worked at Sirenia. I thought it would be cool to build a public integration that allows me and others to access menu information in their own solutions. The project required some reverse engineering to figure out how to interact with the Kanpla API.',
   hrefLive: 'https://www.npmjs.com/package/@taulo1999/kanpla-api',
   hrefCode: 'https://github.com/TAULO/kanpla-api',
   techStack: [
@@ -190,7 +193,8 @@ const kanplaAPIProject: IProject = {
 
 const kanplaRaycastExtenstionProject: IProject = {
   name: 'Kanpla Raycast Extenstion',
-  description: 'TODO',
+  description:
+    'A Raycast extension that lets you view your canteen\'s menu directly from Raycast. Built on top of my Kanpla API package.',
   hrefCode: 'https://github.com/TAULO/kanpla-raycast-extenstion',
   techStack: [
     {
