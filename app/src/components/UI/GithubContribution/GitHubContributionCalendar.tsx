@@ -51,7 +51,7 @@ const GitHubContributionCalendar = ({
     githubUser.contributionsCollection.contributionCalendar.totalContributions;
 
   function getWeekDateFromIndex(index: number): string | null {
-    if (index === 0) return null; // skip first month
+    if (index === 0) return null; // skip the first month
 
     const monthStr = contributions[index]?.contributionDays?.[0]?.date;
     if (!monthStr) return null;
@@ -112,7 +112,7 @@ const GitHubContributionCalendar = ({
                     return (
                       <Tooltip id={popoverId} content={content} key={popoverId}>
                         <div
-                          className={`rounded-xs size-3 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                          className={`rounded-xs hover:border-tertiary hover:border size-3 ${colorMap[day.contributionLevel ?? 'NONE']}`}
                         />
                       </Tooltip>
                     );
