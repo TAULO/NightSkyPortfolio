@@ -112,7 +112,7 @@ const GitHubContributionCalendar = ({
                     return (
                       <Tooltip id={popoverId} content={content} key={popoverId}>
                         <div
-                          className={`rounded-xs hover:border-tertiary hover:border size-3 ${colorMap[day.contributionLevel ?? 'NONE']}`}
+                          className={`rounded-xs size-3 ${colorMap[day.contributionLevel ?? 'NONE']}`}
                         />
                       </Tooltip>
                     );
