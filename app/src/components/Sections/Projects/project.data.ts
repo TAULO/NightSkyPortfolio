@@ -150,7 +150,7 @@ const heyShortyProject: IProject = {
   description:
     'A global search and command palette built as a web component with Lit and TypeScript. Published on npm as @taulo1999/heyshorty. Try it on this page with Ctrl/CMD + K.',
   hrefCode: 'https://github.com/TAULO/hey-shorty',
-  hrefLive: 'https://www.npmjs.com/settings/taulo1999/packages',
+  hrefLive: 'https://www.npmjs.com/package/@taulo1999/heyshorty',
   techStack: [
     {
       svg: litSVG,
@@ -194,7 +194,7 @@ const kanplaAPIProject: IProject = {
 const kanplaRaycastExtenstionProject: IProject = {
   name: 'Kanpla Raycast Extenstion',
   description:
-    'A Raycast extension that lets you view your canteen\'s menu directly from Raycast. Built on top of my Kanpla API package.',
+    "A Raycast extension that lets you view your canteen's menu directly from Raycast. Built on top of my Kanpla API package.",
   hrefCode: 'https://github.com/TAULO/kanpla-raycast-extenstion',
   techStack: [
     {

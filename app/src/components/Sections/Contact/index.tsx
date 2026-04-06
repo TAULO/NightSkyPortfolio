@@ -1,10 +1,9 @@
+import { useSocials } from '../../../hooks/useSocials.ts';
+
 interface ExternalLinkProps {
   href: string;
   children: React.ReactNode;
 }
-
-const githubHref = 'https://github.com/TAULO';
-const linkedinHref = 'https://www.linkedin.com/in/thomas-taulo-529084128/';
 
 const ExternalLink = ({ href, children }: ExternalLinkProps) => {
   return (
@@ -22,6 +21,8 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => {
 };
 
 export const Contact = () => {
+  const socials = useSocials();
+
   return (
     <div className={'flex flex-col gap-1 leading-7 text-white/75'}>
       <p>
@@ -30,10 +31,10 @@ export const Contact = () => {
       </p>
       <p>
         You can catch me over on
-        <ExternalLink href={githubHref}>GitHub</ExternalLink>
-        or<ExternalLink href={linkedinHref}>LinkedIn</ExternalLink>or you can
-        send me a good old-fashioned email at
-        <ExternalLink href="mailto:taulo@live.com">taulo@live.com</ExternalLink>
+        <ExternalLink href={socials.github}>GitHub</ExternalLink>
+        or<ExternalLink href={socials.linkedin}>LinkedIn</ExternalLink>or you
+        can send me a good old-fashioned email at
+        <ExternalLink href={socials.mail}>taulo@live.com</ExternalLink>
       </p>
     </div>
   );

@@ -1,4 +1,8 @@
+import { useSocials } from '../../../hooks/useSocials.ts';
+
 const Socials = () => {
+  const socials = useSocials();
+
   return (
     <div
       id={'socials'}
@@ -11,7 +15,7 @@ const Socials = () => {
     >
       <div className={'flex flex-col items-center gap-4'}>
         <a
-          href={'https://www.linkedin.com/in/thomas-taulo-529084128/'}
+          href={socials.linkedin}
           aria-label="Linkedin"
           target="_blank"
           rel="noreferrer"
@@ -36,7 +40,7 @@ const Socials = () => {
           </svg>
         </a>
         <a
-          href={'https://github.com/TAULO'}
+          href={socials.github}
           aria-label={'GitHub'}
           target={'_blank'}
           rel={'noreferrer'}
@@ -64,7 +68,7 @@ const Socials = () => {
         </a>
 
         <a
-          href={'https://www.goodreads.com/user/show/170297255-thomas-taulo'}
+          href={socials.goodreads}
           aria-label={'Goodreads'}
           target={'_blank'}
           rel={'noreferrer'}

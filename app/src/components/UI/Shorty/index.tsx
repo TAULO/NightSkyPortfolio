@@ -4,6 +4,7 @@ import { IShorty } from '@taulo1999/heyshorty';
 import { projects } from '../../Sections/Projects/project.data.ts';
 import useScrollTo from '../../../hooks/useScrollTo.ts';
 import { meteoriteShower } from '../../NightSky/NightSky.tsx';
+import { useSocials } from '../../../hooks/useSocials.ts';
 
 interface IShortyProps {
   projectRef: React.RefObject<HTMLElement | null>;
@@ -14,6 +15,7 @@ interface IShortyProps {
 }
 const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
+  const socials = useSocials();
 
   const projectsChildren: Array<IShorty> = projects.map((project) => {
     return {
@@ -40,23 +42,19 @@ const Shorty = (refs: IShortyProps) => {
           id: 'LinkedIn',
           name: 'LinkedIn',
           icon: 'hub',
-          handler: () =>
-            window.open(
-              'https://www.linkedin.com/in/thomas-taulo-529084128',
-              '_blank'
-            ),
+          handler: () => window.open(socials.linkedin, '_blank'),
         },
         {
           id: 'Github',
           name: 'Github',
           icon: 'merge',
-          handler: () => window.open('https://github.com/TAULO', '_blank'),
+          handler: () => window.open(socials.github, '_blank'),
         },
         {
           id: 'Mail',
           name: 'Mail',
           icon: 'mail',
-          handler: () => window.open('mailto:taulo@live.dk', '_blank'),
+          handler: () => window.open(socials.mail, '_blank'),
         },
       ],
     },
@@ -177,6 +175,7 @@ const Shorty = (refs: IShortyProps) => {
 
   return (
     <div>
+      {/* @ts-ignore */}
       <hey-shorty data={shortyData}></hey-shorty>
     </div>
   );
