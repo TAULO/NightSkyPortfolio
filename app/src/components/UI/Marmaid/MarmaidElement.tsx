@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
 
-interface IMarmaidElementProps {
+interface IMermaidElementProps {
   chart: string;
   className?: string;
 }
 
-export default function MermaidElement({ chart, className }: IMarmaidElementProps) {
+export default function MermaidElement({ chart, className }: IMermaidElementProps) {
   const mermaidRef = useRef(null);
 
   useEffect(() => {
