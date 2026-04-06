@@ -10,6 +10,7 @@ function ModalProject({ modalId }: { modalId: string }) {
 
   useEffect(() => {
     setCurrentSlide(0);
+    setIsExpanded(false);
   }, [project]);
 
   if (!project) return null;
