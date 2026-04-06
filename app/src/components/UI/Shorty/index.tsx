@@ -13,6 +13,7 @@ interface IShortyProps {
   contactRef: React.RefObject<HTMLElement | null>;
   experienceRef: React.RefObject<HTMLElement | null>;
 }
+
 const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
   const socials = useSocials();
