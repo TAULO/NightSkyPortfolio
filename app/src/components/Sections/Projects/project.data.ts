@@ -316,6 +316,7 @@ const adSkipperProject: IProject = {
   images: skipAdsImages,
 };
 
+// @ts-ignore
 const taskMiningProject: IProject = {
   name: 'Task Mining',
   description:
@@ -356,7 +357,7 @@ const projects: Array<IProject> = [
   gitSnakeProject,
   gitGraffitiProject,
   adSkipperProject,
-  taskMiningProject,
+  // taskMiningProject, // NOTE: I need to find more materials for this project, therefore exclude it for now.'
 ];
 
 const allUniqTechStacks = projects
