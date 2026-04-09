@@ -32,7 +32,7 @@ export interface IExperienceItem {
   };
 }
 
-const codingPiratesJobDuration = useJobDuration('2024-08-01', Date.now());
+const codingPiratesJobDuration = useJobDuration('2025-08-01', Date.now());
 const sireniaJobDuration = useJobDuration('2023-01-01', Date.now());
 const internJobDuration = useJobDuration('2022-08-01', '2023-01-01');
 
@@ -42,7 +42,7 @@ const jobExperiences: Array<IExperienceItem> = [
   {
     title: 'Coding Pirates',
     role: 'Volunteer',
-    date: `Aug. 2024 - Present (${codingPiratesJobDuration.years}, ${codingPiratesJobDuration.months})`,
+    date: `Aug. 2025 - Present (${codingPiratesJobDuration.years}, ${codingPiratesJobDuration.months})`,
     place: 'Aarhus, Denmark',
     tasks: [
       'Mentor children and young adults in developing technological confidence, creativity, and problem-solving skills through coding and game development',
@@ -172,7 +172,7 @@ const educationExperiences: Array<IExperienceItem> = [
   {
     title: 'Business Academy Aarhus',
     role: 'AP in Computer Science',
-    date: `Aug. 2021 - Feb. 2023 (${baJobDuration.years} years, ${baJobDuration.months} months)`,
+    date: `Aug. 2021 - Feb. 2023 (${baJobDuration.years}, ${baJobDuration.months})`,
     place: 'Aarhus, Denmark',
     tasks: [],
     stack: [],
