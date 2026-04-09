@@ -5,6 +5,7 @@ import { projects } from '../../Sections/Projects/project.data.ts';
 import useScrollTo from '../../../hooks/useScrollTo.ts';
 import { meteoriteShower } from '../../NightSky/NightSky.tsx';
 import { useSocials } from '../../../hooks/useSocials.ts';
+import { useHardcoverAPI } from '../../../hooks/useHardcoverAPI.ts';
 
 interface IShortyProps {
   projectRef: React.RefObject<HTMLElement | null>;
@@ -17,6 +18,8 @@ interface IShortyProps {
 const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
   const socials = useSocials();
+  const books = useHardcoverAPI();
+  console.log(books);
 
   const projectsChildren: Array<IShorty> = projects.map((project) => {
     return {
@@ -157,6 +160,19 @@ const Shorty = (refs: IShortyProps) => {
           },
         },
       ],
+    },
+    {
+      id: 'Bookshelf',
+      name: "What i'm currently reading",
+      icon: 'book',
+      children: books.map((book: any) => {
+        return {
+          id: book.title,
+          name: book.title,
+          icon: 'book',
+          handler: () => window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
+        };
+      }),
     },
     {
       id: 'Meteorite Shower',
