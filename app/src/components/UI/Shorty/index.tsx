@@ -164,12 +164,12 @@ const Shorty = (refs: IShortyProps) => {
     {
       id: 'Bookshelf',
       name: "What i'm currently reading",
-      icon: 'book',
+      icon: 'auto_stories',
       children: books.map((book: any) => {
         return {
           id: book.title,
           name: book.title,
-          icon: 'book',
+          icon: 'auto_stories',
           handler: () => window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
         };
       }),
