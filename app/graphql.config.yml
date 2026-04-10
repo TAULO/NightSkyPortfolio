@@ -1,0 +1,13 @@
+projects:
+  hardcover:
+    schema:
+      - https://api.hardcover.app/v1/graphql:
+          headers:
+            Authorization: "Bearer ${VITE_HARDCOVER_BEARER_TOKEN}"
+    documents: "src/queries/hardcover.graphql"
+  github:
+    schema:
+      - https://api.github.com/graphql:
+          headers:
+            Authorization: "Bearer ${VITE_GITHUB_ACCESS_TOKEN}"
+    documents: "src/queries/github.graphql"

@@ -1,0 +1,41 @@
+query Me {
+    me {
+        id
+        want_to_read: user_books(where: { status_id: { _eq: 1 } }) {
+            id
+            book {
+                id
+                title
+                pages
+                slug
+                image {
+                    url
+                }
+            }
+        }
+        currently_reading: user_books(where: { status_id: { _eq: 2 } }) {
+            id
+            book {
+                id
+                title
+                pages
+                slug
+                image {
+                    url
+                }
+            }
+        }
+        read: user_books(where: { status_id: { _eq: 3 } }) {
+            id
+            book {
+                id
+                title
+                pages
+                slug
+                image {
+                    url
+                }
+            }
+        }
+    }
+}
