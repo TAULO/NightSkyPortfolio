@@ -19,7 +19,7 @@ const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
   const socials = useSocials();
   const books = useHardcoverAPI();
-  console.log(books);
+  const { wantToRead, currentlyReading, read } = books;
 
   const projectsChildren: Array<IShorty> = projects.map((project) => {
     return {
@@ -29,6 +29,17 @@ const Shorty = (refs: IShortyProps) => {
       handler: () => window.open(project.hrefCode, '_blank'),
     };
   });
+
+  const booksChildren = (books: Array<any>): Array<IShorty> => {
+    return books.map((book: any) => {
+      return {
+        id: book.title,
+        name: book.title,
+        icon: 'auto_stories',
+        handler: () => window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
+      };
+    });
+  };
 
   const shortyData: Array<IShorty> = [
     {
@@ -163,16 +174,28 @@ const Shorty = (refs: IShortyProps) => {
     },
     {
       id: 'Bookshelf',
-      name: "What i'm currently reading",
+      name: 'My Bookshelf',
       icon: 'auto_stories',
-      children: books.map((book: any) => {
-        return {
-          id: book.title,
-          name: book.title,
-          icon: 'auto_stories',
-          handler: () => window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
-        };
-      }),
+      children: [
+        {
+          id: 'Currently Reading',
+          name: 'Currently Reading',
+          icon: 'book',
+          children: booksChildren(currentlyReading),
+        },
+        {
+          id: 'Want to Read',
+          name: 'Want to Read',
+          icon: 'book',
+          children: booksChildren(wantToRead),
+        },
+        {
+          id: 'Read',
+          name: 'Read',
+          icon: 'book',
+          children: booksChildren(read),
+        },
+      ],
     },
     {
       id: 'Meteorite Shower',
