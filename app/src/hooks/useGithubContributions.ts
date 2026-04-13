@@ -87,7 +87,7 @@ export const useGitHubContributions = (githubUserName: string) => {
       .then((data) => data.json())
       .then((data) => {
         if (data?.errors?.length) {
-          console.log('GitHub API Error:', data.errors);
+          console.warn('GitHub API Error:', data.errors);
           setGithubUser(null);
           return;
         }
@@ -100,8 +100,9 @@ export const useGitHubContributions = (githubUserName: string) => {
         }
         setGithubUser(user);
       })
-      .catch(() => {
+      .catch((error) => {
         setGithubUser(null);
+        console.warn('GitHub Catch Error:', error);
       });
   }, [githubQuery]);
 
