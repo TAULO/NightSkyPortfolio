@@ -5,7 +5,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.HARDCOVER_API_TOKEN}`,
+      'Authorization': `Bearer ${process.env.HARDCOVER_BEARER_TOKEN}`,
     },
     body: JSON.stringify(req.body),
   });
