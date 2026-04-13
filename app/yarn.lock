@@ -818,10 +818,10 @@
     "@tailwindcss/oxide" "4.1.12"
     tailwindcss "4.1.12"
 
-"@taulo1999/heyshorty@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@taulo1999/heyshorty/-/heyshorty-1.0.13.tgz#4b44cfb9e6959f1fc607ab5e7281518b5a9af39c"
-  integrity sha512-utHf/CwlaT9SyPc4Du/ancAk/WtpN9m7mtGBPyGJdCGeZZOqV2CkG+7j52vFeayIKmgFDo/W52DFBa3UstLZbQ==
+"@taulo1999/heyshorty@^1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@taulo1999/heyshorty/-/heyshorty-1.0.17.tgz#fc48b3d7b826ba6fcbcb40f5fadd859d00e723ed"
+  integrity sha512-pwu7qp63Gip979enuRY7ldiaQvStqTK4/4UF+tbH01LPQ8isffHLfX6aHW2K3faPmfiVaZ5f0h8crH9oL8YiFQ==
   dependencies:
     "@material/mwc-icon" "^0.27.0"
     fuse.js "^7.1.0"

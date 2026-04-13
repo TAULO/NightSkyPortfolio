@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
-    "@taulo1999/heyshorty": "^1.0.13",
+    "@taulo1999/heyshorty": "^1.0.17",
     "aos": "^2.3.4",
     "dotenv": "^17.2.1",
     "graphql": "^16.13.2",

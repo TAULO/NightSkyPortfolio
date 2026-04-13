@@ -3,6 +3,7 @@ query Me {
         id
         want_to_read: user_books(where: { status_id: { _eq: 1 } }) {
             id
+            rating
             book {
                 id
                 title
@@ -10,11 +11,17 @@ query Me {
                 slug
                 image {
                     url
+                }
+                contributions {
+                    author {
+                        name
+                    }
                 }
             }
         }
         currently_reading: user_books(where: { status_id: { _eq: 2 } }) {
             id
+            rating
             book {
                 id
                 title
@@ -23,10 +30,16 @@ query Me {
                 image {
                     url
                 }
+                contributions {
+                    author {
+                        name
+                    }
+                }
             }
         }
         read: user_books(where: { status_id: { _eq: 3 } }) {
             id
+            rating
             book {
                 id
                 title
@@ -34,6 +47,11 @@ query Me {
                 slug
                 image {
                     url
+                }
+                contributions {
+                    author {
+                        name
+                    }
                 }
             }
         }

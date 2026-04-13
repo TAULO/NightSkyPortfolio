@@ -26,10 +26,32 @@ export const useHardcoverAPI = () => {
         const myBooks = data.data.me[0];
 
         const wantToRead =
-          myBooks['want_to_read'].map((book: any) => book.book) ?? [];
+          myBooks['want_to_read'].map((book: any) => {
+            return {
+              ...book.book,
+              author: book.book.contributions[0].author.name,
+              rating: book.rating,
+            };
+          }) ?? [];
+
         const currentlyReading =
-          myBooks['currently_reading'].map((book: any) => book.book) ?? [];
-        const read = myBooks['read'].map((book: any) => book.book) ?? [];
+          myBooks['currently_reading'].map((book: any) => {
+            console.log(book);
+            return {
+              ...book.book,
+              author: book.book.contributions[0].author.name,
+              rating: book.rating,
+            };
+          }) ?? [];
+
+        const read =
+          myBooks['read'].map((book: any) => {
+            return {
+              ...book.book,
+              author: book.book.contributions[0].author.name,
+              rating: book.rating,
+            };
+          }) ?? [];
 
         setHardcover({
           wantToRead,
@@ -38,7 +60,7 @@ export const useHardcoverAPI = () => {
         });
       })
       .catch((err: any) => {
-        console.log('Hardcover API Error:', err);
+        console.error('Hardcover API Error:', err);
         setHardcover(defaults);
       });
   }, []);

@@ -6,6 +6,7 @@ import useScrollTo from '../../../hooks/useScrollTo.ts';
 import { meteoriteShower } from '../../NightSky/NightSky.tsx';
 import { useSocials } from '../../../hooks/useSocials.ts';
 import { useHardcoverAPI } from '../../../hooks/useHardcoverAPI.ts';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 interface IShortyProps {
   projectRef: React.RefObject<HTMLElement | null>;
@@ -14,6 +15,82 @@ interface IShortyProps {
   contactRef: React.RefObject<HTMLElement | null>;
   experienceRef: React.RefObject<HTMLElement | null>;
 }
+
+const BookPreview = ({
+  title,
+  author,
+  rating,
+  imageUrl,
+}: {
+  title: string;
+  author: string;
+  rating: number | null;
+  imageUrl: string;
+}) =>
+  renderToStaticMarkup(
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '12px',
+        padding: '4px',
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '2/3',
+          borderRadius: '6px',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={imageUrl}
+          alt={title}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
+      </div>
+      <div
+        style={{
+          textAlign: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2px',
+          flexDirection: 'column',
+        }}
+      >
+        <div style={{ fontSize: '13px', fontWeight: 500 }}>{title}</div>
+        <div style={{ fontSize: '11px', opacity: 0.6 }}>{author}</div>
+        {rating && (
+          <div style={{ display: 'flex' }}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg
+                key={i}
+                style={{ width: '12px', height: '12px' }}
+                viewBox={'0 0 16 16'}
+              >
+                <polygon
+                  points={
+                    '8,1 10.2,5.5 15,6.2 11.5,9.6 12.3,14.5 8,12.2 3.7,14.5 4.5,9.6 1,6.2 5.8,5.5'
+                  }
+                  fill={
+                    i < Math.round(rating) ? '#EF9F27' : 'rgba(128,128,128,0.5)'
+                  }
+                />
+              </svg>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 
 const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
@@ -32,11 +109,27 @@ const Shorty = (refs: IShortyProps) => {
 
   const booksChildren = (books: Array<any>): Array<IShorty> => {
     return books.map((book: any) => {
+      const title = book.title;
+      const author = book.author;
+      const rating = book.rating ?? null;
+      const imageUrl = book?.image?.url;
+
       return {
-        id: book.title,
-        name: book.title,
+        id: title,
+        name: title,
         icon: 'auto_stories',
-        handler: () => window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
+        handler: () => {
+          return window.open(
+            `https://hardcover.app/books/${book.slug}`,
+            '_blank'
+          );
+        },
+        preview: BookPreview({
+          title,
+          author,
+          rating,
+          imageUrl: imageUrl ?? '',
+        }),
       };
     });
   };
