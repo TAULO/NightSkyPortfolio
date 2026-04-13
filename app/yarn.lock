@@ -1201,10 +1201,10 @@
     "@tailwindcss/oxide" "4.1.12"
     tailwindcss "4.1.12"
 
-"@taulo1999/heyshorty@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@taulo1999/heyshorty/-/heyshorty-1.0.17.tgz#fc48b3d7b826ba6fcbcb40f5fadd859d00e723ed"
-  integrity sha512-pwu7qp63Gip979enuRY7ldiaQvStqTK4/4UF+tbH01LPQ8isffHLfX6aHW2K3faPmfiVaZ5f0h8crH9oL8YiFQ==
+"@taulo1999/heyshorty@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@taulo1999/heyshorty/-/heyshorty-1.0.19.tgz#faee5c292e77a1dee4ec1d59206c7e2acb6b946e"
+  integrity sha512-rod5itDxAl4Sfl7rGWtMQxLJIyeAsfzs8uBZFriGHvJkKL5OIFu18jOnbX6vLbEZjTbqxx+mb3j4c8M+Xk3ZLg==
   dependencies:
     "@material/mwc-icon" "^0.27.0"
     fuse.js "^7.1.0"
