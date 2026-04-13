@@ -95,6 +95,49 @@ const BookPreview = ({
     </div>
   );
 
+const palettePreview = (color: string) => {
+  return renderToStaticMarkup(
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div
+        style={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '8px',
+          backgroundColor: color,
+          boxShadow: `0 0 12px ${color}80`,
+          border: '2px solid rgba(255,255,255,0.1)',
+        }}
+      />
+      <span style={{ fontFamily: 'monospace', fontSize: '14px', opacity: 0.8 }}>
+        {color}
+      </span>
+    </div>
+  );
+};
+
+const colorPalette = [
+  {
+    name: 'Nebula',
+    color: '#8B5CF6',
+  },
+  {
+    name: 'Supernova',
+    color: '#FFA500',
+  },
+  {
+    name: 'Mars',
+    color: '#FF6B00',
+  },
+  {
+    name: 'Aurora',
+    color: '#22D3EE',
+  },
+  {
+    name: 'Starlight',
+    color: '#E2E8F0',
+  },
+];
+
 const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
   const socials = useSocials();
@@ -142,6 +185,19 @@ const Shorty = (refs: IShortyProps) => {
       }
     });
   };
+
+  const paletteChildren: Array<IShorty> = colorPalette.map((pallet) => {
+    const { name, color } = pallet;
+    return {
+      id: name,
+      name,
+      icon: 'palette',
+      handler: () => {
+        document.documentElement.style.setProperty('--color-tertiary', color);
+      },
+      preview: palettePreview(color),
+    };
+  });
 
   const shortyData: Array<IShorty> = [
     {
@@ -216,63 +272,7 @@ const Shorty = (refs: IShortyProps) => {
       id: 'Palette',
       name: 'Palette',
       icon: 'palette',
-      children: [
-        {
-          id: 'nebula',
-          name: 'Nebula',
-          icon: 'draw',
-          handler: () => {
-            document.documentElement.style.setProperty(
-              '--color-tertiary',
-              '#8B5CF6'
-            );
-          },
-        },
-        {
-          id: 'supernova',
-          name: 'Supernova',
-          icon: 'draw',
-          handler: () => {
-            document.documentElement.style.setProperty(
-              '--color-tertiary',
-              '#FFA500'
-            );
-          },
-        },
-        {
-          id: 'mars',
-          name: 'Mars',
-          icon: 'draw',
-          handler: () => {
-            document.documentElement.style.setProperty(
-              '--color-tertiary',
-              '#FF6B00'
-            );
-          },
-        },
-        {
-          id: 'aurora',
-          name: 'Aurora',
-          icon: 'draw',
-          handler: () => {
-            document.documentElement.style.setProperty(
-              '--color-tertiary',
-              '#22D3EE'
-            );
-          },
-        },
-        {
-          id: 'starlight',
-          name: 'Starlight',
-          icon: 'draw',
-          handler: () => {
-            document.documentElement.style.setProperty(
-              '--color-tertiary',
-              '#E2E8F0'
-            );
-          },
-        },
-      ],
+      children: paletteChildren,
     },
     {
       id: 'Bookshelf',
