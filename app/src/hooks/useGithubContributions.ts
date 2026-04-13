@@ -74,10 +74,9 @@ export const useGitHubContributions = (githubUserName: string) => {
   const [githubUser, setGithubUser] = useState<IGitHubUser | null>(null);
 
   useEffect(() => {
-    const response = fetch('https://api.github.com/graphql', {
+    const response = fetch('/api/github', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_ACCESS_TOKEN}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query: githubQuery }),

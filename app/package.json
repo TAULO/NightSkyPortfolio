@@ -23,6 +23,7 @@
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.12",
     "tailwindcss-animated": "^2.0.0",
+    "vercel": "^51.1.0",
     "vite-plugin-graphql-loader": "^5.0.1"
   },
   "devDependencies": {
