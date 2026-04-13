@@ -7,6 +7,7 @@ import { meteoriteShower } from '../../NightSky/NightSky.tsx';
 import { useSocials } from '../../../hooks/useSocials.ts';
 import { useHardcoverAPI } from '../../../hooks/useHardcoverAPI.ts';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { SilentErrorBoundary } from './SilentErrorBoundary.ts';
 
 interface IShortyProps {
   projectRef: React.RefObject<HTMLElement | null>;
@@ -37,26 +38,28 @@ const BookPreview = ({
         padding: '4px',
       }}
     >
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          aspectRatio: '2/3',
-          borderRadius: '6px',
-          overflow: 'hidden',
-        }}
-      >
-        <img
-          src={imageUrl}
-          alt={title}
+      {imageUrl && (
+        <div
           style={{
+            position: 'relative',
             width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
+            aspectRatio: '2/3',
+            borderRadius: '6px',
+            overflow: 'hidden',
           }}
-        />
-      </div>
+        >
+          <img
+            src={imageUrl}
+            alt={title}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </div>
+      )}
       <div
         style={{
           textAlign: 'center',
@@ -96,7 +99,7 @@ const Shorty = (refs: IShortyProps) => {
   const scrollTo = useScrollTo();
   const socials = useSocials();
   const books = useHardcoverAPI();
-  const { wantToRead, currentlyReading, read } = books;
+  const { wantToRead = [], currentlyReading = [], read = [] } = books ?? {};
 
   const projectsChildren: Array<IShorty> = projects.map((project) => {
     return {
@@ -109,28 +112,34 @@ const Shorty = (refs: IShortyProps) => {
 
   const booksChildren = (books: Array<any>): Array<IShorty> => {
     return books.map((book: any) => {
-      const title = book.title;
-      const author = book.author;
-      const rating = book.rating ?? null;
-      const imageUrl = book?.image?.url;
+      try {
+        const title = book.title;
+        const author = book.author;
+        const rating = book.rating ?? null;
+        const imageUrl = book?.image?.url;
 
-      return {
-        id: title,
-        name: title,
-        icon: 'auto_stories',
-        handler: () => {
-          return window.open(
-            `https://hardcover.app/books/${book.slug}`,
-            '_blank'
-          );
-        },
-        preview: BookPreview({
-          title,
-          author,
-          rating,
-          imageUrl: imageUrl ?? '',
-        }),
-      };
+        return {
+          id: title,
+          name: title,
+          icon: 'auto_stories',
+          handler: () =>
+            window.open(`https://hardcover.app/books/${book.slug}`, '_blank'),
+          preview: BookPreview({
+            title,
+            author,
+            rating,
+            imageUrl: imageUrl ?? '',
+          }),
+        };
+      } catch (e) {
+        console.warn('[Shorty] Failed to build book entry:', e);
+        return {
+          id: book.title ?? 'unknown',
+          name: book.title ?? 'Unknown book',
+          icon: 'auto_stories',
+          handler: () => {},
+        };
+      }
     });
   };
 
@@ -307,10 +316,10 @@ const Shorty = (refs: IShortyProps) => {
   ];
 
   return (
-    <div>
+    <SilentErrorBoundary>
       {/* @ts-ignore */}
       <hey-shorty data={shortyData}></hey-shorty>
-    </div>
+    </SilentErrorBoundary>
   );
 };
 

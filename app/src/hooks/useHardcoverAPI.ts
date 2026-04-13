@@ -36,7 +36,6 @@ export const useHardcoverAPI = () => {
 
         const currentlyReading =
           myBooks['currently_reading'].map((book: any) => {
-            console.log(book);
             return {
               ...book.book,
               author: book.book.contributions[0].author.name,
