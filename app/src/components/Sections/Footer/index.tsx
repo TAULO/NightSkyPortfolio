@@ -19,10 +19,9 @@ const githubQuery = `
 const Footer = () => {
   const [githubData, setGithubData] = useState<any>(null);
   useEffect(() => {
-    const response = fetch('https://api.github.com/graphql', {
+    const response = fetch('/api/github', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_ACCESS_TOKEN}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query: githubQuery }),
@@ -35,7 +34,9 @@ const Footer = () => {
   }, []);
 
   const stars = githubData?.data?.repository?.stargazerCount ?? '0';
-  const commits = githubData?.data?.repository?.defaultBranchRef?.target?.history?.totalCount ?? '0';
+  const commits =
+    githubData?.data?.repository?.defaultBranchRef?.target?.history
+      ?.totalCount ?? '0';
 
   return (
     <footer
