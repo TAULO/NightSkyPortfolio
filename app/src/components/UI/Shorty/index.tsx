@@ -43,7 +43,7 @@ const BookPreview = ({
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '2/3',
+            height: '280px',
             borderRadius: '6px',
             overflow: 'hidden',
           }}
@@ -54,7 +54,7 @@ const BookPreview = ({
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
+              objectFit: 'scale-down',
               display: 'block',
             }}
           />
