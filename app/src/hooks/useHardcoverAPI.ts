@@ -11,10 +11,9 @@ export const useHardcoverAPI = () => {
   const [hardcover, setHardcover] = useState<any>(defaults);
 
   useEffect(() => {
-    const response = fetch('https://api.hardcover.app/v1/graphql', {
+    const response = fetch('/api/hardcover', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_HARDCOVER_BEARER_TOKEN}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query: print(hardcoverQuery) }),
