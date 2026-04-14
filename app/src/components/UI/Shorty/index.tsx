@@ -28,6 +28,7 @@ const projectPreview = (project: IProject): string => {
         gap: '12px',
         padding: '4px',
       }}
+      key={project.name}
     >
       {firstImage && (
         <div
@@ -84,12 +85,13 @@ const projectPreview = (project: IProject): string => {
             marginTop: '2px',
           }}
         >
-          {project.techStack.map((tech) => (
+          {project.techStack.map((tech, index) => (
             <div
               style={{
                 height: '1rem',
                 width: '1rem',
               }}
+              key={index}
             >
               {tech.svg}
             </div>
@@ -181,7 +183,10 @@ const BookPreview = ({
 
 const palettePreview = (color: string) => {
   return renderToStaticMarkup(
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div
+      style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
+      key={color}
+    >
       <div
         style={{
           width: '32px',
