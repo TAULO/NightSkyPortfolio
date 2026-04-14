@@ -131,7 +131,6 @@ const BookPreview = ({
             height: '280px',
             borderRadius: '6px',
             overflow: 'hidden',
-            border: '1px solid var(--color-border)',
           }}
         >
           <img
@@ -291,8 +290,8 @@ const Shorty = (refs: IShortyProps) => {
 
   const shortyData: Array<IShorty> = [
     {
-      id: 'Mission Control',
-      name: 'Mission Control',
+      id: 'Projects',
+      name: 'Projects',
       icon: 'folder_special',
       children: projectsChildren,
     },
@@ -408,7 +407,10 @@ const Shorty = (refs: IShortyProps) => {
   return (
     <SilentErrorBoundary>
       {/* @ts-ignore */}
-      <hey-shorty data={shortyData}></hey-shorty>
+      <hey-shorty
+        data={shortyData}
+        defaultBreadcrumbName={'Mission Control'}
+      ></hey-shorty>
     </SilentErrorBoundary>
   );
 };
