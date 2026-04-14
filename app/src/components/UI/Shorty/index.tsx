@@ -1,7 +1,7 @@
 import './index.css';
 import '@taulo1999/heyshorty';
 import { IShorty } from '@taulo1999/heyshorty';
-import { projects } from '../../Sections/Projects/project.data.ts';
+import { IProject, projects } from '../../Sections/Projects/project.data.ts';
 import useScrollTo from '../../../hooks/useScrollTo.ts';
 import { meteoriteShower } from '../../NightSky/NightSky.tsx';
 import { useSocials } from '../../../hooks/useSocials.ts';
@@ -16,6 +16,89 @@ interface IShortyProps {
   contactRef: React.RefObject<HTMLElement | null>;
   experienceRef: React.RefObject<HTMLElement | null>;
 }
+
+const projectPreview = (project: IProject): string => {
+  const firstImage = project.images[0];
+
+  return renderToStaticMarkup(
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        padding: '4px',
+      }}
+    >
+      {firstImage && (
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '160px',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            border: '1px solid var(--color-border)',
+          }}
+        >
+          <img
+            src={firstImage.src}
+            alt={firstImage.alt}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+            }}
+          />
+        </div>
+      )}
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '6px',
+        }}
+      >
+        <div style={{ fontSize: '14px', fontWeight: 600 }}>{project.name}</div>
+
+        <div
+          style={{
+            fontSize: '12px',
+            opacity: 0.6,
+            lineHeight: '1.4',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {project.description}
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: '6px',
+            flexWrap: 'wrap',
+            marginTop: '2px',
+          }}
+        >
+          {project.techStack.map((tech) => (
+            <div
+              style={{
+                height: '1rem',
+                width: '1rem',
+              }}
+            >
+              {tech.svg}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const BookPreview = ({
   title,
@@ -46,6 +129,7 @@ const BookPreview = ({
             height: '280px',
             borderRadius: '6px',
             overflow: 'hidden',
+            border: '1px solid var(--color-border)',
           }}
         >
           <img
@@ -150,6 +234,7 @@ const Shorty = (refs: IShortyProps) => {
       name: project.name,
       icon: 'commit',
       handler: () => window.open(project.hrefCode, '_blank'),
+      preview: projectPreview(project),
     };
   });
 
