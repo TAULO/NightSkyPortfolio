@@ -102,7 +102,7 @@ const Projects = () => {
       </div>
       <div
         className={
-          'grid w-full grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'
+          'grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3'
         }
       >
         {filteredProjects.map((project, index) => {
