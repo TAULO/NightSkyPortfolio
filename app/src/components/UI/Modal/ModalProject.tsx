@@ -56,7 +56,7 @@ function ModalProject({ modalId }: { modalId: string }) {
         }
       >
         <div id={'slides'} className={`mb-4 flex flex-col gap-2 sm:mb-0`}>
-          <div className={'w-fit overflow-hidden'}>
+          <div className={'overflow-hidden'}>
             <div
               className={'flex gap-4'}
               style={{
