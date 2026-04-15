@@ -68,10 +68,13 @@ function ModalProject({ modalId }: { modalId: string }) {
                   >
                     {extension === 'mov' ? (
                       <video
-                        className={'border-border w-full rounded-xl border'}
+                        className={
+                          'border-border pointer-events-none w-full rounded-xl border'
+                        }
                         autoPlay
                         loop
                         muted
+                        playsInline
                       >
                         <source src={image.src} type="video/mp4" />
                         Your browser does not support the video tag.
