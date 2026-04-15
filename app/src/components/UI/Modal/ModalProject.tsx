@@ -7,10 +7,12 @@ function ModalProject({ modalId }: { modalId: string }) {
   const { data: project, closeModal } = useModal<IProject>(modalId);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     setCurrentSlide(0);
     setIsExpanded(false);
+    setIsHidden(false);
   }, [project]);
 
   if (!project) return null;
@@ -28,23 +30,33 @@ function ModalProject({ modalId }: { modalId: string }) {
   }
 
   function toggleExpand() {
-    setIsExpanded(!isExpanded);
+    if (!isExpanded) {
+      // Expand: fade out body → hide → grid collapses
+      setIsExpanded(true);
+      setTimeout(() => setIsHidden(true), 300);
+    } else {
+      // Collapse: grid expands → show body → fade in
+      setIsExpanded(false);
+      setTimeout(() => {
+        setIsHidden(false);
+      }, 500); // match grid transition duration
+    }
   }
 
   return (
     <ModalContainer modalId={modalId}>
       <div
         className={
-          'relative flex flex-col gap-4 sm:grid sm:h-fit sm:grid-cols-2'
+          'relative flex flex-col gap-4 sm:grid sm:h-fit sm:transition-[grid-template-columns] sm:duration-500 sm:ease-in-out'
+        }
+        style={
+          isExpanded
+            ? { gridTemplateColumns: '1fr 0fr' }
+            : { gridTemplateColumns: '1fr 1fr' }
         }
       >
-        <div
-          id={'slides'}
-          className={`mb-4 flex flex-col gap-2 sm:mb-0 ${
-            isExpanded ? 'sm:col-span-2' : ''
-          }`}
-        >
-          <div className={'overflow-hidden'}>
+        <div id={'slides'} className={`mb-4 flex flex-col gap-2 sm:mb-0`}>
+          <div className={'w-fit overflow-hidden'}>
             <div
               className={'flex gap-4'}
               style={{
@@ -180,7 +192,11 @@ function ModalProject({ modalId }: { modalId: string }) {
         </div>
         <div
           id={'body'}
-          className={`mt-auto flex flex-col gap-2 sm:mt-0 ${isExpanded ? 'sm:col-span-2' : ''}`}
+          className={`mt-auto flex flex-col gap-2 overflow-hidden transition-opacity duration-300 sm:mt-0 ${
+            isExpanded
+              ? 'sm:pointer-events-none sm:opacity-0'
+              : 'sm:opacity-100'
+          } ${isHidden ? 'sm:hidden' : ''}`}
         >
           <div className={'grid- grid grid-cols-[1fr_auto]'}>
             <h1 className={'text-xl font-bold text-white'}>{project.name}</h1>
