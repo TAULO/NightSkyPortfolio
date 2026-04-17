@@ -6,7 +6,7 @@ const experienceItem = (experiences: Array<IExperienceItem>) => {
     <div
       className={'flex flex-col gap-x-2 md:flex-row md:gap-x-10 md:gap-y-5'}
       key={index}
-      data-aos={'zoom-in-up'}
+      data-aos={'fade-right'}
       data-aos-anchor-placement={'bottom-bottom'}
     >
       <div

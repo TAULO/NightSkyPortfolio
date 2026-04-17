@@ -23,7 +23,7 @@ const GithubContribution = () => {
       className={
         'border-border bg-secondary hover:border-border-hover flex min-w-0 max-w-fit flex-col gap-6 rounded-xl border p-6 transition-colors duration-300'
       }
-      data-aos={'fade-right'}
+      data-aos={'fade-left'}
       data-aos-anchor-placement={'bottom-bottom'}
     >
       <span className={'font-mono text-sm tracking-widest text-white/25'}>
