@@ -28,19 +28,20 @@ interface IDualBar {
 function ModalGithub({ modalId }: { modalId: string }) {
   const { data } = useModal<IGithubModal>(modalId);
 
-  if (!data) return null;
-
   const [vsVisible, setVsVisible] = useState(true);
   const [vsRemoved, setVsRemoved] = useState(false);
 
   useEffect(() => {
+    if (!data) return; // NOTE: guard since else we get a react error
     const fadeTimer = setTimeout(() => setVsVisible(false), 6000);
-    const removeTimer = setTimeout(() => setVsRemoved(true), 6500); // after fade-out
+    const removeTimer = setTimeout(() => setVsRemoved(true), 6500);
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     };
-  }, []);
+  }, [data]);
+
+  if (!data) return null;
 
   const { myGithub, opponentGithub } = data;
 
@@ -485,22 +486,30 @@ function ModalGithub({ modalId }: { modalId: string }) {
                 'bg-secondary border-border flex flex-col gap-4 rounded-xl border px-8 py-4'
               }
             >
-              <h3 className={'font-bold text-white/60'}>Head to Head</h3>
-              {headToHeadArr.map((item, index) => (
-                <DualBar
-                  title={item.title}
-                  myVal={item.myVal}
-                  opponentVal={item.opponentVal}
-                  key={index}
-                />
-              ))}
+              <h3 className={'font-mono text-sm tracking-widest text-white/25'}>
+                // github.head2head
+              </h3>
+              {headToHeadArr
+                .filter((item) => item.myVal > 0 || item.opponentVal > 0)
+                .map((item, index) => {
+                  return (
+                    <DualBar
+                      title={item.title}
+                      myVal={item.myVal}
+                      opponentVal={item.opponentVal}
+                      key={index}
+                    />
+                  );
+                })}
             </div>
             <div
               className={
                 'bg-secondary border-border flex flex-col gap-4 rounded-t-xl border-x border-t px-8 pt-4'
               }
             >
-              <h3 className={'font-bold text-white/60'}>Leaderboard</h3>
+              <h3 className={'font-mono text-sm tracking-widest text-white/25'}>
+                // github.leaderboard
+              </h3>
               <WinLossBreakdown></WinLossBreakdown>
               <Leaderboard></Leaderboard>
             </div>
