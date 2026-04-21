@@ -8,7 +8,7 @@ const AboutMe = () => {
     <div className={'flex flex-col gap-4 sm:flex-row sm:gap-8'}>
       <div
         className={
-          'h-42 border-border w-40 flex-shrink-0 self-center overflow-hidden rounded-lg border sm:self-start'
+          'h-42 border-border self-start w-40 flex-shrink-0 self-center overflow-hidden rounded-lg border sm:mt-[6px] sm:self-start'
         }
       >
         <img
