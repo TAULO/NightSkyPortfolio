@@ -4,7 +4,7 @@ import {
   csharpSVG,
   cssSVG,
   dockerSVG,
-  dotnetcoreSVG,
+  dotnetcoreSVG, gitlabSVG,
   gitSVG,
   htmlSVG,
   javascriptSVG,
@@ -115,6 +115,10 @@ const jobExperiences: Array<IExperienceItem> = [
       {
         name: 'Kibana',
         svg: kibanaSVG,
+      },
+      {
+        name: 'GitLab',
+        svg: gitlabSVG,
       },
       {
         name: 'Git',
