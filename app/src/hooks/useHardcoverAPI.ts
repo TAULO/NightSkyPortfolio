@@ -43,13 +43,14 @@ export const useHardcoverAPI = () => {
           }) ?? [];
 
         const read =
-          myBooks['read'].map((book: any) => {
+          (myBooks['read'].map((book: any) => {
             return {
               ...book.book,
+              readDate: new Date(book['last_read_date']),
               author: book.book.contributions[0].author.name,
               rating: book.rating,
             };
-          }) ?? [];
+          }) ?? []).sort((a: any, b: any) => b.readDate - a.readDate);
 
         setHardcover({
           wantToRead,
