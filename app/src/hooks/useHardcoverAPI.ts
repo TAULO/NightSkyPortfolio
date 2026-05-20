@@ -2,13 +2,19 @@ import { useEffect, useState } from 'react';
 import { print } from 'graphql';
 import hardcoverQuery from '../queries/hardcover.graphql';
 
+type IHardcover = {
+  wantToRead: any[];
+  currentlyReading: any[];
+  read: any[];
+};
+
 export const useHardcoverAPI = () => {
-  const defaults = {
+  const defaults: IHardcover = {
     wantToRead: [],
     currentlyReading: [],
     read: [],
   };
-  const [hardcover, setHardcover] = useState<any>(defaults);
+  const [hardcover, setHardcover] = useState<IHardcover>(defaults);
 
   useEffect(() => {
     const response = fetch('/api/hardcover', {
