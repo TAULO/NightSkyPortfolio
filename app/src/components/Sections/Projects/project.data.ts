@@ -47,6 +47,7 @@ const kanplaAPIImages = useProjectAssets('kanplaapi');
 const kanplaRaycastExtenstionImages = useProjectAssets(
   'kanplaraycastextenstion'
 );
+const kanplaMCPImages = useProjectAssets('kanpl amcp');
 
 const athelticaArchitecture = `
   architecture-beta
@@ -209,6 +210,24 @@ const kanplaRaycastExtenstionProject: IProject = {
   images: kanplaRaycastExtenstionImages,
 };
 
+const kanplaMCPProject: IProject = {
+  name: 'Kanpla MCP Server',
+  description:
+    'I built a simple MCP server that talks to my KanplaAPI npm package, so that I can ask e.g. Claude for "What is on the menu at my local canteen today?" or "What is for lunch this friday?".',
+  hrefCode: 'https://github.com/TAULO/kanpla-mcp',
+  techStack: [
+    {
+      svg: typescriptSVG,
+      name: 'TypeScript',
+    },
+    {
+      svg: nodejsSVG,
+      name: 'NodeJS',
+    },
+  ],
+  images: kanplaMCPImages,
+};
+
 const hvordanErVejretProject: IProject = {
   name: 'Hvordan Er Vejret',
   description:
@@ -352,6 +371,7 @@ const projects: Array<IProject> = [
   heyShortyProject,
   kanplaRaycastExtenstionProject,
   kanplaAPIProject,
+  kanplaMCPProject,
   hvordanErVejretProject,
   biavlerProject,
   gitSnakeProject,
