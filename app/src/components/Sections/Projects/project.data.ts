@@ -47,7 +47,7 @@ const kanplaAPIImages = useProjectAssets('kanplaapi');
 const kanplaRaycastExtenstionImages = useProjectAssets(
   'kanplaraycastextenstion'
 );
-const kanplaMCPImages = useProjectAssets('kanpl amcp');
+const kanplaMCPImages = useProjectAssets('kanplamcp');
 
 const athelticaArchitecture = `
   architecture-beta
