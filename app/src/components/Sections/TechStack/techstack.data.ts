@@ -14,6 +14,7 @@ import {
   githubSVG,
   gitlabSVG,
   gitSVG,
+  golangSVG,
   htmlSVG,
   intellijSVG,
   javascriptSVG,
@@ -251,6 +252,10 @@ const languagesSkill = {
     {
       name: 'JavaScript',
       svg: javascriptSVG,
+    },
+    {
+      name: 'Go',
+      svg: golangSVG,
     },
   ],
 };

@@ -19,15 +19,18 @@ function ModalProject({ modalId }: { modalId: string }) {
 
   function nextSlide() {
     setCurrentSlide(
-      currentSlide + 1 >= project!.images.length ? 0 : currentSlide + 1
+      currentSlide + 1 >= project!.images.length
+        ? project!.images.length - 1
+        : currentSlide + 1
     );
   }
 
   function prevSlide() {
-    setCurrentSlide(
-      currentSlide - 1 < 0 ? project!.images.length - 1 : currentSlide - 1
-    );
+    setCurrentSlide(currentSlide - 1 < 0 ? 0 : currentSlide - 1);
   }
+
+  const isFirstSlide = currentSlide === 0;
+  const isLastSlide = currentSlide === project.images.length - 1;
 
   function toggleExpand() {
     if (!isExpanded) {
@@ -140,55 +143,55 @@ function ModalProject({ modalId }: { modalId: string }) {
               })}
             </div>
           </div>
-          <div id={'controls'} className={'flex items-center gap-2'}>
-            <button
-              className={
-                'border-border hover:bg-secondary bg-secondary/25 hover:border-border-hover inline-flex items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
-              }
-              onClick={prevSlide}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-chevron-left"
-                aria-hidden="true"
+          {project.images.length > 1 ? (
+            <div id={'controls'} className={'flex items-center gap-2'}>
+              <button
+                className={`border-border hover:bg-secondary bg-secondary/25 inline-flex items-center justify-center rounded-full border p-2 text-white ${!isFirstSlide ? 'hover:border-border-hover transition-colors duration-300 hover:cursor-pointer' : 'opacity-50'}`}
+                onClick={prevSlide}
+                disabled={isFirstSlide}
               >
-                <path d="m15 18-6-6 6-6"></path>
-              </svg>
-            </button>
-            <button
-              className={
-                'border-border hover:bg-secondary bg-secondary/25 hover:border-border-hover rotate-180 items-center justify-center rounded-full border p-2 text-white transition-colors duration-300 hover:cursor-pointer'
-              }
-              onClick={nextSlide}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-chevron-left"
-                aria-hidden="true"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-chevron-left"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+              <button
+                className={`border-border hover:bg-secondary bg-secondary/25 inline-flex items-center justify-center rounded-full border p-2 text-white rotate-180 ${!isLastSlide ? 'hover:border-border-hover transition-colors duration-300 hover:cursor-pointer' : 'opacity-50'}`}
+                onClick={nextSlide}
+                disabled={isLastSlide}
               >
-                <path d="m15 18-6-6 6-6"></path>
-              </svg>
-            </button>
-            <p
-              className={'text-center text-sm text-white/50'}
-            >{`Slide ${currentSlide + 1} of ${project.images.length}`}</p>
-          </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="lucide lucide-chevron-left"
+                  aria-hidden="true"
+                >
+                  <path d="m15 18-6-6 6-6"></path>
+                </svg>
+              </button>
+              <p
+                className={'text-center text-sm text-white/50'}
+              >{`Slide ${currentSlide + 1} of ${project.images.length}`}</p>
+            </div>
+          ) : null}
         </div>
         <div
           id={'body'}

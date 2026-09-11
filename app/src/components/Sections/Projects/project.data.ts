@@ -4,6 +4,7 @@ import {
   cssSVG,
   dotnetcoreSVG,
   firebaseSVG,
+  golangSVG,
   htmlSVG,
   javascriptSVG,
   litSVG,
@@ -35,6 +36,7 @@ interface IProjectArchitecture {
   architecture?: string;
 }
 
+const budgetpipeImages = useProjectAssets('budgetpipe');
 const athleticaImages = useProjectAssets('athletica');
 const hvordanErVejretImages = useProjectAssets('hvordanervejret');
 const gitSnakeImages = useProjectAssets('gitsnake');
@@ -95,6 +97,21 @@ const athelticaArchitecture = `
     docker:L --> R:db
     docker:L --> R:keycloak
 `;
+
+const budgetpipeProject: IProject = {
+  name: 'budgetpipe',
+  description:
+    'budgetpipe is a CLI tool that automates the process of importing bank transactions into a personal Excel budget. I’ve maintained my own personal budget for years, but manually mapping bank transactions to budget categories and calculating expenses was always a tedious and repetitive task. Therefor, I decided to build a CLI tool to automate that workflow.',
+  hrefCode: 'https://github.com/TAULO/budgetpipe',
+  hrefLive: 'https://github.com/TAULO/budgetpipe',
+  techStack: [
+    {
+      svg: golangSVG,
+      name: 'Golang',
+    },
+  ],
+  images: budgetpipeImages,
+};
 
 const athleticaProject: IProject = {
   name: 'Athletica',
@@ -370,6 +387,7 @@ const projects: Array<IProject> = [
   athleticaProject,
   heyShortyProject,
   kanplaRaycastExtenstionProject,
+  budgetpipeProject,
   kanplaAPIProject,
   kanplaMCPProject,
   hvordanErVejretProject,
